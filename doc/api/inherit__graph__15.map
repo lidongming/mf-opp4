@@ -1,0 +1,4 @@
+base referer
+rect $classNicEntry.html 9,32 81,56
+rect $classNicEntryDebug.html 130,8 242,32
+rect $classNicEntryDirect.html 133,56 239,80

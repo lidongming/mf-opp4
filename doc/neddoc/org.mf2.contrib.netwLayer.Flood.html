@@ -1,0 +1,184 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>Flood</i></h2>
+<b>Package:</b> org.mf2.contrib.netwLayer<br/><b>File: <a href="contrib-netwLayer-Flood.ned.html">contrib/netwLayer/Flood.ned</a></b><br/>
+<p>A simple flooding protocol</p>
+<p>This implementation uses plain flooding, i.e. it "remembers"
+(stores) already broadcasted messages in a list and does not
+rebroadcast them again, if it gets another copy of that message.</p>
+<p>The maximum number of entires for that list can be defined in the
+.ini file (@ref bcMaxEntries) as well as the time after which an entry
+is deleted (@ref bcDelTime).</p>
+<p>If you prefere a memory-less version you can comment out the 
+&lt;verbatim&gt; #define PLAINFLOODING &lt;/verbatim&gt;</p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.floodTest.FloodHost.html">FloodHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p><a href="org.mf2.contrib.netwLayer.Flood.html">Flood</a> Host</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>length of the network header</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">plainFlooding</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>flag whether to use plain flooding</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">bcMaxEntries</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>Max number of entries in the list of already broadcasted messages</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">bcDelTime</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>Time after which an entry for an already broadcasted msg can be deleted</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">defaultTtl</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>Default time-to-live (ttl) used for this module</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">uppergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from application layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">uppergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to application layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">upperControlOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>for control messages to upper layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from MAC layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowerControlIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>for control messages from mac layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to MAC layer</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// A simple flooding protocol
+//
+// This implementation uses plain flooding, i.e. it &quot;remembers&quot;
+// (stores) already broadcasted messages in a list and does not
+// rebroadcast them again, if it gets another copy of that message.
+//
+// The maximum number of entires for that list can be defined in the
+// .ini file (@ref bcMaxEntries) as well as the time after which an entry
+// is deleted (@ref bcDelTime).
+//
+// If you prefere a memory-less version you can comment out the 
+// &lt;verbatim&gt; #define PLAINFLOODING &lt;/verbatim&gt;
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">Flood</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">headerLength</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// length of the network header
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">plainFlooding</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// flag whether to use plain flooding
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// Max number of entries in the list of already broadcasted messages
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">bcMaxEntries</span><span style="color: #000000; ">;
+        </span><span style="color: #808080; font-style: italic; ">// Time after which an entry for an already broadcasted msg can be deleted
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">bcDelTime</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">defaultTtl</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// Default time-to-live (ttl) used for this module
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from application layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to application layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// for control messages to upper layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from MAC layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;   </span><span style="color: #808080; font-style: italic; ">// for control messages from mac layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to MAC layer
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

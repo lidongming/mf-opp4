@@ -1,0 +1,484 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Network <i>sim</i></h2>
+<b>Package:</b> org.mf2.networks.csma<br/><b>File: <a href="networks-csma-Network.ned.html">networks/csma/Network.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.csma.Sim.html">Sim</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="inherited">
+   <td width="150">playgroundSizeX</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120">40</td>   <td>
+<p>parametes for the framework</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td width="150">playgroundSizeY</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120">40</td>   <td></td>
+</tr>
+<tr class="inherited">
+   <td width="150">numHosts</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120">2</td>   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td width="150">display</td>
+   <td width="100"><i>bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=0,0</i></td>
+   <td></td>
+</tr>
+<tr>
+   <td width="150">isNetwork</td>
+   <td width="100"><i></i></td>
+   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sendDirect</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>define which <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module to use</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.useTorus</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>wrap connections</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.pMax</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum sending power used for this network (in mW)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sat</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum signal attenuation threshold (in dBm)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.alpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum path loss coefficient</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum carrier frequency of the channel (in Hz)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.core.blackboard.Blackboard.html">blackboard</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.x</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>x coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.y</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>y coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleArp.html">arp</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.applLayer.BurstApplLayer.html">appl</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.applLayer.BurstApplLayer.html">appl</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the application message header (in bits)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.applLayer.BurstApplLayer.html">appl</a>.burstSize</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>size of the burst</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleNetwLayer.html">net</a>.debug</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleNetwLayer.html">net</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the network packet header (in bits)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.busyRSSI</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>level at which we consider medium busy</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.slotDuration</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>how long is a slot?</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.difs</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum time between a packet and its ack</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.maxTxAttempts</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum number of transmission attempts</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of MAC header</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.queueLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the MAC queue</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.defaultChannel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>default channel</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>bit rate</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.CSMAMacLayer.html">mac</a>.contentionWindow</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>contention window</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">decider</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">decider</a>.snrThresholdLevel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.publishRSSIAlways</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>if false, the RSSI will not be published 
+during the reception of a frame</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.transmitterPower</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.thermalNoise</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.pathLossAlpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.sensitivity</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSleep</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>time parameters, how long does it take to 
+switch to sleep mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSend</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to send mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.csma.Host.html">host</a>.<a href="org.mf2.contrib.nic.NicCsma.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swRecv</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to recv mode</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">network</span><span style="color: #000000; "> </span><span style="color: #000000; ">sim</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">Sim</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@prompt</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;playgroundSizeX&quot;</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">40</span><span style="color: #000000; ">);
+        </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@prompt</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;playgroundSizeY&quot;</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">40</span><span style="color: #000000; ">);
+        </span><span style="color: #000000; ">numHosts</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@prompt</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;Number of hosts:&quot;</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">2</span><span style="color: #000000; ">);
+
+}
+</span></pre>
+   </body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">NED File <i>networks/dvdistanceTest/DVDNetwork.ned</i></h2>
+<table class="typetable">
+   <tr>
+      <th>Name</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.dvdistanceTest.DVDNetwork.html">DVDNetwork</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>@brief Network of <a href="org.mf2.networks.dvdistanceTest.DVDHost.html">DVDHost</a> modules, used for testing the DV Distance protocol.</p>
+<p><b>Author:</b> Danilo Blasi</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.dvdistanceTest.dvdSim.html">dvdSim</a>
+      <i> (network)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//***************************************************************************
+//* file:        DVDNetwork.ned
+//*
+//* author:      Danilo Blasi
+//*
+//* copyright:   (C) 2008 ST Microelectronics (STM) at Lecce, Italy.
+//*
+//*              This program is free software; you can redistribute it 
+//*              and/or modify it under the terms of the GNU General Public 
+//*              License as published by the Free Software Foundation; either
+//*              version 2 of the License, or (at your option) any later 
+//*              version.
+//*              For further information see file COPYING 
+//*              in the top level directory.
+//***************************************************************************
+//* part of:     WASP Herd Control stack implementation
+//* description: Test network of DVDHost modules
+//***************************************************************************
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">networks</span><span style="color: #000000; ">.</span><span style="color: #000000; ">dvdistanceTest</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">core</span><span style="color: #000000; ">.</span><span style="color: #000000; ">channelControl</span><span style="color: #000000; ">.</span><span style="color: #000000; ">ChannelControl</span><span style="color: #000000; ">;
+
+
+</span><span style="color: #808080; font-style: italic; ">// @brief Network of DVDHost modules, used for testing the DV Distance protocol.
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Danilo Blasi
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">DVDNetwork</span><span style="color: #000000; ">
+
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x-size of the network area [m]
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y-size of the network area [m]
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">numHosts</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// number of the network's hosts
+</span><span style="color: #000000; ">
+        </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=10,10&quot;</span><span style="color: #000000; ">);
+
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+
+        </span><span style="color: #000000; ">channelcontrol</span><span style="color: #000000; ">: </span><span style="color: #000000; ">ChannelControl</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+
+                </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; "> = </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">;
+                </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; "> = </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">;
+
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=60,30;i=eye14&quot;</span><span style="color: #000000; ">);
+
+        }
+        </span><span style="color: #000000; ">host</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numHosts</span><span style="color: #000000; ">]: </span><span style="color: #000000; ">DVDHost</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=50,50;i=laptop&quot;</span><span style="color: #000000; ">);
+
+        }
+        </span><span style="color: #000000; ">simTracer</span><span style="color: #000000; ">: </span><span style="color: #000000; ">SimTracer</span><span style="color: #000000; ">;
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">allowunconnected</span><span style="color: #000000; ">:
+
+}
+
+</span><span style="color: #800000; font-weight: bold; ">network</span><span style="color: #000000; "> </span><span style="color: #000000; ">dvdSim</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">DVDNetwork</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+}
+</span></pre>
+   </body>
+</html>

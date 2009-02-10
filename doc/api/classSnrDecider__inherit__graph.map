@@ -1,0 +1,5 @@
+base referer
+rect $classErrAndCollDecider.html 7,307 138,331
+rect $classBasicDecider.html 23,158 122,182
+rect $classBasicModule.html 23,83 122,107
+rect $classImNotifiable.html 27,9 118,33

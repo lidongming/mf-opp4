@@ -1,0 +1,133 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>BurstApplLayer</i></h2>
+<b>Package:</b> org.mf2.contrib.applLayer<br/><b>File: <a href="contrib-applLayer-BurstApplLayer.ned.html">contrib/applLayer/BurstApplLayer.ned</a></b><br/>
+<p>Application layer to test lower layer implementations</p>
+<p>This application layer does exactly the same as the
+TestApplLayer. The only difference is that is sends a burst of
+broadcast messages instead of just one. The burst size is specified
+in burstSize and can be set in omnetpp.ini</p>
+<p>@sa TestApplALyer</p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.csma.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.gilbert_elliot.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.ieee802_11.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>length of the application message header (in bits)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">burstSize</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>size of the burst</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">lowergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from network layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowerControlIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to network layer</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// Application layer to test lower layer implementations
+//
+// This application layer does exactly the same as the
+// TestApplLayer. The only difference is that is sends a burst of
+// broadcast messages instead of just one. The burst size is specified
+// in burstSize and can be set in omnetpp.ini
+//
+// @sa TestApplALyer
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">BurstApplLayer</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">headerLength</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// length of the application message header (in bits)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">burstSize</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// size of the burst
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from network layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to network layer
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

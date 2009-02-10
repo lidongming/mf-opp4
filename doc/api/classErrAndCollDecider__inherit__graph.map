@@ -1,0 +1,5 @@
+base referer
+rect $classSnrDecider.html 29,233 117,257
+rect $classBasicDecider.html 23,158 122,182
+rect $classBasicModule.html 23,83 122,107
+rect $classImNotifiable.html 27,9 118,33

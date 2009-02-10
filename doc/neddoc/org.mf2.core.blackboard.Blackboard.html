@@ -1,0 +1,202 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>Blackboard</i></h2>
+<b>Package:</b> org.mf2.core.blackboard<br/><b>File: <a href="core-blackboard-Blackboard.ned.html">core/blackboard/Blackboard.ned</a></b><br/>
+<p>The <a href="org.mf2.core.blackboard.Blackboard.html">Blackboard</a> works as entity to enable inter layer /
+process communication.</p>
+<p><a href="org.mf2.core.blackboard.Blackboard.html">Blackboard</a> makes global host knowledge or information relevant to
+more than one layer accessible to all modules derived from
+BlackboardAccess.</p>
+<p>Every module derived from BlackboardAccess is capable to publish
+information on the <a href="org.mf2.core.blackboard.Blackboard.html">Blackboard</a> as well as to subscribe for it.</p>
+<p><b>Author:</b> Steffen Sroka, Andreas Koepke</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.BaseStationHost.html">BaseStationHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.baseStationNet.BaseStationHost.html">BaseStationHost</a> is a compound module that implements a test base station. 
+The test base station contains the <a href="org.mf2.contrib.applLayer.PollApplLayer.html">PollApplLayer</a> which periodically polls all
+clients in the network.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.blackboard.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.SingleChannelRadio.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.testCCconnections.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The BasicHost is a compound module that implements a very
+simple host. It only consists of basic modules and is the
+most basic host you can create for the MF</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a> is a compound module that implements a very simple mobile
+client. It only consists of basic modules and the ClientApplLayer.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.dvdistanceTest.DVDHost.html">DVDHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>@brief Node module used for testing the DV Distance protocol. It includes
+       the DVDistance simple module that works at network layer and on top
+       of a network interface card (nic) providing RSSI values for incoming
+       signals (current choice for nic is Nic802154_TI_CC2420 simple module).</p>
+<p><b>Author:</b> Danilo Blasi</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.floodTest.FloodHost.html">FloodHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p><a href="org.mf2.contrib.netwLayer.Flood.html">Flood</a> Host</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.aloha.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.csma.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.gilbert_elliot.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.ieee802_11.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.tcpTest.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a> is a compound module that implements a very
+simple peer to peer host. Instead of an "snrEval" and "decider" module
+it just contains a simple "phy" module that sends unicast messages</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.mobileNet.PlainMobilityHost.html">PlainMobilityHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>A host for demonstrating mobility models only -- it contains
+no protocol layers at all.</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch for core framework</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// The Blackboard works as entity to enable inter layer /
+// process communication.
+//
+// Blackboard makes global host knowledge or information relevant to
+// more than one layer accessible to all modules derived from
+// BlackboardAccess.
+//
+// Every module derived from BlackboardAccess is capable to publish
+// information on the Blackboard as well as to subscribe for it.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Steffen Sroka, Andreas Koepke
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">Blackboard</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch for core framework
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

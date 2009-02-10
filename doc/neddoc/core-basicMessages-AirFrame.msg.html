@@ -1,0 +1,141 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Msg File <i>core/basicMessages/AirFrame.msg</i></h2>
+<table class="typetable">
+   <tr>
+      <th>Name</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td>
+      <a href="AirFrame.html">AirFrame</a>
+      <i> (packet)</i>
+   </td>
+   <td>
+
+<p>Format of the messages that are sent to the channel</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="SnrControlInfo.html">SnrControlInfo</a>
+      <i> (class)</i>
+   </td>
+   <td>
+
+<p>Control Info class that is used to send SNR information from
+snrEval to decider</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//**************************************************************************
+// * file:        AirFrame.msg
+// *
+// * author:      Marc Loebbers
+// *
+// * copyright:   (C) 2004 Telecommunication Networks Group (TKN) at
+// *              Technische Universitaet Berlin, Germany.
+// *
+// *              This program is free software; you can redistribute it
+// *              and/or modify it under the terms of the GNU General Public
+// *              License as published by the Free Software Foundation; either
+// *              version 2 of the License, or (at your option) any later
+// *              version.
+// *              For further information see file COPYING
+// *              in the top level directory
+// ***************************************************************************
+// * part of:     framework implementation developed by tkn
+// **************************************************************************/
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">cplusplus</span><span style="color: #000000; "> {{
+#</span><span style="color: #000000; ">include</span><span style="color: #000000; "> </span><span style="color: #008000; ">&quot;SnrList.h&quot;</span><span style="color: #000000; ">
+#</span><span style="color: #000000; ">include</span><span style="color: #000000; "> </span><span style="color: #008000; ">&quot;HostMove.h&quot;</span><span style="color: #000000; ">
+}}
+
+
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">noncobject</span><span style="color: #000000; "> </span><span style="color: #000000; ">SnrList</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">noncobject</span><span style="color: #000000; "> </span><span style="color: #000000; ">HostMove</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">//
+// Format of the messages that are sent to the channel
+//
+// subclass if you want to create your own AirFrame message class
+//
+// This message format is used to send a packet from a snrEval module
+// to the channel. All other snrEval modules that can 'hear' this
+// message can evaluate noise, interference etc. from the information
+// contained in this message:
+//
+// If you need more fields for whatever reason, please do NOT create
+// your own message! Just extend (subclass) this message format (see Omnet
+// manual,chapter Messages - Inheritance among message classes).
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Marc Loebbers
+//
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">AirFrame</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pSend</span><span style="color: #000000; ">;    </span><span style="color: #808080; font-style: italic; ">// Power with which this packet is transmitted
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">channelId</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// Channel on which the packet is sent
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">duration</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// Time it takes to transmit the packet, in seconds!
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">HostMove</span><span style="color: #000000; "> </span><span style="color: #000000; ">hostMove</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// position, start time of move, speed and direction at send time 
+</span><span style="color: #000000; ">}
+
+</span><span style="color: #808080; font-style: italic; ">//
+// Control Info class that is used to send SNR information from
+// snrEval to decider
+//
+// This class is used by the snrEval to send SNR information
+// to the decider. After recieving a packet from the channel the
+// snrEval calculates SNR information, writes this into the SnrControlInfo
+// and attaches the ControlInfo to the Airframe.
+//
+// This control info can be used for complex information,
+// i.e. different SNR levels over the transmission time of this
+// packet. The parameter snrList is a dynamic list (see
+// http://www.sgi.com/tech/stl/List.html). The list entries are
+// defined by the struct SnrListEntry, which only contains two
+// parameters of type double, time and SNR. These values are a certain
+// SNR level and the time at which this SNR level started. The thing
+// is that you can't manipulate the list directly in the class.
+// Instead you have to create your own list with 'SnrList
+// listName;'. Furthermore you have to create a new object of the struct
+// SnrListEntry everytime you add something to the list.
+//
+// So, every list entry should look something like this:
+//
+// SnrListEntry listEntry;</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// listEntry.time = snrStartingTime;</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// listEntry.snr  = snrLevel;</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// listName.push_back( listEntry );
+//
+// When the list is complete and you want to send the message, you
+// have to give the list to the control info  before attaching it to
+// the AirFrame.
+//
+// SnrControlInfo* cInfo = new SnrControlInfo;</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// cInfo-&gt;setSnrList( listName );</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// msg-&gt;setControlInfo( cInfo );
+//
+// When receiving an AirFrame (in the deceider module) you probably want to
+// read the list. Therefore you have to get a copy of that list:
+//
+// SnrControlInfo* cInfo = new SnrControlInfo;</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// cInfo = static_cast&lt;SnrControlInfo*&gt;(msg-&gt;removeControlInfo());</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// SnrList receivedList* = new SnrList;</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// receivedList = cInfo-&gt;getSnrList();</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; ">
+// delete cInfo;
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Marc Loebbers
+//
+</span><span style="color: #800000; font-weight: bold; ">class</span><span style="color: #000000; "> </span><span style="color: #000000; ">SnrControlInfo</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000000; ">SnrList</span><span style="color: #000000; "> </span><span style="color: #000000; ">snrList</span><span style="color: #000000; ">;
+}
+</span></pre>
+   </body>
+</html>

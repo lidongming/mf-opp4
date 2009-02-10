@@ -1,0 +1,194 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Network <i>mobileNet</i></h2>
+<b>Package:</b> org.mf2.networks.mobileNet<br/><b>File: <a href="networks-mobileNet-MobileNet.ned.html">networks/mobileNet/MobileNet.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.mobileNet.MobileNet.html">MobileNet</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="inherited">
+   <td width="150">numHosts</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td></td>
+</tr>
+<tr class="inherited">
+   <td width="150">playgroundSizeX</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td></td>
+</tr>
+<tr class="inherited">
+   <td width="150">playgroundSizeY</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td width="150">display</td>
+   <td width="100"><i>bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=10,10</i></td>
+   <td></td>
+</tr>
+<tr>
+   <td width="150">isNetwork</td>
+   <td width="100"><i></i></td>
+   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sendDirect</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>define which <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module to use</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.useTorus</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>wrap connections</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.pMax</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum sending power used for this network (in mW)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sat</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum signal attenuation threshold (in dBm)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.alpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum path loss coefficient</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum carrier frequency of the channel (in Hz)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.mobileNet.PlainMobilityHost.html">host</a>.<a href="org.mf2.core.blackboard.Blackboard.html">blackboard</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.mobileNet.PlainMobilityHost.html">host</a>.<a href="org.mf2.core.basicModules.IBasicMobility.html">mobility</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.mobileNet.PlainMobilityHost.html">host</a>.<a href="org.mf2.core.basicModules.IBasicMobility.html">mobility</a>.x</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>x coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.mobileNet.PlainMobilityHost.html">host</a>.<a href="org.mf2.core.basicModules.IBasicMobility.html">mobility</a>.y</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>y coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">network</span><span style="color: #000000; "> </span><span style="color: #000000; ">mobileNet</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">MobileNet</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+}
+
+</span></pre>
+   </body>
+</html>

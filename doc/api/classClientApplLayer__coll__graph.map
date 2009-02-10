@@ -1,0 +1,5 @@
+base referer
+rect $classBasicApplLayer.html 51,177 166,201
+rect $classBasicModule.html 59,100 158,124
+rect $classImNotifiable.html 7,9 98,33
+rect $classBlackboard.html 122,9 210,33

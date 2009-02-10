@@ -1,0 +1,236 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Compound Module <i>DVDNetwork</i></h2>
+<b>Package:</b> org.mf2.networks.dvdistanceTest<br/><b>File: <a href="networks-dvdistanceTest-DVDNetwork.ned.html">networks/dvdistanceTest/DVDNetwork.ned</a></b><br/>
+<p>@brief Network of <a href="org.mf2.networks.dvdistanceTest.DVDHost.html">DVDHost</a> modules, used for testing the DV Distance protocol.</p>
+<p><b>Author:</b> Danilo Blasi</p>
+<h3 class="subtitle">Known subclasses:</h3>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.dvdistanceTest.dvdSim.html">dvdSim</a>
+      <i> (network)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">playgroundSizeX</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>x-size of the network area [m]</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">playgroundSizeY</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>y-size of the network area [m]</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">numHosts</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>number of the network's hosts</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td width="150">display</td>
+   <td width="100"><i>bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=10,10</i></td>
+   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sendDirect</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>define which <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module to use</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.useTorus</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>wrap connections</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.pMax</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum sending power used for this network (in mW)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sat</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum signal attenuation threshold (in dBm)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.alpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum path loss coefficient</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum carrier frequency of the channel (in Hz)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.dvdistanceTest.DVDHost.html">host</a>.<a href="org.mf2.core.blackboard.Blackboard.html">blackboard</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.dvdistanceTest.DVDHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.dvdistanceTest.DVDHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.x</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>x coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.dvdistanceTest.DVDHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.y</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>y coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.dvdistanceTest.DVDHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleArp.html">arp</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// @brief Network of DVDHost modules, used for testing the DV Distance protocol.
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Danilo Blasi
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">DVDNetwork</span><span style="color: #000000; ">
+
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x-size of the network area [m]
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y-size of the network area [m]
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">numHosts</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// number of the network's hosts
+</span><span style="color: #000000; ">
+        </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=10,10&quot;</span><span style="color: #000000; ">);
+
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+
+        </span><span style="color: #000000; ">channelcontrol</span><span style="color: #000000; ">: </span><span style="color: #000000; ">ChannelControl</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+
+                </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; "> = </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">;
+                </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; "> = </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">;
+
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=60,30;i=eye14&quot;</span><span style="color: #000000; ">);
+
+        }
+        </span><span style="color: #000000; ">host</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numHosts</span><span style="color: #000000; ">]: </span><span style="color: #000000; ">DVDHost</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=50,50;i=laptop&quot;</span><span style="color: #000000; ">);
+
+        }
+        </span><span style="color: #000000; ">simTracer</span><span style="color: #000000; ">: </span><span style="color: #000000; ">SimTracer</span><span style="color: #000000; ">;
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">allowunconnected</span><span style="color: #000000; ">:
+
+}
+
+</span></pre>
+   </body>
+</html>

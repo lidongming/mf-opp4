@@ -1,0 +1,201 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>SimpleNetwLayer</i></h2>
+<b>Package:</b> org.mf2.contrib.netwLayer<br/><b>File: <a href="contrib-netwLayer-SimpleNetwLayer.ned.html">contrib/netwLayer/SimpleNetwLayer.ned</a></b><br/>
+<p>Basic class for the network layer</p>
+<p>This is the generic class for all network layer modules. If you
+want to implement your own network layer you have to subclass your
+module from this class.</p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.BaseStationHost.html">BaseStationHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.baseStationNet.BaseStationHost.html">BaseStationHost</a> is a compound module that implements a test base station. 
+The test base station contains the <a href="org.mf2.contrib.applLayer.PollApplLayer.html">PollApplLayer</a> which periodically polls all
+clients in the network.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.testCCconnections.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The BasicHost is a compound module that implements a very
+simple host. It only consists of basic modules and is the
+most basic host you can create for the MF</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a> is a compound module that implements a very simple mobile
+client. It only consists of basic modules and the ClientApplLayer.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.aloha.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.csma.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.gilbert_elliot.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.ieee802_11.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a> is a compound module that implements a very
+simple peer to peer host. Instead of an "snrEval" and "decider" module
+it just contains a simple "phy" module that sends unicast messages</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch for the core framework</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>length of the network packet header (in bits)</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">uppergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from application layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">uppergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to application layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">upperControlOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>for control messages to upper layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowerControlIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>for control messages from mac layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from MAC layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to MAC layer</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// Basic class for the network layer
+// 
+// This is the generic class for all network layer modules. If you
+// want to implement your own network layer you have to subclass your
+// module from this class.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">SimpleNetwLayer</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch for the core framework
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">headerLength</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// length of the network packet header (in bits)
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from application layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to application layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// for control messages to upper layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;   </span><span style="color: #808080; font-style: italic; ">// for control messages from mac layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from MAC layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to MAC layer
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

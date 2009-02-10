@@ -1,0 +1,107 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">NED File <i>networks/floodTest/FloodHost.ned</i></h2>
+<table class="typetable">
+   <tr>
+      <th>Name</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.floodTest.FloodHost.html">FloodHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p><a href="org.mf2.contrib.netwLayer.Flood.html">Flood</a> Host</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//***************************************************************************
+//* file:        FloodHost.ned
+//*
+//* author:      Daniel Willkomm
+//*
+//* copyright:   (C) 2004 Telecommunication Networks Group (TKN) at
+//*              Technische Universitaet Berlin, Germany.
+//*
+//*              This program is free software; you can redistribute it
+//*              and/or modify it under the terms of the GNU General Public
+//*              License as published by the Free Software Foundation; either
+//*              version 2 of the License, or (at your option) any later
+//*              version.
+//*              For further information see file COPYING
+//*              in the top level directory
+//***************************************************************************
+//* part of:     framework implementation developed by tkn
+//* description: FloodHost Compound Module
+//***************************************************************************
+</span><span style="color: #000000; ">
+</span><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">networks</span><span style="color: #000000; ">.</span><span style="color: #000000; ">floodTest</span><span style="color: #000000; ">;
+
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">contrib</span><span style="color: #000000; ">.</span><span style="color: #000000; ">applLayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">BasicApplLayer</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">contrib</span><span style="color: #000000; ">.</span><span style="color: #000000; ">netwLayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">Flood</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">contrib</span><span style="color: #000000; ">.</span><span style="color: #000000; ">netwLayer</span><span style="color: #000000; ">.</span><span style="color: #000000; ">SimpleArp</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">contrib</span><span style="color: #000000; ">.</span><span style="color: #000000; ">nic</span><span style="color: #000000; ">.</span><span style="color: #000000; ">CoreTestNic</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">core</span><span style="color: #000000; ">.</span><span style="color: #000000; ">basicModules</span><span style="color: #000000; ">.</span><span style="color: #000000; ">BasicMobility</span><span style="color: #000000; ">;
+</span><span style="color: #800000; font-weight: bold; ">import</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">core</span><span style="color: #000000; ">.</span><span style="color: #000000; ">blackboard</span><span style="color: #000000; ">.</span><span style="color: #000000; ">Blackboard</span><span style="color: #000000; ">;
+
+
+</span><span style="color: #808080; font-style: italic; ">// Flood Host
+//
+// </span><span style="color: #000080; ">@todo</span><span style="color: #808080; font-style: italic; "> docu
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">FloodHost</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">applLayer</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">//application layer type
+</span><span style="color: #000000; ">
+        </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;bgb=180,200,white,,;bgp=10,10&quot;</span><span style="color: #000000; ">);
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">radioIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">//radioIn gate for sendDirect
+</span><span style="color: #000000; ">
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">blackboard</span><span style="color: #000000; ">: </span><span style="color: #000000; ">Blackboard</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=130,50;b=25,25,,black,,&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">mobility</span><span style="color: #000000; ">: </span><span style="color: #000000; ">BasicMobility</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=130,150;i=cogwheel2&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">arp</span><span style="color: #000000; ">: </span><span style="color: #000000; ">SimpleArp</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=130,100;b=25,25&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">appl</span><span style="color: #000000; ">: &lt;</span><span style="color: #000000; ">applLayer</span><span style="color: #000000; ">&gt; </span><span style="color: #800000; font-weight: bold; ">like</span><span style="color: #000000; "> </span><span style="color: #000000; ">BasicApplLayer</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;b=35,26;p=60,50;i=app&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">net</span><span style="color: #000000; ">: </span><span style="color: #000000; ">Flood</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;b=32,30;p=60,108;i=prot1&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">nic</span><span style="color: #000000; ">: </span><span style="color: #000000; ">CoreTestNic</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;b=32,30;p=60,166;i=iface&quot;</span><span style="color: #000000; ">);
+        }
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+
+        </span><span style="color: #000000; ">nic</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">net</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">nic</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> </span><span style="color: #000000; ">net</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">nic</span><span style="color: #000000; ">.</span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">net</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000000; ">net</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">appl</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">net</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> </span><span style="color: #000000; ">appl</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">net</span><span style="color: #000000; ">.</span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">appl</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000000; ">radioIn</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">nic</span><span style="color: #000000; ">.</span><span style="color: #000000; ">radioIn</span><span style="color: #000000; ">;
+
+}
+</span></pre>
+   </body>
+</html>

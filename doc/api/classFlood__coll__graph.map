@@ -1,0 +1,7 @@
+base referer
+rect $classSimpleNetwLayer.html 66,267 192,291
+rect $classBasicLayer.html 25,177 113,201
+rect $classBasicModule.html 60,99 158,123
+rect $classSimpleArp.html 137,177 220,201
+rect $classImNotifiable.html 8,9 98,33
+rect $classBlackboard.html 122,9 210,33

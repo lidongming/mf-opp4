@@ -1,0 +1,78 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>ANSimMobility</i></h2>
+<b>Package:</b> org.mf2.contrib.mobility<br/><b>File: <a href="contrib-mobility-ANSimMobility.ned.html">contrib/mobility/ANSimMobility.ned</a></b><br/>
+<p>Uses the &lt;position_change&gt; elements of the ANSim tool's
+trace file.</p>
+<p><b>Author:</b> Andras Varga</p>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">ansimTrace</td>
+   <td width="100">
+      <i>xml</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>the ANSim trace file in XML</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">nodeId</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>&lt;position_change&gt; elements to match; 
+-1 gets substituted to parent module's index</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">updateInterval</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>time interval to update the hosts position</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Uses the &lt;position_change&gt; elements of the ANSim tool's
+// trace file.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Andras Varga
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">ANSimMobility</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">xml</span><span style="color: #000000; "> </span><span style="color: #000000; ">ansimTrace</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// the ANSim trace file in XML
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">nodeId</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// &lt;position_change&gt; elements to match; 
+</span><span style="color: #000000; ">                               </span><span style="color: #808080; font-style: italic; ">// -1 gets substituted to parent module's index
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">updateInterval</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// time interval to update the hosts position
+</span><span style="color: #000000; ">}
+
+
+
+</span></pre>
+   </body>
+</html>

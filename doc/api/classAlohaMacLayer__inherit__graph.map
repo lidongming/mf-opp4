@@ -1,0 +1,5 @@
+base referer
+rect $classBasicMacLayer.html 9,233 121,257
+rect $classBasicLayer.html 21,158 109,182
+rect $classBasicModule.html 15,83 114,107
+rect $classImNotifiable.html 19,9 110,33

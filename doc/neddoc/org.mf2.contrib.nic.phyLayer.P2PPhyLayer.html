@@ -1,0 +1,151 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>P2PPhyLayer</i></h2>
+<b>Package:</b> org.mf2.contrib.nic.phyLayer<br/><b>File: <a href="contrib-nic-phyLayer-P2PPhyLayer.ned.html">contrib/nic/phyLayer/P2PPhyLayer.ned</a></b><br/>
+<p>A very simple physical layer</p>
+<p>This is the simplest physical layer you can think of.</p>
+<p>It decides upon one simple parameter pBit (bit error rate)
+about the correctness of a frame. Collisions, bit errors,
+interference and anything else you can think of are combined in
+this single parameter.</p>
+<p><b>Author:</b> Marc Loebbers, Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.P2PNic.html">P2PNic</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The nic (network interface card) is a compound module that contains the 
+MAC and PHY of a host within the Mobility Framework</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">coreDebug</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch for the core framework</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">pBit</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>bit error rate</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>bitrate (in bits/sec)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">transmitterPower</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>power used to transmit messages (in mW)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>length  (in bits) of the <a href="AirFrame.html">AirFrame</a> header</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">uppergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from MAC layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">upperControlOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>output control information</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">uppergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to MAC layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">radioIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>gate for sendDirect</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// A very simple physical layer
+//
+// This is the simplest physical layer you can think of.
+//
+// It decides upon one simple parameter pBit (bit error rate)
+// about the correctness of a frame. Collisions, bit errors,
+// interference and anything else you can think of are combined in
+// this single parameter.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Marc Loebbers, Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">P2PPhyLayer</span><span style="color: #000000; ">
+
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch for the core framework
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pBit</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// bit error rate
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">bitrate</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// bitrate (in bits/sec)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">transmitterPower</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// power used to transmit messages (in mW)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">headerLength</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// length  (in bits) of the AirFrame header
+</span><span style="color: #000000; ">
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from MAC layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// output control information
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to MAC layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">radioIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// gate for sendDirect
+</span><span style="color: #000000; ">
+}
+</span></pre>
+   </body>
+</html>

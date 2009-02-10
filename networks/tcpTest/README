@@ -1,0 +1,28 @@
+How to use
+==========
+(1) Generate the Makefile: edit makemakefiles, execution of mkmk.
+    Edit the Makefile to select USERIF_LIBS=$(CMDENV_LIBS)
+
+(2) Edit generate_scenarios.m
+
+Choose the number of nodes to consider, grid length and
+margins. The sink will be at the extreme left of the line,
+at a distance marginX of the grid border.
+
+(3) Execute generate_scenarios.m
+will create omnetpp_positions.ini, omnetpp_routes.ini,
+omnetpp_runs.ini, positions.mat (which can be loaded back
+into matlab) and runall.sh.
+
+(4) Execute runall.sh
+will execute all simulations runs.
+
+(5) Clean up data with ./cleanupall.sh
+will edit omnetpp.sca and only keep numerical data.
+Output is saved in scalars.clean
+
+(6) Load data from scalars.clean in matlab or octave and plot the simulation results compared to a theoretical curve. The plotresults script requires set_params and ber from the trunk/matlab/topology/lib folder. set_params contains the radio model and ber contains the ber computation formula.
+
+
+
+

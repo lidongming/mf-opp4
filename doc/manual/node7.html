@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6 Using the Blackboard</TITLE>
+<META NAME="description" CONTENT="6 Using the Blackboard">
+<META NAME="keywords" CONTENT="mf-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="mf-manual.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="mf-manual.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html183"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html177"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html171"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html179"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html181"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html184"
+  HREF="node8.html">7 Mobility Modules</A>
+<B> Up:</B> <A NAME="tex2html178"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html172"
+  HREF="node6.html">5 Physical Layer Modules</A>
+ &nbsp; <B>  <A NAME="tex2html180"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html182"
+  HREF="index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html185"
+  HREF="node7.html#SECTION00071000000000000000">6.1 Methods for the subscriber</A>
+<LI><A NAME="tex2html186"
+  HREF="node7.html#SECTION00072000000000000000">6.2 Getting informed</A>
+<LI><A NAME="tex2html187"
+  HREF="node7.html#SECTION00073000000000000000">6.3 Methods for the publisher</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00070000000000000000"></A>
+<A NAME="sec:usingblackboard"></A>
+<BR>
+6 Using the Blackboard
+</H1>
+
+<P>
+When you evaluate the performance of a protocol, you need information
+on internal state changes of your protocol, maybe even from protocols
+that you use. You could monitor these changes using e.g. vector files
+from within you protocol and remove these monitors once you are done.
+Another way is to use a blackboard. The state changes are published on
+it, and the monitors subscribe to these values. This allows other
+researchers to tap your protocol for performance evaluation, while
+imposing nearly no runtime penalty when the information is not
+needed. 
+
+<P>
+Maybe even more importantly, the blackboard allows you to exchange
+information between layers, without passing pointers to the modules
+around. Some items might not only be interesting for the layer they
+are created/changed in. The physical layer for example (<I>snrEval</I>
+in the MF) can sense whether a channel is busy or not. If the MAC
+protocol is based on carrier sense it needs the information the
+physical layer has. The <I>Blackboard</I> is a module where the
+corresponding information can be published and then is accessible for
+any module interested in it. 
+
+<P>
+The <I>BasicModule</I> provides everything necessary to interact with
+the blackboard. It is derived from <I>ImNotifiable</I> - a pure
+virtual base class that allows the blackboard to inform your module of
+changes - and contains a pointer named <I>bb</I> to the blackboard
+module.
+
+<P>
+
+<H2><A NAME="SECTION00071000000000000000"></A>
+<A NAME="sec:subscriber"></A>
+<BR>
+6.1 Methods for the subscriber
+</H2>
+
+<P>
+
+<H4><A NAME="SECTION00071010000000000000">
+6.1.0.1 Subscribing to a parameter</A>
+</H4>
+If you want to subscribe to a parameter, the best place to do so is
+the initialize function in stage 0. Suppose for example that you want
+to subscribe to changes of an item of the class <I>SomeBBItem</I>.
+When this item is changed, you have to be able to interpret its
+contents - and the way you can be sure that you can interpret the
+data is to know its type (or class in C++). Such items can be signal
+strength indicators, active radio channels, routing table entries,
+reasons why packets where lost and so forth, we will talk more about
+it in a separate section. 
+
+<P>
+<PRE>
+void YourClass::initialize(int stage) {
+    BaseClass::initialize(stage);
+    if (stage == 0){
+        SomeBBItem item;
+        catItem = bb-&gt;subscribe(this, &amp;item, -1);
+        ...
+    } 
+    else if(stage == 1) {
+   ...
+</PRE>
+
+<P>
+In case you want to subscribe to a parameter, i.e. you want to be
+informed each time the content/value of that parameter changes, you
+have to call the <I>Blackboard</I> function <I>subscribe()</I>. You
+have to include a pointer to your module, a pointer to an object of
+class <I>SomeBBItem</I>, and a scope. This function returns an integer
+that is unique for the class <I>SomeBBItem</I>. The
+section&nbsp;<A HREF="#sec:inform">6.2</A> shows how to use this parameter. The
+Blackboard uses the <I>this</I> pointer to notify the module of
+published changes. The object pointer <I>&amp; item</I> helps the
+<I>Blackboard</I> to learn something about the changes that you are
+subscribing. The <I>Blackboard</I> uses it to establish the connection
+between the <I>catItem</I> and the <I>&amp;item</I>. The last parameter
+of the function determines a scope, it needs a more detailed
+explanation. A change can be published by several modules within a
+host. Consider the RSSI and a host with more than one network card.
+Each of these cards will publish a separate RSSI - but it will be of
+the same class and can hence not be distinguished. However, the
+meaning of the RSSI is constrained to one card (its scope): it makes
+no sense for a MAC protocol of one card to take the RSSI of the other
+card into consideration. The solution is to include the scope into the
+publication and let the <I>Blackboard</I> do some filtering. In the
+example code the subscriber uses -1 as the scope - a wildcard that
+subscribes him to all changes published by any module. If you want to
+subscribe to some specific stuff, you must make sure that the scope
+(for network cards usually the module id of the card) under which the
+parameter is published, matches the subscribed scope.
+
+<P>
+
+<H4><A NAME="SECTION00071020000000000000">
+6.1.0.2 Un-subscribing from a parameter</A>
+</H4>
+Sometimes parameter changes make only sometimes sense. For example,
+the host may decide to go to sleep. In this case it may be reasonable
+to unsubscribe: 
+<PRE>
+bb-&gt;unsubscribe(this, catItem);
+</PRE>
+Your module will not get notifications for this parameter anymore. 
+
+<P>
+
+<H2><A NAME="SECTION00072000000000000000"></A>
+<A NAME="sec:inform"></A>
+<BR>
+6.2 Getting informed
+</H2>
+Let us assume that you subscribed to a value and there is a valid
+publisher. The publisher informs the Blackboard of a change, which in
+turn calls the <I>receiveBBItem</I> method that your class inherited
+from the abstract <I>ImNotifiable</I> base class. 
+
+<P>
+<PRE>
+void YourClass::receiveBBItem(int category, \ 
+const BBItem *details, int scopeModuleId) {
+  // in case you want to handle messages here
+  Enter_Method_Silent(); 
+  // in case not you but your base class subscribed: 
+  BaseClass::receiveBBItem(category, details, scopeModuleId);
+  // react on the stuff that you subscribed
+  if(category == catItem) {
+      someBBItemPtr = 
+           static_cast&lt;const SomeBBItem *&gt;(details);
+      // do something 
+  }
+}
+</PRE>
+
+<P>
+The parameters of this function have already been explained in
+section&nbsp;<A HREF="#sec:subscriber">6.1</A>. The first is the category, the integer
+that the subscribe function returned, the second is a pointer to an
+object of the class that you subscribed to and the third is the scope
+of this parameter. You should place the <I>Enter_Method</I> or
+<I>Enter_Method_Silent</I> macros at the beginning. This allows you to
+schedule or cancel messages, besides doing some animation. You should
+also inform the base class.  This pattern is probably familiar from
+the initialize function. Now your base class will be informed about
+all changes it subscribed (and some of them are not interesting to
+<I>YourClass</I>) and the changes that <I>YourClass</I> subscribed.
+This has two implications: if you forget this line, the simulation may
+stop completely or behave strange. Secondly, <I>YourClass</I> must
+gracefully handle any items that it did not subscribe. To support you
+in that task, the item that you receive from the Blackboard is
+read-only. 
+
+<P>
+In the next step, the published item is handled. It is easy to
+determine its type: just check (may be in a switch statement) the
+category and cast it to the right class. Since the association between
+a class and its category is fixed, a static cast is safe and fast.
+Now <I>YourClass</I> can interpret the content and do something about
+it.
+
+<P>
+
+<H2><A NAME="SECTION00073000000000000000"></A>
+<A NAME="sec:publisher"></A>
+<BR>
+6.3 Methods for the publisher
+</H2>
+
+<P>
+
+<H4><A NAME="SECTION00073010000000000000">
+6.3.0.1 Parameter</A>
+</H4>
+You can only publish objects, since in C++ classes carry the semantic
+meaning. An integer can be used for everything: counting missed
+lunches, counting stars, or packets. If you would subscribe to an
+integer - how can your class know how to interpret it? This is where
+classes help you:
+
+<P>
+<PRE>
+class  MissedLunches : public BBItem {
+    BBITEM_METAINFO(BBItem);
+protected:
+    int counter;
+public:
+    double getMissedLunches () const {
+        return counter;
+    }
+    void setMissedLunches(int c) {
+        counter = c;
+    }
+    void addMissedLunch() {
+       counter++;
+    }
+
+    MissedLunches(int c=0) : BBItem(), counter(c) {
+       // constructor
+    };
+    std::string info() const { // for inspection
+        std::ostringstream ost;
+        ost &lt;&lt; " You missed  " &lt;&lt; counter &lt;&lt; " lunches.";
+        return ost.str();
+    }
+};
+</PRE>
+This associates the meaning ``missed lunch'' with an integer. At
+least, this is how most humans would interpret the name of the class.
+The class is derived directly from BBItem (which is derived from
+cPolymorphic), the base class for all items that can be published on
+the blackboard.
+
+<P>
+For advanced users: Of course it could also refine a class (say
+MissedMeals) and have a different parent class. The call to
+<code> BBITEM_METAINFO(BBItem);</code> helps the Blackboard to track the
+inheritance tree. If MissedLunches would have been derived from
+MissedMeals this should read <code>BBITEM_METAINFO(MissedMeals);</code>.
+This trick allows the Blackboard to deliver MissedLunches to all
+subscribers of MissedMeals.
+
+<P>
+After this you simply go ahead with a standard C++ class definition,
+and do what you like. The info function is optional, but helpful with
+debugging.
+
+<P>
+
+<H4><A NAME="SECTION00073020000000000000">
+6.3.0.2 Publishing</A>
+</H4>
+Ok, now that the parameter is defined, let us have a look how to
+publish it. First, some initialization is necessary. Let us assume
+that missedLunch is an object of class MissedLunches, and a member
+variable of YourPublisher.
+
+<P>
+<PRE>
+void YourPublisher::initialize(int stage) {
+    BasicModule::initialize(stage);
+    if(stage == 0) {
+        // initialize it
+        missedLunch.setCounter(0);
+        // get the category
+        missedLunchCat = bb-&gt;getCategory(&amp;missedLunch);
+    }
+    else if(stage == 1) {
+        bb-&gt;publishBBItem(missedLunchCat, \
+          &amp;missedLunch, parentModule()-&gt;id());
+    }
+}
+</PRE>
+
+<P>
+You should initialize missedLunches properly. The next step is to
+figure the category out, or put differently establish the connection
+between a category integer and a class. Now you are all set to publish
+it. We recommend that you publish your data in stage 1, this allows
+all subscribers to initialize the copies they might have. Publishing
+is a simple call to <code>bb-&gt;publishBBItem</code> . The first parameter is
+the category, the second a pointer to the published object that
+carries all the information that you want to publish, and the third is
+the scope. <code>parentModule()-&gt;id()</code> may not be useful as a scope
+in your case. There is no default or wildcard - you have to think
+about a reasonable and easy to understand scope.
+
+<P>
+Actually, we already covered how to publish a change when the
+simulation runs. Let us assume that YourPublisher tracks missed
+lunches somehow:
+
+<P>
+<PRE>
+void YourPublisher::handleMissedLunch() {
+       // update information 
+       missedLunch.addMissedLunch();
+       // publish it.
+       bb-&gt;publishBBItem(missedLunchCat, \
+          &amp;missedLunch, parentModule()-&gt;id());
+}
+</PRE>
+
+<P>
+YourPublisher simply has to update the information, and call the
+publish function again. That's it.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html183"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html177"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html171"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html179"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html181"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html184"
+  HREF="node8.html">7 Mobility Modules</A>
+<B> Up:</B> <A NAME="tex2html178"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html172"
+  HREF="node6.html">5 Physical Layer Modules</A>
+ &nbsp; <B>  <A NAME="tex2html180"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html182"
+  HREF="index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Daniel Willkomm
+2007-01-12
+</ADDRESS>
+</BODY>
+</HTML>

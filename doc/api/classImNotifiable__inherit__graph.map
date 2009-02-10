@@ -1,0 +1,9 @@
+base referer
+rect $classBasicModule.html 381,84 479,108
+rect $classBasicApplLayer.html 7,158 122,182
+rect $classBasicDecider.html 146,158 245,182
+rect $classBasicLayer.html 269,158 357,182
+rect $classBasicMobility.html 381,158 479,182
+rect $classChannelAccess.html 503,158 618,182
+rect $classSimpleArp.html 642,158 725,182
+rect $classSingleChannelRadio.html 749,158 890,182

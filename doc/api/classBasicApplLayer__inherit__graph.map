@@ -1,0 +1,7 @@
+base referer
+rect $classClientApplLayer.html 8,233 122,257
+rect $classTestApplLayer.html 146,233 253,257
+rect $classBasicModule.html 82,83 181,107
+rect $classImNotifiable.html 86,9 177,33
+rect $classPollApplLayer.html 14,307 116,331
+rect $classBurstApplLayer.html 144,307 256,331

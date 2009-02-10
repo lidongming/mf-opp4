@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5 Physical Layer Modules</TITLE>
+<META NAME="description" CONTENT="5 Physical Layer Modules">
+<META NAME="keywords" CONTENT="mf-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="mf-manual.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="mf-manual.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html166"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html160"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html154"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html162"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html164"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html167"
+  HREF="node7.html">6 Using the Blackboard</A>
+<B> Up:</B> <A NAME="tex2html161"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html155"
+  HREF="node5.html">4 Building Own Simulations</A>
+ &nbsp; <B>  <A NAME="tex2html163"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html165"
+  HREF="index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html168"
+  HREF="node6.html#SECTION00061000000000000000">5.1 SnrEval</A>
+<LI><A NAME="tex2html169"
+  HREF="node6.html#SECTION00062000000000000000">5.2 Decider</A>
+<LI><A NAME="tex2html170"
+  HREF="node6.html#SECTION00063000000000000000">5.3 P2PPhyLayer</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00060000000000000000"></A>
+<A NAME="sec:phy-modules"></A>
+<BR>
+5 Physical Layer Modules
+</H1>
+
+<P>
+The base class for all <I>PhyLayer</I> modules is <I>ChannelAccess</I>
+which in turn is derived from <I>BasicModule</I>. The only
+functionality <I>ChannelAccess</I> provides is the connectivity to the
+channel (i.e. to other nodes). The function <I>sendToChannel()</I>
+should be used to pass messages to the channel. It will send the
+message to every connected gate of the <I>Host</I> module.
+
+<P>
+We provide two versions of a <I>PhyLayer</I>. The first version called
+<I>P2PPhyLayer</I> assumes point to point connections between
+<I>Hosts</I> and is described in Section&nbsp;<A HREF="#sec:p2p">5.3</A>. It is the
+simplest <I>PhyLayer</I> you can think of and especially useful if
+detailed propagation and interference models are not needed.
+
+<P>
+For the second version we decided to divide the physical layer
+functionality into two submodules. The <I>PhyLayer</I> is divided into
+an <I>SnrEval</I> and a <I>Decider</I> submodule (see
+Fig.&nbsp;<A HREF="node5.html#fig:nic">4</A>).  We wanted to keep the SNR calculation and
+evaluation separate from the decision about bit errors. This concept
+makes it very easy to create different <I>Decider</I> modules that use
+the same <I>SnrEval</I> module and vice versa. We can define for
+example a <I>Decider</I> module that just compares the calculated SNR
+with a certain threshold and one that uses forward error correction
+and both modules can use the same <I>SnrEval</I> module.
+
+<P>
+Typical parameters of an <I>snrEval</I> module are
+<I>transmitterPower, carrierFrequency</I> and <I>pathLossAlpha</I>.
+They can be used to compute the attenuation of a signal as well as
+<I>snir</I> values. The <I>ChannelControl</I> module also has versions
+of these parameters (<I>pMax, carrierFrequency, alpha</I>) but they
+are used independently from the <I>snrEval</I> parameters. The
+<I>ChannelControl</I> module only computes the distance in which nodes
+might potentially interfere with each other, i.e. in which <I>Omnet
+  connections</I> are set up. The user can define up to what signal
+strength received power levels should be neglected via the signal
+attenuation threshold (<I>sat</I>), i.e. every signal that is weaker
+than <I>sat</I> is neglected. As a conclusion the same power- and
+frequency-values should be used for <I>snrEval</I>- and
+<I>ChannelControl</I>-parameters. If different transmitter power
+levels are used, the maximum power level has to be used for
+<I>pMax</I>. For more information on the <I>ChannelControl</I> module
+and connections in the MF see Section <A HREF="node8.html#sec:cc">7.2</A>.
+
+<P>
+
+<H2><A NAME="SECTION00061000000000000000"></A>
+<A NAME="sec:snr-eval"></A>
+<BR>
+5.1 SnrEval
+</H2>
+
+<P>
+The <I>SnrEval</I> module simulates a transmission delay for all
+received messages and also calculates SNR information. The
+<I>BasicSnrEval</I> does not account for propagation delay. The SNR
+information is stored in a <I>SnrList</I>. Each <I>SnrList</I> entry
+contains a timestamp and a SNR value for this timestamp. The basic
+functions for <I>SnrEval</I> modules differ slightly from the ones
+defined in Section&nbsp;<A HREF="node5.html#sec:basic-module">4.1</A>.  <I>handleLowerMsg()</I> is
+subdivided into <I>handleLowerMsgStart()</I> and
+<I>handleLowerMsgEnd()</I>. Additionally we defined a
+<I>bufferMsg()</I> and an <I>unbufferMsg()</I> function.
+
+<P>
+Right after a message is received <I>handleLowerMsgStart()</I> is
+called. In this function a <I>SnrList</I> should be created to hold
+the SNR information for this frame and an initial entry should be
+added. Additionally the SNR information of all other messages in the
+receive buffer should be updated if desired. Afterwards the message is
+buffered (function <I>bufferMsg()</I>) to simulate a transmission
+delay.  During this time other messages may arrive which would
+interfere with the buffered message and thus may result in additional
+<I>SnrList</I> entries to indicate a change in SNR for this message.
+After the transmission is complete (i.e. the message is completely
+received) <I>unbufferMsg()</I> un-buffers the message.
+<I>handleLowerMsgEnd()</I> is called right before the message is
+passed up to the <I>Decider</I> module. Here the message should be
+deleted from the receive buffer and the <I>SnrList</I> containing the
+calculated SNR values should be passed as an argument to the
+<I>sendUp()</I> function. The <I>sendUp()</I> function
+
+<P>
+There are several ways to implement <I>SnrEval</I> modules from only
+calculating one (average) SNR per message at the beginning of the
+reception to recalculating the SNR every time an additional message
+arrives resulting in a whole list of SNR values. We believe that our
+concept enables all these different models without being too complex
+but at the same time being sophisticated enough to also support
+complex models.
+
+<P>
+
+<H2><A NAME="SECTION00062000000000000000"></A>
+<A NAME="sec:decider"></A>
+<BR>
+5.2 Decider
+</H2>
+
+<P>
+The <I>Decider</I> module only processes messages coming from the
+channel (i.e. from lower layers). Messages coming from upper layers
+bypass the <I>Decider</I> module and are directly handed to the
+<I>SnrEval</I> module. Decisions about bit error or lost messages only
+have to be made about messages coming from the channel. Consequently
+there is no need to process messages coming from upper layers in the
+<I>Decider</I> module.
+
+<P>
+The <I>Decider</I> module takes the <I>SnrList</I> created by the
+<I>SnrEval</I> module and translates the SNR values to bit errors. The
+simplest possible implementation would be to compare the SNR values
+against a SNR threshold. If at least one of the SNR values contained
+in the <I>SnrList</I> exceeds the SNR threshold the message is dropped
+due to bit errors. There are of course much more complex
+implementations possible as well.
+
+<P>
+As mentioned already earlier the <I>Decider</I> would also be the
+place to implement error detection and / or correction codes.
+
+<P>
+
+<H2><A NAME="SECTION00063000000000000000"></A>
+<A NAME="sec:p2p"></A>
+<BR>
+5.3 P2PPhyLayer
+</H2>
+
+<P>
+The big advantage of the <I>P2PPhyLayer</I> is that it is a lot faster
+than the subdivision into <I>SnrEval</I> and <I>Decider</I> modules.
+The price for the speed is that one cannot simulate sophisticated
+interference models and medium access techniques anymore.
+
+<P>
+<I>P2PPhyLayer</I> only takes a simple bit error probability
+<I>pBit</I> (usually from omnetpp.ini). This bit error probability
+covers all kinds of possible bit errors and messages losses. It thus
+also accounts for message losses due to collisions. 
+
+<P>
+Consequently complex medium access techniques and interference models
+are not needed anymore. The advantage is that messages can be sent
+directly to the desired next hop and do not need to be broadcasted to
+all connected neighbors. This saves a lot of message duplication,
+sending and processing.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html166"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html160"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html154"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html162"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html164"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html167"
+  HREF="node7.html">6 Using the Blackboard</A>
+<B> Up:</B> <A NAME="tex2html161"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html155"
+  HREF="node5.html">4 Building Own Simulations</A>
+ &nbsp; <B>  <A NAME="tex2html163"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html165"
+  HREF="index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Daniel Willkomm
+2007-01-12
+</ADDRESS>
+</BODY>
+</HTML>

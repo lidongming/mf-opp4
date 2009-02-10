@@ -1,0 +1,105 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Packet <i>AirFrame</i></h2>
+<b>File: <a href="core-basicMessages-AirFrame.msg.html">core/basicMessages/AirFrame.msg</a></b><br/>
+<p>Format of the messages that are sent to the channel</p>
+<p>subclass if you want to create your own <a href="AirFrame.html">AirFrame</a> message class</p>
+<p>This message format is used to send a packet from a snrEval module
+to the channel. All other snrEval modules that can 'hear' this
+message can evaluate noise, interference etc. from the information
+contained in this message:</p>
+<p>If you need more fields for whatever reason, please do NOT create
+your own message! Just extend (subclass) this message format (see Omnet
+manual,chapter Messages - Inheritance among message classes).</p>
+<p><b>Author:</b> Marc Loebbers</p>
+<h3 class="subtitle">Known subclasses:</h3>
+<table>
+<tr>
+   <td>
+      <a href="AirFrame80211.html">AirFrame80211</a>
+      <i> (message)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Fields:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">pSend</td>
+   <td width="100">
+      <i>
+double</i>
+   </td>
+   <td>
+<p>Power with which this packet is transmitted</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">duration</td>
+   <td width="100">
+      <i>
+double</i>
+   </td>
+   <td>
+<p>Time it takes to transmit the packet, in seconds!</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">channelId</td>
+   <td width="100">
+      <i>
+int</i>
+   </td>
+   <td>
+<p>Channel on which the packet is sent</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">hostMove</td>
+   <td width="100">
+      <i>
+HostMove</i>
+   </td>
+   <td>
+<p>position, start time of move, speed and direction at send time</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Format of the messages that are sent to the channel
+//
+// subclass if you want to create your own AirFrame message class
+//
+// This message format is used to send a packet from a snrEval module
+// to the channel. All other snrEval modules that can 'hear' this
+// message can evaluate noise, interference etc. from the information
+// contained in this message:
+//
+// If you need more fields for whatever reason, please do NOT create
+// your own message! Just extend (subclass) this message format (see Omnet
+// manual,chapter Messages - Inheritance among message classes).
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Marc Loebbers
+//
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">AirFrame</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pSend</span><span style="color: #000000; ">;    </span><span style="color: #808080; font-style: italic; ">// Power with which this packet is transmitted
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">channelId</span><span style="color: #000000; "> = </span><span style="color: #008000; ">1</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// Channel on which the packet is sent
+</span><span style="color: #000000; ">    </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">duration</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// Time it takes to transmit the packet, in seconds!
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">HostMove</span><span style="color: #000000; "> </span><span style="color: #000000; ">hostMove</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// position, start time of move, speed and direction at send time 
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   </body>
+</html>

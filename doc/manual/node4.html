@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3 Getting the Mobility Framework started</TITLE>
+<META NAME="description" CONTENT="3 Getting the Mobility Framework started">
+<META NAME="keywords" CONTENT="mf-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="mf-manual.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="mf-manual.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html131"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html125"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html119"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html127"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html129"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html132"
+  HREF="node5.html">4 Building Own Simulations</A>
+<B> Up:</B> <A NAME="tex2html126"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html120"
+  HREF="node3.html">2 Overview</A>
+ &nbsp; <B>  <A NAME="tex2html128"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html130"
+  HREF="index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html133"
+  HREF="node4.html#SECTION00041000000000000000">3.1 Installation</A>
+<LI><A NAME="tex2html134"
+  HREF="node4.html#SECTION00042000000000000000">3.2 Creating an own network</A>
+<LI><A NAME="tex2html135"
+  HREF="node4.html#SECTION00043000000000000000">3.3 Creating a new module</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00040000000000000000"></A> 
+<A NAME="sec:start"></A>
+<BR>
+3 Getting the Mobility Framework started
+</H1>
+
+<P>
+This section will explain the basic use of the MF. We assume that you
+are familiar with programming in OMNeT++. If not you should read the
+OMNeT++ manual (<I>http://www.omnetpp.org/</I>). After explaining how
+to install the MF we will give a guideline how to create an own
+simulation network and how to derive your own modules. For a
+description of the functionality of the different modules please read
+Section&nbsp;<A HREF="node5.html#sec:own-simus">4</A> and the API documentation.
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000"></A>
+<A NAME="sec:installation"></A>
+<BR>
+3.1 Installation
+</H2>
+
+<P>
+You need a running OMNeT++ version 3.0a8 or higher (recommended is
+3.0a9 or higher) to use the MF with all of its functionality. After
+downloading the most recent version of the MF from the download area
+of <I>http://mobility-fw.sourceforge.net</I> copy the file to the
+desired directory. <TT>cd</TT> to this directory and
+
+<UL>
+<LI><TT>tar xzf mobility-fw-</TT><I>version</I><TT>.tgz</TT>
+</LI>
+<LI>Add
+  <TT>your/path/to/mobility-fw-</TT><I>version</I><TT>/lib</TT>
+<BR>
+to your <TT>LD_LIBRARY_PATH</TT> variable
+</LI>
+<LI><TT>cd mobility-fw-</TT><I>version/</I>
+</LI>
+<LI><TT>make install</TT>
+</LI>
+<LI><TT>make</TT>
+</LI>
+</UL>
+where <I>version</I> is the version number of the file you downloaded.
+You should run the example simulations in the
+<TT>core/basicNetworks</TT> directory to see if everything was built
+properly.
+
+<P>
+The file <TT>doc/hp/index.html</TT> will link you to the documentation
+(API and Neddoc reference and this manual) for the MF. You can also
+find links to coding and documentation guidelines for your
+implementations on this page.
+
+<P>
+
+<H2><A NAME="SECTION00042000000000000000"></A>
+<A NAME="sec:network"></A>
+<BR>
+3.2 Creating an own network
+</H2>
+
+<P>
+To be able to easily create a new simulation network we provide
+template files. They can be found in the <TT>template/</TT> directory.
+Basically all you have to do is to copy the desired template files
+into your network directory and adapt them. The most important advises
+and rules are presented as comments in these files. 
+
+<P>
+To create a new network you should create a new directory with the
+name of <I>yourNetwork</I>. Copy the files <I>YourNetwork.ned</I>,
+<I>YourHost.ned</I> and <I>Makefile.gen</I> (and <I>YourNic.ned</I> if
+needed) to the network directory. Give them names of your choice and
+also adapt the module names inside these files correspondingly. If you
+want to create own modules also copy the corresponding template files
+to the <I>yourNetwork</I> directory, give them proper names and fill
+them with functionality as described in Section&nbsp;<A HREF="#sec:module">3.3</A>.
+
+<P>
+You also have to set the <TT>MOBFW</TT> variable in the
+<I>Makefile.gen</I> to the path of your <I>mobility-fw</I> directory
+so that the Makefile can find the MF library header and ned files.
+
+<P>
+In the file <I>YourHost.ned</I> you have to declare what NIC and what
+modules you want to use as protocol layers. If you want to create an
+own <I>Nic Module</I> you also have to copy and modify the
+<I>YourNic.ned</I> file.
+
+<P>
+As soon as everything is ready you need to run <TT>make -f
+  Makefile.gen</TT> to create a <I>Makefile</I> and then run
+<TT>make</TT>. If you did not make any mistakes ;-) an executable file
+<I>yourNetwork</I> is created. By running it the simulation is
+started.
+
+<P>
+
+<H2><A NAME="SECTION00043000000000000000"></A>
+<A NAME="sec:module"></A>
+<BR>
+3.3 Creating a new module
+</H2>
+For every simple module three files have to be created, a <I>.ned</I>,
+a <I>.h</I> and a <I>.cc</I> file. The best choice is to put all your
+own modules into the <I>yourNetwork</I> directory (see
+Sec.&nbsp;<A HREF="#sec:network">3.2</A>). As an example we will assume to create a new
+MAC module from the <I>YourMacLayer</I> template in this section.
+However the procedure for all other modules is more or less the same.
+
+<P>
+The template files already contain the main structure and only have to
+be modified and filled with functionality. The most important hints,
+rules, advises and suggestions are given in the files as comments.
+
+<P>
+The <I>YourMacLayer.ned</I> file already contains the obligatory
+gates and the parameters needed by the <I>BasicMacLayer</I> module.
+Just add the additional parameters you need for your module and change
+the name of the module to the desired one. If you do not derive your
+module from a <I>BasicMacLayer</I> but an already existing protocol
+implementation (e.g. <I>Mac802.11.ned</I>) you have to add the
+additional parameters needed by this module as well.
+
+<P>
+The <I>YourMacLayer.h</I> file already contains the class definition
+with the correct derivation of the <I>BasicMacLayer</I> class and the
+<I>Module_Class_Members()</I> macro. If you want to derive your
+module from an already existing protocol implementation you have to
+replace <I>BasicMacLayer</I> (e.g. with <I>Mac802.11</I>). The next
+thing you should do is a ``search and replace'' of <I>YourMacLayer</I>
+with the desired name for your module. Then this file simply has to be
+extended with all the extra functions and variables you need. If you
+want to use the <I>Blackboard</I> you have to uncomment the
+<I>blackboard*</I> functions (see Sec.&nbsp;<A HREF="node7.html#sec:usingblackboard">6</A>).
+
+<P>
+The <I>YourMacLayer.cc</I> file contains the basic structure to fill
+the module with functionality. The first thing you should do is a
+``search and replace'' of <I>YourMacLayer</I> with the class name you
+chose in the header file. The <I>Define_Module()</I> macro is also
+included. If you do not use your own .ned file you have to replace
+this with the <I>Define_Module_Like()</I> macro.
+
+<P>
+The <I>handleUpperMsg()</I> and <I>handleLowerMsg()</I> functions
+contain the <I>sendUp()</I> and <I>sendDown()</I> functions with
+example parameters in the obligatory structure. If you want to use the
+<I>Blackboard</I> uncomment the <I>blackboard*</I> functions and fill
+them with code. They already contain the structure they should have so
+please do not change it (see Sec.&nbsp;<A HREF="node7.html#sec:usingblackboard">6</A>).
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html131"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html125"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html119"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html127"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html129"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html132"
+  HREF="node5.html">4 Building Own Simulations</A>
+<B> Up:</B> <A NAME="tex2html126"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html120"
+  HREF="node3.html">2 Overview</A>
+ &nbsp; <B>  <A NAME="tex2html128"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html130"
+  HREF="index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Daniel Willkomm
+2007-01-12
+</ADDRESS>
+</BODY>
+</HTML>

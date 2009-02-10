@@ -1,0 +1,6 @@
+base referer
+rect $classAlohaMacLayer.html 8,307 122,331
+rect $classCSMAMacLayer.html 146,307 264,331
+rect $classBasicLayer.html 90,158 178,182
+rect $classBasicModule.html 85,83 184,107
+rect $classImNotifiable.html 89,9 180,33

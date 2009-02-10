@@ -1,0 +1,4 @@
+base referer
+rect $classBasicMobility.html 10,158 109,182
+rect $classBasicModule.html 10,83 109,107
+rect $classImNotifiable.html 14,9 105,33

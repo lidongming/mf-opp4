@@ -1,0 +1,74 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">NED File <i>contrib/applLayer/BasicApplLayer.ned</i></h2>
+<table class="typetable">
+   <tr>
+      <th>Name</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.applLayer.BasicApplLayer.html">BasicApplLayer</a>
+      <i> (module&nbsp;interface)</i>
+   </td>
+   <td>
+
+<p>Basic class for the application layer</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">contrib</span><span style="color: #000000; ">.</span><span style="color: #000000; ">applLayer</span><span style="color: #000000; ">;
+</span><span style="color: #808080; font-style: italic; ">//***************************************************************************
+//* file:        BasicApplLayer.ned
+//*
+//* author:      Daniel Willkomm
+//*
+//* copyright:   (C) 2004 Telecommunication Networks Group (TKN) at
+//*              Technische Universitaet Berlin, Germany.
+//*
+//*              This program is free software; you can redistribute it 
+//*              and/or modify it under the terms of the GNU General Public 
+//*              License as published by the Free Software Foundation; either
+//*              version 2 of the License, or (at your option) any later 
+//*              version.
+//*              For further information see file COPYING 
+//*              in the top level directory
+//***************************************************************************
+//* part of:     framework implementation developed by tkn
+//* description: application layer: general class for the application layer
+//*              subclass to create your own application layer
+//***************************************************************************
+//* changelog:   $Revision: 1.3 $
+//*              last modified:   $Date: 2004/09/27 22:31:58 $
+//*              by:              $Author: omfw-willkomm $
+//***************************************************************************/
+</span><span style="color: #000000; ">
+
+</span><span style="color: #808080; font-style: italic; ">// Basic class for the application layer
+// 
+// This is the generic class for all application layer modules. If you
+// want to implement your own application layer you have to subclass your
+// module from this class.
+//
+// In this implementation all nodes randomly send broadcast packets to
+// all connected neighbors. Every node who receives this packet will
+// send a reply to the originator node.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">moduleinterface</span><span style="color: #000000; "> </span><span style="color: #000000; ">BasicApplLayer</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">headerLength</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// length of the application message header (in bits)
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;  </span><span style="color: #808080; font-style: italic; ">// from network layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to network layer
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

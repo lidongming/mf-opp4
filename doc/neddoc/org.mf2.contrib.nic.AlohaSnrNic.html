@@ -1,0 +1,323 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Compound Module <i>AlohaSnrNic</i></h2>
+<b>Package:</b> org.mf2.contrib.nic<br/><b>File: <a href="contrib-nic-AlohaSnrNic.ned.html">contrib/nic/AlohaSnrNic.ned</a></b><br/>
+<p>This is the easiest nic to implement "real" network behaviour. It uses
+the CsmaMacLayer and the <a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">SnrDecider</a> and <a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">SnrEval</a> modules.</p>
+<p>The csma mac provides basic medium access and is used here to prevent a
+host from trying to send a message while it is still in receive mode.</p>
+<p>The phy layer modules allow to account for collision and take fading into
+account so that messages can actually be lost.</p>
+<p>IMPORTANT:<br> In order to work with the <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module the snrEval
+module has to be called "snrEval" in the ned file.</p>
+<p><b>See also:</b> BasicMacLayer, <a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">SnrDecider</a>, <a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">SnrEval</a></p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.testCCconnections.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The BasicHost is a compound module that implements a very
+simple host. It only consists of basic modules and is the
+most basic host you can create for the MF</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.aloha.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">uppergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from upper layers</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">uppergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to upper layers</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">upperControlOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>control connection</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">radioIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>to receive AirFrames</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>level at which we consider medium busy</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.queueLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the MAC queue</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>bit rate in bit/s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.defaultChannel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>default channel</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">decider</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">decider</a>.snrThresholdLevel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.publishRSSIAlways</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>if false, the RSSI will not be published 
+during the reception of a frame</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.transmitterPower</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.thermalNoise</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.pathLossAlpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">snrEval</a>.sensitivity</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSleep</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>time parameters, how long does it take to 
+switch to sleep mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSend</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to send mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swRecv</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to recv mode</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// This is the easiest nic to implement &quot;real&quot; network behaviour. It uses
+// the CsmaMacLayer and the SnrDecider and SnrEval modules.
+//
+// The csma mac provides basic medium access and is used here to prevent a
+// host from trying to send a message while it is still in receive mode.
+//
+// The phy layer modules allow to account for collision and take fading into
+// account so that messages can actually be lost.
+//
+// IMPORTANT:</span><span style="color: #800000; ">&lt;br&gt;</span><span style="color: #808080; font-style: italic; "> In order to work with the ChannelControl module the snrEval
+// module has to be called &quot;snrEval&quot; in the ned file.
+//
+// </span><span style="color: #000080; ">@see</span><span style="color: #808080; font-style: italic; "> BasicMacLayer, SnrDecider, SnrEval
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">AlohaSnrNic</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from upper layers
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to upper layers
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// control connection
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">radioIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to receive AirFrames
+</span><span style="color: #000000; ">
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">: </span><span style="color: #000000; ">AlohaMacLayer</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=60,50;b=32,30;i=prot2&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">decider</span><span style="color: #000000; ">: </span><span style="color: #000000; ">SnrDecider</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=68,100;b=16,16,,white,,;i=box2_s&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">snrEval</span><span style="color: #000000; ">: </span><span style="color: #000000; ">SnrEval</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=60,150;b=32,30;i=prot3&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">radio</span><span style="color: #000000; ">: </span><span style="color: #000000; ">SingleChannelRadio</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=90,50;b=32,30,,red,,&quot;</span><span style="color: #000000; ">);
+
+        }
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">radioIn</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">snrEval</span><span style="color: #000000; ">.</span><span style="color: #000000; ">radioIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">decider</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> { </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;m=m,50,50,75,0&quot;</span><span style="color: #000000; ">); } </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">snrEval</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> { </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;m=m,25,0,25,0&quot;</span><span style="color: #000000; ">); } </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">snrEval</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> { </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;m=m,73,0,50,50&quot;</span><span style="color: #000000; ">); } </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">decider</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000000; ">snrEval</span><span style="color: #000000; ">.</span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">--&gt;</span><span style="color: #000000; "> </span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; ">;
+        </span><span style="color: #000000; ">mac</span><span style="color: #000000; ">.</span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">&lt;--</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; ">;
+
+}
+
+</span></pre>
+   </body>
+</html>

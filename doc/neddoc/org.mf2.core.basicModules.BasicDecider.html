@@ -1,0 +1,101 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>BasicDecider</i></h2>
+<b>Package:</b> org.mf2.core.basicModules<br/><b>File: <a href="core-basicModules-BasicDecider.ned.html">core/basicModules/BasicDecider.ned</a></b><br/>
+<p>Module to decide whether a frame is received correctly or is
+lost due to bit errors, interference...</p>
+<p>The decider module only handles messages from lower layers. All
+messages from upper layers are directly passed to the snrEval layer
+and cannot be processed in the decider module</p>
+<p>This is the basic decider module which does not really decide
+anything. It only provides the basic functionality which all
+decider modules should have, namely message de- &amp; encapsulation
+(For further information about the functionality of the physical
+layer modules and the formats used for communication in between
+them have a look at the manual</p>
+<p>Every own decider module class should be derived from this class
+and only the handle*Msg functions may be redefined for your own
+needs. The other functions should usually NOT be changed.</p>
+<p>All decider modules should assume bits as a unit for the length
+fields.</p>
+<p><b>Author:</b> Marc L&ouml;bbers, Daniel Willkomm</p>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch for the core framework</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">uppergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>to MAC layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>from snrEval sub-module</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Module to decide whether a frame is received correctly or is
+// lost due to bit errors, interference...
+//
+// The decider module only handles messages from lower layers. All
+// messages from upper layers are directly passed to the snrEval layer
+// and cannot be processed in the decider module
+//
+// This is the basic decider module which does not really decide
+// anything. It only provides the basic functionality which all
+// decider modules should have, namely message de- &amp; encapsulation
+// (For further information about the functionality of the physical
+// layer modules and the formats used for communication in between
+// them have a look at the manual
+//
+// Every own decider module class should be derived from this class
+// and only the handle*Msg functions may be redefined for your own
+// needs. The other functions should usually NOT be changed.
+//
+// All decider modules should assume bits as a unit for the length
+// fields.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Marc L&ouml;bbers, Daniel Willkomm
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">BasicDecider</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch for the core framework
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to MAC layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// from snrEval sub-module
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

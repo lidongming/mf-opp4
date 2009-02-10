@@ -1,0 +1,125 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Module Interface <i>BasicApplLayer</i></h2>
+<b>Package:</b> org.mf2.contrib.applLayer<br/><b>File: <a href="contrib-applLayer-BasicApplLayer.ned.html">contrib/applLayer/BasicApplLayer.ned</a></b><br/>
+<p>Basic class for the application layer</p>
+<p>This is the generic class for all application layer modules. If you
+want to implement your own application layer you have to subclass your
+module from this class.</p>
+<p>In this implementation all nodes randomly send broadcast packets to
+all connected neighbors. Every node who receives this packet will
+send a reply to the originator node.</p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.testCCconnections.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The BasicHost is a compound module that implements a very
+simple host. It only consists of basic modules and is the
+most basic host you can create for the MF</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a> is a compound module that implements a very simple mobile
+client. It only consists of basic modules and the ClientApplLayer.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.floodTest.FloodHost.html">FloodHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p><a href="org.mf2.contrib.netwLayer.Flood.html">Flood</a> Host</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.aloha.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a> is a compound module that implements a very
+simple peer to peer host. Instead of an "snrEval" and "decider" module
+it just contains a simple "phy" module that sends unicast messages</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>length of the application message header (in bits)</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// Basic class for the application layer
+// 
+// This is the generic class for all application layer modules. If you
+// want to implement your own application layer you have to subclass your
+// module from this class.
+//
+// In this implementation all nodes randomly send broadcast packets to
+// all connected neighbors. Every node who receives this packet will
+// send a reply to the originator node.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">moduleinterface</span><span style="color: #000000; "> </span><span style="color: #000000; ">BasicApplLayer</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">headerLength</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// length of the application message header (in bits)
+</span><span style="color: #000000; ">    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;  </span><span style="color: #808080; font-style: italic; ">// from network layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// to network layer
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

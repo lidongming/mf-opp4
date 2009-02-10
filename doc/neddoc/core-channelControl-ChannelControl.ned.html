@@ -1,0 +1,85 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">NED File <i>core/channelControl/ChannelControl.ned</i></h2>
+<table class="typetable">
+   <tr>
+      <th>Name</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td>
+      <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a>
+      <i> (simple&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>Module to control the channel and handle all connection
+related stuff</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">package</span><span style="color: #000000; "> </span><span style="color: #000000; ">org</span><span style="color: #000000; ">.</span><span style="color: #000000; ">mf2</span><span style="color: #000000; ">.</span><span style="color: #000000; ">core</span><span style="color: #000000; ">.</span><span style="color: #000000; ">channelControl</span><span style="color: #000000; ">;
+
+</span><span style="color: #808080; font-style: italic; ">//***************************************************************************
+// * file:        ChannelControl.ned
+// *
+// * author:      Steffen Sroka, Daniel Willkomm
+// *
+// * copyright:   (C) 2004 Telecommunication Networks Group (TKN) at
+// *              Technische Universitaet Berlin, Germany.
+// *
+// *              This program is free software; you can redistribute it
+// *              and/or modify it under the terms of the GNU General Public
+// *              License as published by the Free Software Foundation; either
+// *              version 2 of the License, or (at your option) any later
+// *              version.
+// *              For further information see file COPYING
+// *              in the top level directory
+// ***************************************************************************
+// * part of:     framework implementation developed by tkn
+// **************************************************************************/
+</span><span style="color: #000000; ">
+
+</span><span style="color: #808080; font-style: italic; ">// Module to control the channel and handle all connection
+// related stuff
+//
+// The central module that coordinates the connections between all
+// nodes, and handles dynamic gate creation.  ChannelControl therefore
+// periodically communicates with the mobility module and
+// ChannelAccess.
+//
+// The four parameters pMax, sat, alpha, and carrierFrequency are used
+// to calculate the interference distance between nodes. The values used
+// here in ChannelControl are used to calculate the upper bound,
+// i.e. they can be redifined in the snrEval modules, but never such
+// that the maximal interference distance is exeeded.
+//       
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Steffen Sroka, Daniel Willkomm
+// </span><span style="color: #000080; ">@see</span><span style="color: #808080; font-style: italic; "> BasicMobility
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">ChannelControl</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #808080; font-style: italic; ">// debug switch for core framework
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch for core framework
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">sendDirect</span><span style="color: #000000; ">;          </span><span style="color: #808080; font-style: italic; ">// define which ChannelControl module to use
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">useTorus</span><span style="color: #000000; ">;          </span><span style="color: #808080; font-style: italic; ">// wrap connections
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x size of the playground (in meters)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y size of the playground (in meters)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// maximum sending power used for this network (in mW)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pMax</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// maximum sending power used for this network (in mW)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// minimum signal attenuation threshold (in dBm)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">sat</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum signal attenuation threshold (in dBm)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// minimum path loss coefficient
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">alpha</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum path loss coefficient
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// minimum carrier frequency of the channel (in Hz)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">carrierFrequency</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum carrier frequency of the channel (in Hz)
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   </body>
+</html>

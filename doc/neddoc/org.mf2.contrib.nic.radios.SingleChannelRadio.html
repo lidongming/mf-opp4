@@ -1,0 +1,140 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>SingleChannelRadio</i></h2>
+<b>Package:</b> org.mf2.contrib.nic.radios<br/><b>File: <a href="contrib-nic-radios-SingleChannelRadio.ned.html">contrib/nic/radios/SingleChannelRadio.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.AlohaSnrNic.html">AlohaSnrNic</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>This is the easiest nic to implement "real" network behaviour. It uses
+the CsmaMacLayer and the <a href="org.mf2.contrib.nic.phyLayer.SnrDecider.html">SnrDecider</a> and <a href="org.mf2.contrib.nic.phyLayer.SnrEval.html">SnrEval</a> modules.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.SingleChannelRadio.BasicHost.html">BasicHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.CoreTestNic.html">CoreTestNic</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The nic (network interface card) is a compound module that contains the 
+MAC and PHY of a host within the Mobility Framework</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.gilbert_elliot.GENic.html">GENic</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.Nic80211.html">Nic80211</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>This NIC implements an 802.11 network interface card.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.NicCsma.html">NicCsma</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.P2PNic.html">P2PNic</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The nic (network interface card) is a compound module that contains the 
+MAC and PHY of a host within the Mobility Framework</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">swSleep</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>time parameters, how long does it take to 
+switch to sleep mode</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">swSend</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>switch to send mode</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">swRecv</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>switch to recv mode</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">SingleChannelRadio</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">;
+        </span><span style="color: #808080; font-style: italic; ">// time parameters, how long does it take to 
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// switch to sleep mode
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">swSleep</span><span style="color: #000000; ">;
+        </span><span style="color: #808080; font-style: italic; ">// switch to send mode
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">swSend</span><span style="color: #000000; ">;
+        </span><span style="color: #808080; font-style: italic; ">// switch to recv mode
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">swRecv</span><span style="color: #000000; ">;
+}
+</span></pre>
+   </body>
+</html>

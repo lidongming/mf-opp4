@@ -1,0 +1,4 @@
+base referer
+rect $classBasicLayer.html 14,158 102,182
+rect $classBasicModule.html 9,83 107,107
+rect $classImNotifiable.html 13,9 103,33

@@ -1,0 +1,8 @@
+base referer
+rect $classBasicModule.html 91,100 190,124
+rect $classImNotifiable.html 7,9 98,33
+rect $classBlackboard.html 122,9 210,33
+rect $classBitrate.html 214,100 273,124
+rect $classBBItem.html 307,9 374,33
+rect $classRadioState.html 297,100 385,124
+rect $classActiveChannel.html 409,100 518,124

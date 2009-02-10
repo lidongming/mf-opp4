@@ -1,0 +1,61 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Packet <i>BorderMsg</i></h2>
+<b>File: <a href="core-basicMessages-BorderMsg.msg.html">core/basicMessages/BorderMsg.msg</a></b><br/>
+<p>used as a self message containing the position, direction and BorderPolicy</p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Fields:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">startPos</td>
+   <td width="100">
+      <i>
+Coord</i>
+   </td>
+   <td>
+<p>new start position of the host</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">direction</td>
+   <td width="100">
+      <i>
+Coord</i>
+   </td>
+   <td>
+<p>new direction of the host</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">policy</td>
+   <td width="100">
+      <i>
+int</i>
+   </td>
+   <td>
+<p>border policy to use for the host</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// used as a self message containing the position, direction and BorderPolicy
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+//
+</span><span style="color: #800000; font-weight: bold; ">packet</span><span style="color: #000000; "> </span><span style="color: #000000; ">BorderMsg</span><span style="color: #000000; ">
+{
+    </span><span style="color: #000080; font-weight: bold; ">int</span><span style="color: #000000; "> </span><span style="color: #000000; ">policy</span><span style="color: #000000; ">;    </span><span style="color: #808080; font-style: italic; ">// border policy to use for the host
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">Coord</span><span style="color: #000000; "> </span><span style="color: #000000; ">startPos</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// new start position of the host
+</span><span style="color: #000000; ">    </span><span style="color: #000000; ">Coord</span><span style="color: #000000; "> </span><span style="color: #000000; ">direction</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// new direction of the host
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

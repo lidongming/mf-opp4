@@ -1,0 +1,258 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>ChannelControl</i></h2>
+<b>Package:</b> org.mf2.core.channelControl<br/><b>File: <a href="core-channelControl-ChannelControl.ned.html">core/channelControl/ChannelControl.ned</a></b><br/>
+<p>Module to control the channel and handle all connection
+related stuff</p>
+<p>The central module that coordinates the connections between all
+nodes, and handles dynamic gate creation.  <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> therefore
+periodically communicates with the mobility module and
+ChannelAccess.</p>
+<p>The four parameters pMax, sat, alpha, and carrierFrequency are used
+to calculate the interference distance between nodes. The values used
+here in <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> are used to calculate the upper bound,
+i.e. they can be redifined in the snrEval modules, but never such
+that the maximal interference distance is exeeded.</p>
+<p><b>Author:</b> Steffen Sroka, Daniel Willkomm</p>
+<p><b>See also:</b> <a href="org.mf2.core.basicModules.BasicMobility.html">BasicMobility</a></p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.BaseStationNetwork.html">BaseStationNetwork</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>A WLAN like base station controlled network</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.dvdistanceTest.DVDNetwork.html">DVDNetwork</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>@brief Network of <a href="org.mf2.networks.dvdistanceTest.DVDHost.html">DVDHost</a> modules, used for testing the DV Distance protocol.</p>
+<p><b>Author:</b> Danilo Blasi</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.floodTest.FloodNetwork.html">FloodNetwork</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.mobileNet.MobileNet.html">MobileNet</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.testSuite.testCCconnections.Network.html">Network</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p><b>Author:</b> Daniel Willkomm</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.p2p.P2PNetwork.html">P2PNetwork</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>A network only consisting of basic modules</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.aloha.Sim.html">Sim</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.csma.Sim.html">Sim</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.gilbert_elliot.Sim.html">Sim</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.ieee802_11.Sim.html">Sim</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.tcpTest.Sim.html">Sim</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch for core framework</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">sendDirect</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>define which <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module to use</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">useTorus</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>wrap connections</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">playgroundSizeX</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>x size of the playground (in meters)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">playgroundSizeY</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>y size of the playground (in meters)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">pMax</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>maximum sending power used for this network (in mW)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">sat</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>minimum signal attenuation threshold (in dBm)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">alpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>minimum path loss coefficient</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>minimum carrier frequency of the channel (in Hz)</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// Module to control the channel and handle all connection
+// related stuff
+//
+// The central module that coordinates the connections between all
+// nodes, and handles dynamic gate creation.  ChannelControl therefore
+// periodically communicates with the mobility module and
+// ChannelAccess.
+//
+// The four parameters pMax, sat, alpha, and carrierFrequency are used
+// to calculate the interference distance between nodes. The values used
+// here in ChannelControl are used to calculate the upper bound,
+// i.e. they can be redifined in the snrEval modules, but never such
+// that the maximal interference distance is exeeded.
+//       
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Steffen Sroka, Daniel Willkomm
+// </span><span style="color: #000080; ">@see</span><span style="color: #808080; font-style: italic; "> BasicMobility
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">ChannelControl</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #808080; font-style: italic; ">// debug switch for core framework
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch for core framework
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">sendDirect</span><span style="color: #000000; ">;          </span><span style="color: #808080; font-style: italic; ">// define which ChannelControl module to use
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">useTorus</span><span style="color: #000000; ">;          </span><span style="color: #808080; font-style: italic; ">// wrap connections
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x size of the playground (in meters)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y size of the playground (in meters)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// maximum sending power used for this network (in mW)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">pMax</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// maximum sending power used for this network (in mW)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// minimum signal attenuation threshold (in dBm)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">sat</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum signal attenuation threshold (in dBm)
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// minimum path loss coefficient
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">alpha</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum path loss coefficient
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// minimum carrier frequency of the channel (in Hz)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">carrierFrequency</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum carrier frequency of the channel (in Hz)
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   </body>
+</html>

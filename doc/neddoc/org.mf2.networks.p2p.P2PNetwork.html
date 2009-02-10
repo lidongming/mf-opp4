@@ -1,0 +1,437 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Compound Module <i>P2PNetwork</i></h2>
+<b>Package:</b> org.mf2.networks.p2p<br/><b>File: <a href="networks-p2p-P2PNetwork.ned.html">networks/p2p/P2PNetwork.ned</a></b><br/>
+<p>A network only consisting of basic modules</p>
+<p>The <a href="org.mf2.networks.p2p.P2PNetwork.html">P2PNetwork</a> does not contain any real functionality. It should
+be the basis for all other simulations build with our framework and
+is mainly to help to understand the concept and for all programmers
+as a reference for their own implementations. </p>
+<p>You should use the <a href="org.mf2.networks.p2p.P2PNetwork.html">P2PNetwork</a> if sophisticated interference models
+are not of interest and you prefere a faster
+simulation. Collisions and interference is modeled into the bit
+error rate for these kinds of networks. The advantage is that
+interference doesn't has to be explicitly modeled and thus messages
+are not braodcasted but sent directly to the specified next hop.</p>
+<p><a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a> is a vector of size numHosts (which specifies the number
+of hosts present in the network)</p>
+<p><b>Author:</b> Daniel Willkomm</p>
+<h3 class="subtitle">Known subclasses:</h3>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.p2p.p2pSim.html">p2pSim</a>
+      <i> (network)</i>
+   </td>
+   <td>
+
+<p>example simulation using the <a href="org.mf2.networks.p2p.P2PHost.html">P2PHost</a></p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">playgroundSizeX</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>x size of the area the nodes are in (in meters)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">playgroundSizeY</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>y size of the area the nodes are in (in meters)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">numHosts</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>total number of hosts in the network</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td width="150">display</td>
+   <td width="100"><i>bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=10,10</i></td>
+   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sendDirect</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>define which <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module to use</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.useTorus</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>wrap connections</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.pMax</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum sending power used for this network (in mW)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sat</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum signal attenuation threshold (in dBm)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.alpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum path loss coefficient</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum carrier frequency of the channel (in Hz)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.core.blackboard.Blackboard.html">blackboard</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.x</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>x coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.y</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>y coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleArp.html">arp</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.applLayer.BasicApplLayer.html">appl</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.applLayer.BasicApplLayer.html">appl</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the application message header (in bits)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleNetwLayer.html">net</a>.debug</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleNetwLayer.html">net</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the network packet header (in bits)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>level at which we consider medium busy</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.queueLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the MAC queue</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>bit rate in bit/s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.defaultChannel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>default channel</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.P2PPhyLayer.html">phy</a>.coreDebug</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.P2PPhyLayer.html">phy</a>.pBit</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>bit error rate</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.P2PPhyLayer.html">phy</a>.bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>bitrate (in bits/sec)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.P2PPhyLayer.html">phy</a>.transmitterPower</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>power used to transmit messages (in mW)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.P2PPhyLayer.html">phy</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length  (in bits) of the <a href="AirFrame.html">AirFrame</a> header</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSleep</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>time parameters, how long does it take to 
+switch to sleep mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSend</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to send mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.p2p.P2PHost.html">host</a>.<a href="org.mf2.contrib.nic.P2PNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swRecv</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to recv mode</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">// A network only consisting of basic modules
+//
+// The P2PNetwork does not contain any real functionality. It should
+// be the basis for all other simulations build with our framework and
+// is mainly to help to understand the concept and for all programmers
+// as a reference for their own implementations. 
+//
+// You should use the P2PNetwork if sophisticated interference models
+// are not of interest and you prefere a faster
+// simulation. Collisions and interference is modeled into the bit
+// error rate for these kinds of networks. The advantage is that
+// interference doesn't has to be explicitly modeled and thus messages
+// are not braodcasted but sent directly to the specified next hop.
+//
+// P2PHost is a vector of size numHosts (which specifies the number
+// of hosts present in the network)
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Daniel Willkomm
+</span><span style="color: #800000; font-weight: bold; ">module</span><span style="color: #000000; "> </span><span style="color: #000000; ">P2PNetwork</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x size of the area the nodes are in (in meters)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y size of the area the nodes are in (in meters)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">numHosts</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// total number of hosts in the network
+</span><span style="color: #000000; ">
+        </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=10,10&quot;</span><span style="color: #000000; ">);
+    </span><span style="color: #800000; font-weight: bold; ">submodules</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">channelcontrol</span><span style="color: #000000; ">: </span><span style="color: #000000; ">ChannelControl</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; "> = </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; ">;
+                </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; "> = </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; ">;
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=60,30;i=eye14&quot;</span><span style="color: #000000; ">);
+        }
+        </span><span style="color: #000000; ">host</span><span style="color: #000000; ">[</span><span style="color: #000000; ">numHosts</span><span style="color: #000000; ">]: </span><span style="color: #000000; ">P2PHost</span><span style="color: #000000; "> {
+            </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+                </span><span style="color: #000000; font-weight: bold; ">@display</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;p=50,50;i=laptop&quot;</span><span style="color: #000000; ">);
+
+        }
+    </span><span style="color: #800000; font-weight: bold; ">connections</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">allowunconnected</span><span style="color: #000000; ">:
+    </span><span style="color: #808080; font-style: italic; ">// all connections and gates are to be generated dynamically
+</span><span style="color: #000000; ">
+}
+
+
+</span></pre>
+   </body>
+</html>

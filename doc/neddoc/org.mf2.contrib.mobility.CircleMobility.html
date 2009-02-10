@@ -1,0 +1,104 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>CircleMobility</i></h2>
+<b>Package:</b> org.mf2.contrib.mobility<br/><b>File: <a href="contrib-mobility-CircleMobility.ned.html">contrib/mobility/CircleMobility.ned</a></b><br/>
+<p>Moves the node around a circle.</p>
+<p><b>See also:</b> <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a></p>
+<p><b>Author:</b> Andras Varga</p>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">cx</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>x coord of the center of the circle</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">cy</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>y coord of the center of the circle</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">r</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>radius of the circle</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">speed</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>speed of the host (in m/s)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">startAngle</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>starting angle (degreees)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">updateInterval</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>time interval to update the hosts position</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Moves the node around a circle.
+//
+// </span><span style="color: #000080; ">@see</span><span style="color: #808080; font-style: italic; "> ChannelControl
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Andras Varga
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">CircleMobility</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">cx</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x coord of the center of the circle
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">cy</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y coord of the center of the circle
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">r</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// radius of the circle
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">speed</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// speed of the host (in m/s)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">startAngle</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// starting angle (degreees)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">updateInterval</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// time interval to update the hosts position
+</span><span style="color: #000000; ">}
+
+</span></pre>
+   </body>
+</html>

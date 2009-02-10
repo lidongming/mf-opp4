@@ -1,0 +1,6 @@
+base referer
+rect $classSnrEval.html 31,308 98,332
+rect $classBasicSnrEval.html 14,233 115,257
+rect $classChannelAccess.html 7,158 122,182
+rect $classBasicModule.html 15,84 114,108
+rect $classImNotifiable.html 19,9 110,33

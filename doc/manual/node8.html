@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>7 Mobility Modules</TITLE>
+<META NAME="description" CONTENT="7 Mobility Modules">
+<META NAME="keywords" CONTENT="mf-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="mf-manual.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="mf-manual.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html200"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html194"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html188"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html196"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html198"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html201"
+  HREF="node9.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html195"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html189"
+  HREF="node7.html">6 Using the Blackboard</A>
+ &nbsp; <B>  <A NAME="tex2html197"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html199"
+  HREF="index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html202"
+  HREF="node8.html#SECTION00081000000000000000">7.1 The Mobility Architecture</A>
+<LI><A NAME="tex2html203"
+  HREF="node8.html#SECTION00082000000000000000">7.2 ChannelControl</A>
+<LI><A NAME="tex2html204"
+  HREF="node8.html#SECTION00083000000000000000">7.3 Implementing Mobility Models</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00080000000000000000"></A>
+<A NAME="sec:mobility-modules"></A>
+<BR>
+7 Mobility Modules
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00081000000000000000"></A>
+<A NAME="sec:mob-arch"></A>
+<BR>
+7.1 The Mobility Architecture
+</H2>
+
+<P>
+This section describes the mobility architecture used in the MF. First
+the general concept is described in Section&nbsp;<A HREF="#sec:cc">7.2</A>.
+Section&nbsp;<A HREF="#sec:mobility">7.3</A> describes how to create won mobility
+modules.
+
+<P>
+There are two mayor questions to consider for a mobility architecture
+in a simulation framework. The first question is where to process
+mobility information and and how to handle the movements of
+<I>Hosts</I>. Where and how to dynamically handle connections in an
+efficient way is the second decision to make.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:arch"></A><A NAME="945"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5:</STRONG>
+Mobility Architecture</CAPTION>
+<TR><TD><IMG
+ WIDTH="406" HEIGHT="258" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="\includegraphics[width=9cm]{mob-architecture}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+We decided to handle mobility in a distributed manner locally in every
+<I>Host</I> module. Decisions how and where to move neither affect
+other <I>Hosts</I> nor do they require global knowledge. Connection
+management is handled centrally by one central controller. In order to
+set up and tear down connections the distances between <I>Hosts</I>
+have to be calculated for which we need the global knowledge of the
+position of all <I>Hosts</I>.
+
+<P>
+The core component of our mobility architecture is the global
+<I>ChannelControl</I> module together with an independent
+<I>MobilityModule</I> in each <I>Host</I> module
+(Fig.&nbsp;<A HREF="#fig:arch">5</A>). <I>ChannelControl</I> handles all connection
+related things whereas the <I>MobilityModules</I> have two main tasks:
+The first task is to handle the movements of the <I>Host</I>. This can
+be done using various different mobility models (such as Manhattan
+Mobility or Brownian Motion). Second the <I>MobilityModule</I>
+communicates the location changes of the <I>Host</I> to the
+<I>ChannelControl</I> module. <I>ChannelControl</I> then updates all
+connection for this <I>Host</I>. The functionality of the
+<I>MobilityModules</I> is further described in
+Section&nbsp;<A HREF="#sec:mobility">7.3</A>.
+
+<P>
+
+<H2><A NAME="SECTION00082000000000000000"></A>
+<A NAME="sec:cc"></A>
+<BR>
+7.2 ChannelControl
+</H2>
+The <I>ChannelControl</I> module is responsible for establishing
+communication channels between <I>Host</I> modules that are within
+communication distance and tearing down these connections once they
+loose connectivity again. The loss of connectivity can be due to
+mobility (i.e. the <I>Hosts</I> move too far apart) or due to a
+change in transmission power or a crashed <I>Host</I> etc. We decided
+to keep the concept of links between <I>Host</I> modules, as opposed
+to direct message passing, since visible communication paths are an
+important source of (debugging) information in early development
+stages.
+
+<P>
+Unfortunately, in OMNeT++ distinct links between modules require at
+least two gate objects for each module, one in- and one out- gate (and
+for each submodule as well). For our MF the minimal number of
+gates per link is six since the <I>Nic</I> module is embedded
+within the <I>Host</I> module and is itself subdivided into an
+<I>SnrEval</I>, a <I>Decider</I> module and a <I>Mac</I> module. (see
+Section&nbsp;<A HREF="node5.html#sec:nic">4.3</A>). To make sure to have enough gates even in the
+worst case scenario (all <I>Hosts</I> are directly connected), each
+<I>Host</I> module needs at least two pairs of gates for every single
+<I>Host</I> module in the network.  Assuming <IMG
+ WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ n$"> <I>Hosts</I> in the
+network one <I>Host</I> would need <IMG
+ WIDTH="73" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ 6(n-1)$"> gates or <IMG
+ WIDTH="73" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ 3(n-1)$"> gate
+pairs, leading to <!-- MATH
+ $6n(n-1)\approx 6n^2$
+ -->
+<IMG
+ WIDTH="137" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ 6n(n-1)\approx 6n^2$"> gates in the whole network.
+
+<P>
+A more memory-efficient approach is to create gates dynamically which
+is the way we decided to go. Gates are not allocated in bulk upon
+initialization of the network but created dynamically upon demand.
+Each <I>Host</I> module maintains two lists one for the free in-gates
+and one for the free out-gates. Once <I>ChannelControl</I> wants to
+establish a link between two <I>Hosts</I>, it first checks the gate
+lists in both <I>Hosts</I> whether free gates are available and only
+if no free gate was found a new one is created. Upon link break
+<I>ChannelControl</I> tears down the connection and adds the newly
+freed gates to the corresponding gate list. With this approach we
+minimize the memory needed without increasing the computational
+overhead to create and destroy gates too much.
+
+<P>
+In wireless network simulations not only the fact whether two hosts
+are connected (i.e. can communicate with each other) is important but
+also the fact whether two hosts can interfere with each other. That is
+why the term <I>connection</I> gets a slightly different meaning
+for our MF. Upon initialization, the <I>ChannelControl</I>
+module determines the maximum interference distance based on global
+network parameters such as the carrier frequency of the channel, the
+maximal possible sending power and other propagation specific
+parameters. The maximal interference distance is a conservative bound
+on the maximal distance at which a <I>Host</I> can still possibly
+disturb the communication of a neighbor, i.e. all <I>Hosts</I>
+further away will not recognize the sending signal at all. Please note
+that the maximal interference distance does neither specify the
+maximal distance at which messages can be (correctly) received nor
+does it specify the range at which <I>Hosts</I> definitely can receive
+some signal (even if it is only noise). Single <I>Hosts</I> in the
+network may have sending powers that are much less the maximum power
+specified and thus cannot reach a <I>Host</I> they are (theoretically)
+connected to. The maximum interference distance is just a theoretical
+means of reducing the computational overhead of our MF.
+
+<P>
+Based on the maximal interference distance <I>ChannelControl</I>
+calculates the connections between all <I>Hosts</I> upon
+initialization of the network and updates the connections every time a
+<I>Host</I> moves. Updating connections between <I>Hosts</I> is a
+computationally expensive operation. Calculating the distance between
+every pair of <IMG
+ WIDTH="16" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.png"
+ ALT="$ n$"> <I>Hosts</I> in a network has a complexity of
+<!-- MATH
+ $\mathrm{O}(n ^{2})$
+ -->
+<IMG
+ WIDTH="53" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$ \mathrm{O}(n ^{2})$">. While this approach may not be
+the most efficient way to go, it is sufficient for the current version
+of our MF but could also be enhanced in case we experience
+performance problems.
+
+<P>
+
+<H2><A NAME="SECTION00083000000000000000"></A>
+<A NAME="sec:mobility"></A>
+<BR>
+7.3 Implementing Mobility Models
+</H2>
+
+<P>
+There is also the possibility to implement new mobility models. To do
+so, you have to derive the class for your new mobility module from
+<I>BasicMobility</I>. <I>BasicMobility</I> provides the
+<I>getRandomPosition()</I> function which selects a random starting
+position if no position is specified in the <I>omnetpp.ini</I> file.
+If you want to use another way of getting a staring position you can
+redefine this function.
+
+<P>
+Apart from that you have to do the following: At the times you want
+your host to move you have to send yourself a self-message and
+redefine the <I>handleSelfMsg()</I> function in which a new position
+should be determined. The position has to be of the type Coord (see
+API reference). As a final action in this function the
+<I>updatePosition()</I> function has to be called. It automatically
+updates the animated OMNeT++ GUI and furthermore writes the new
+position to the <I>Blackboard</I>. For further details take a look at
+the API reference of <I>BasicMobility</I>. As an example mobility
+implementation you can also have a look at the
+<I>ConstSpeedMobility</I> module in the <I>protocols/mobility</I>
+folder.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html200"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html194"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html188"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html196"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html198"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html201"
+  HREF="node9.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html195"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html189"
+  HREF="node7.html">6 Using the Blackboard</A>
+ &nbsp; <B>  <A NAME="tex2html197"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html199"
+  HREF="index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Daniel Willkomm
+2007-01-12
+</ADDRESS>
+</BODY>
+</HTML>

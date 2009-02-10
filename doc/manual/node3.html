@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2 Overview</TITLE>
+<META NAME="description" CONTENT="2 Overview">
+<META NAME="keywords" CONTENT="mf-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="mf-manual.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="mf-manual.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html114"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html108"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html102"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html110"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html112"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html115"
+  HREF="node4.html">3 Getting the Mobility</A>
+<B> Up:</B> <A NAME="tex2html109"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html103"
+  HREF="node2.html">1 Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html111"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html113"
+  HREF="index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html116"
+  HREF="node3.html#SECTION00031000000000000000">2.1 Concept</A>
+<LI><A NAME="tex2html117"
+  HREF="node3.html#SECTION00032000000000000000">2.2 Using the Mobility Framework</A>
+<LI><A NAME="tex2html118"
+  HREF="node3.html#SECTION00033000000000000000">2.3 Directory structure</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00030000000000000000"></A>
+<A NAME="sec:overview"></A>
+<BR>
+2 Overview
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000"></A>
+<A NAME="sec:concept"></A>
+<BR>
+2.1 Concept
+</H2>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:network"></A><A NAME="148"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1:</STRONG>
+Simulation Setup with 10 nodes</CAPTION>
+<TR><TD><IMG
+ WIDTH="453" HEIGHT="319" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="\includegraphics[width=10cm]{network}"></TD></TR>
+</TABLE>
+</DIV>
+The two core components of the Mobility Framework (MF) are an
+architecture for mobility support and dynamic connection management
+and a model of a mobile host in OMNeT++. Figure&nbsp;<A HREF="#fig:network">1</A>
+shows a network setup with 10 nodes.
+
+<P>
+The <I>ChannelControl</I> module controls and maintains all
+<B>potential</B> connections between the hosts. An OMNeT++
+connection link in the MF does <B>not</B> automatically indicate
+that the corresponding hosts are able to exchange data and communicate
+with each other. The <I>ChannelControl</I> module only connects all
+hosts that <I>possibly</I> interfere with each other. A communication
+link is probably easiest defined by its complement: <I>All hosts
+  that are <B>not</B> connected definitely do not interfere with
+  each other</I>. Following this concept a host will receive every data
+packet that its transceiver is potentially able to sense. The physical
+layer then has to decide dependent on the received signal strength
+whether the data packet will be processed or whether it will be
+treated as noise. For further details on the connection management
+please refer to Section&nbsp;<A HREF="node8.html#sec:cc">7.2</A>.
+
+<P>
+The internal structure of a mobile host is shown in
+Figure&nbsp;<A HREF="#fig:host">2</A>. Apart from the standard ISO/OSI layers there is
+also a <I>Mobility</I> module and a module called <I>Blackboard</I>.
+The <I>Mobility</I> module provides a geographical position of the
+host and handles its movement. Section&nbsp;<A HREF="node8.html#sec:mob-arch">7.1</A> contains a
+detailed description of the mobility architecture. The
+<I>Blackboard</I> module is used for cross layer communication. It
+provides information relevant to more than one layer like the actual
+energy status of the host, the display appearance or the status of the
+radio. All other modules implement the corresponding ISO/OSI layer
+functionality. Details on the implementation of these modules can be
+found in Section&nbsp;<A HREF="node5.html#sec:own-simus">4</A>.
+
+<DIV ALIGN="CENTER"><A NAME="fig:host"></A><A NAME="168"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 2:</STRONG>
+Structure of a Mobile Host</CAPTION>
+<TR><TD><IMG
+ WIDTH="227" HEIGHT="251" ALIGN="BOTTOM" BORDER="0"
+ SRC="img3.png"
+ ALT="\includegraphics[width=5cm]{host}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+While the core MF does not provide any protocol implementations we
+also plan to provide a library of standard modules for the lower
+layers of the ISO/OSI protocol stack. Thus the MF will eventually
+enable simulation of various kinds of wireless mobile networks ``out
+of the box''.
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000"></A>
+<A NAME="sec:use"></A>
+<BR>
+2.2 Using the Mobility Framework
+</H2>
+
+<P>
+There are several ways to use the Mobility Framework. Which one is
+best suited depends on the purpose you want to use the MF for.
+Once you successfully compiled the MF you can just use the created
+library within your own simulation or you should take a look at the
+example networks in the <TT>networks/</TT> and
+<TT>core/basicNetworks</TT> directories if you want to create a new
+simulation based on the Mobility Framework. Please note that you need
+to add the <TT>lib</TT> directory to your <TT>LD_LIBRARY_PATH</TT>
+or copy the library to a location where the linker can find it in
+order to work with the MF.
+
+<P>
+We provide example networks for many different scenarios so it is very
+likely that you will find a setup similar to your needs. The networks
+and the protocol implementations used are very well documented in the
+API documentation (<TT>doc/api/index.html</TT>) so you should take a
+look there as well.
+
+<P>
+The <TT>template/</TT> folder contains templates for the derivation or
+creation of your own modules. You can copy the corresponding files you
+need, adapt them to your needs and of course fill them with your code.
+Copy the <TT>Makefile.gen</TT> file as well and change the
+<TT>MOBFW</TT> variable within <TT>Makefile.gen</TT> to point to your
+<TT>mobility-fw</TT> folder and you can easily create a Makefile for
+your files (just type <TT>opp_makemake -f Makefile.gen</TT>).
+
+<P>
+Please note that the mobilityfw library does not contain any modules
+from the <TT>development/</TT> folder. Those implementations are to be
+considered experimental so we did not include them into the library.
+So if you want to enhance one of the protocol implementations or use
+them as a base for you own implementation you would have to copy the
+corresponding files as well. An alternative would be to do your work
+within the <TT>development/</TT> directory structure. You will have to
+run <TT>make makefiles</TT> in the corresponding directories to
+``register'' your newly created classes with the Makefiles.
+
+<P>
+We explicitly encourage the use and improvement of those protocol
+implementations under development. The more feedback and bug-fixes we
+get the sooner those protocols will reach a ``stable'' status and can
+be included into the library. Additionally many of them already
+reached a decent state and only need some more testing so please also
+report if you use those implementations and do not experience
+problems. Please refer to the corresponding API documentation and
+contact the individual authors for questions, feedback and bug
+reports.
+
+<P>
+
+<H2><A NAME="SECTION00033000000000000000"></A>
+<A NAME="sec:dir-structure"></A>
+<BR>
+2.3 Directory structure
+</H2>
+
+<P>
+Here is a list of all different directories including a brief description
+of the content to help you find certain files.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<TT></TT><TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><TT><FONT SIZE="-1">
+              <B>mobility-fw/</B>        </FONT></TT></TH>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> root directory</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>bitmaps/</B>          </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> icons for network graphics</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>core/</B>             </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> the core of the framework</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>basicMessages/</B>  </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> the basic message classes</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>basicModules/</B>   </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> all basic module classes</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>basicNetworks/</B>  </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 2 basic sample networks</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>blackboard/</B>     </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> Blackboard stuff</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>channelcontrol/</B> </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> ChannelControl modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>utils/</B>          </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> utilities</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>development/</B>      </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> experimental protocol implementations</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>applLayer/</B>      </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> application layer modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>messages/</B>       </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> all .msg files</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>mobility/</B>       </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> Mobility modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>netwLayer/</B>      </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> network layer modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>nic/</B>            </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> network interface modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+         <B>macLayer/</B>     </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> MAC layer modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+         <B>phyLayer/</B>     </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> physical layer modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+           <B>decider/</B>   </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> decider modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+           <B>snrEval/</B>   </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> snr evaluation modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+       <B>utils/</B>          </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> utilities</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>doc/</B>              </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> manual, API, neddoc...</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>include/</B>          </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> header and .ned includes</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>lib/</B>              </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> dir of the libmobilityfw.so</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>networks/</B>         </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> example networks</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>protocols/</B>        </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> tested protocol implementations</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>template/</B>         </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> templates to create own modules</FONT></TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT><FONT SIZE="-1"> 
+     <B>testSuite/</B>        </FONT></TT></TD>
+<TD ALIGN="LEFT"><TT><FONT SIZE="-1"> regression test suite</FONT></TT></TD>
+</TR>
+</TABLE><TT></TT>
+</DIV>
+<BR>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html114"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html108"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html102"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html110"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html112"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html115"
+  HREF="node4.html">3 Getting the Mobility</A>
+<B> Up:</B> <A NAME="tex2html109"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html103"
+  HREF="node2.html">1 Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html111"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html113"
+  HREF="index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Daniel Willkomm
+2007-01-12
+</ADDRESS>
+</BODY>
+</HTML>

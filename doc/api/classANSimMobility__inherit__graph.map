@@ -1,0 +1,5 @@
+base referer
+rect $classLineSegmentsMobilityBase.html 7,233 189,257
+rect $classBasicMobility.html 49,158 147,182
+rect $classBasicModule.html 49,83 147,107
+rect $classImNotifiable.html 53,9 143,33

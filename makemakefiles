@@ -1,0 +1,15 @@
+#
+# Usage:
+#    make -f makemakefiles
+# or, for Microsoft Visual C++:
+#    nmake -f makemakefiles MMOPT=-n
+#
+
+CONFIGNAME=hello
+MAKEMAKE=opp_makemake $(MMOPT)
+
+all:
+	$(MAKEMAKE) -f --nolink -O out -d testSuite -d core -d contrib -X. -L./out/'$$(CONFIGNAME)'/core -L./out/'$$(CONFIGNAME)'/contrib
+	cd core && $(MAKEMAKE) -f --deep --make-so -o mfcore -O out -L../out/'$$(CONFIGNAME)'/contrib
+	cd contrib && $(MAKEMAKE) -f --deep --make-so -o mfcontrib -O out -I../core/basicModules -I../core/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -L../out/'$$(CONFIGNAME)'/core -lmfcore
+	cd testSuite && $(MAKEMAKE) -f --deep -o testSuite -O out -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../out/'$$(CONFIGNAME)'/core -L../out/'$$(CONFIGNAME)'/contrib -lmfcontrib

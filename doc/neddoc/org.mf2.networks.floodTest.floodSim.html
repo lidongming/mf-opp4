@@ -1,0 +1,405 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Network <i>floodSim</i></h2>
+<b>Package:</b> org.mf2.networks.floodTest<br/><b>File: <a href="networks-floodTest-FloodNetwork.ned.html">networks/floodTest/FloodNetwork.ned</a></b><br/><p>(no description)</p><h3 class="subtitle">Extends:</h3>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.floodTest.FloodNetwork.html">FloodNetwork</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="inherited">
+   <td width="150">playgroundSizeX</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120">40</td>   <td>
+<p>parametes for the framework</p>
+</td>
+</tr>
+<tr class="inherited">
+   <td width="150">playgroundSizeY</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120">40</td>   <td></td>
+</tr>
+<tr class="inherited">
+   <td width="150">numHosts</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120">2</td>   <td>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Properties:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td width="150">display</td>
+   <td width="100"><i>bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=5,5</i></td>
+   <td></td>
+</tr>
+<tr>
+   <td width="150">isNetwork</td>
+   <td width="100"><i></i></td>
+   <td></td>
+</tr>
+</table>
+<h3 class="subtitle">Unassigned submodule parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sendDirect</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>define which <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a> module to use</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.useTorus</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>wrap connections</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.pMax</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>maximum sending power used for this network (in mW)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.sat</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum signal attenuation threshold (in dBm)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.alpha</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum path loss coefficient</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.core.channelControl.ChannelControl.html">channelcontrol</a>.carrierFrequency</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>minimum carrier frequency of the channel (in Hz)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.core.blackboard.Blackboard.html">blackboard</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch for the core framework</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.x</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>x coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.core.basicModules.BasicMobility.html">mobility</a>.y</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>y coordinate of the nodes' position (-1 = random)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.SimpleArp.html">arp</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.applLayer.BasicApplLayer.html">appl</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.applLayer.BasicApplLayer.html">appl</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the application message header (in bits)</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.Flood.html">net</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.Flood.html">net</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the network header</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.Flood.html">net</a>.plainFlooding</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>flag whether to use plain flooding</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.Flood.html">net</a>.bcMaxEntries</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>Max number of entries in the list of already broadcasted messages</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.Flood.html">net</a>.bcDelTime</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>Time after which an entry for an already broadcasted msg can be deleted</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.netwLayer.Flood.html">net</a>.defaultTtl</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>Default time-to-live (ttl) used for this module</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>level at which we consider medium busy</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.queueLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>length of the MAC queue</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>bit rate in bit/s</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.macLayer.AlohaMacLayer.html">mac</a>.defaultChannel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>default channel</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.TestDecider.html">decider</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.TestSnrEval.html">snrEval</a>.coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>debug switch</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.phyLayer.TestSnrEval.html">snrEval</a>.headerLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>
+   <td>   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSleep</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>time parameters, how long does it take to 
+switch to sleep mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swSend</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to send mode</p>
+   </td>
+</tr>
+<tr>
+   <td><a href="org.mf2.networks.floodTest.FloodHost.html">host</a>.<a href="org.mf2.contrib.nic.CoreTestNic.html">nic</a>.<a href="org.mf2.contrib.nic.radios.SingleChannelRadio.html">radio</a>.swRecv</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>
+   <td>
+<p>switch to recv mode</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #800000; font-weight: bold; ">network</span><span style="color: #000000; "> </span><span style="color: #000000; ">floodSim</span><span style="color: #000000; "> </span><span style="color: #800000; font-weight: bold; ">extends</span><span style="color: #000000; "> </span><span style="color: #000000; ">FloodNetwork</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000000; ">playgroundSizeX</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@prompt</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;playgroundSizeX&quot;</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">40</span><span style="color: #000000; ">);
+        </span><span style="color: #000000; ">playgroundSizeY</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@prompt</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;playgroundSizeY&quot;</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">40</span><span style="color: #000000; ">);
+        </span><span style="color: #000000; ">numHosts</span><span style="color: #000000; "> </span><span style="color: #000000; font-weight: bold; ">@prompt</span><span style="color: #000000; ">(</span><span style="color: #008000; ">&quot;Number of hosts:&quot;</span><span style="color: #000000; ">) = </span><span style="color: #800000; font-weight: bold; ">default</span><span style="color: #000000; ">(</span><span style="color: #008000; ">2</span><span style="color: #000000; ">);
+
+}
+</span></pre>
+   </body>
+</html>

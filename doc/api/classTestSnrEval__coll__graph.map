@@ -1,0 +1,11 @@
+base referer
+rect $classBasicSnrEval.html 353,291 454,315
+rect $classChannelAccess.html 255,214 370,238
+rect $classBasicModule.html 94,113 193,137
+rect $classImNotifiable.html 7,9 98,33
+rect $classBlackboard.html 122,9 210,33
+rect $classHostMove.html 355,113 435,137
+rect $classBBItem.html 471,9 538,33
+rect $classActiveChannel.html 471,163 581,187
+rect $classCoord.html 298,9 357,33
+rect $classChannelControl.html 217,113 331,137

@@ -1,0 +1,10 @@
+base referer
+rect $classBasicLayer.html 337,190 425,214
+rect $classBasicModule.html 335,99 434,123
+rect $classSingleChannelRadio.html 169,190 310,214
+rect $classImNotifiable.html 282,9 373,33
+rect $classBlackboard.html 397,9 485,33
+rect $classBitrate.html 7,99 66,123
+rect $classBBItem.html 101,9 167,33
+rect $classRadioState.html 90,99 178,123
+rect $classActiveChannel.html 202,99 311,123

@@ -1,0 +1,4 @@
+base referer
+rect $classModuleAccess.html 7,190 205,214
+rect $classBlackboard.html 14,99 102,123
+rect $classModuleAccess.html 126,99 265,123

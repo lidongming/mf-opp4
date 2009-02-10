@@ -1,0 +1,8 @@
+base referer
+rect $classActiveChannel.html 7,83 117,107
+rect $classBitrate.html 141,83 199,107
+rect $classDroppedPacket.html 223,83 335,107
+rect $classHostMove.html 359,83 439,107
+rect $classMediumIndication.html 463,83 589,107
+rect $classRadioState.html 613,83 701,107
+rect $classRSSI.html 725,83 778,107

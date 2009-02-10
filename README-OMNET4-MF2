@@ -1,0 +1,31 @@
+This directory contains a port of Mobility Framework 2.0p3
+to the Omnet++ 4.0 simulator.
+
+All of "core" was ported, as well as "contrib".
+
+All was not tested though, and the "networks" and "testSuite" directories
+have not been ported.
+
+Changes
+-------
+In contrib, the P2PLayer does not use the sendDirect method anymore.
+The core/include and contrib/include directories have been removed, as well as
+the core/lib and contrib/lib directories, to simplify the build process.
+The libraries are now in core/libmfcore.so and in contrib/libmfcontrib.so.
+
+How to use
+----------
+Edit the "env.sh" file. You only need to set the path to your installation
+of omnet++ 4. After that, use "source env.sh" to import these variables into your shell.
+
+Please proceed as follows to build from a shell:
+make core
+make contrib
+
+After starting the omnet IDE, you can import the project by right-clicking
+in the project list and use the "Import..." wizard, and 
+"General->Existing project into Workspace". 
+Select the directory containing the branch as root directory. 
+
+Jérôme Rousselot <jerome.rousselot@csem.ch>
+

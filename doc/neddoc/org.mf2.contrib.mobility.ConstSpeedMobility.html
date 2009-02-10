@@ -1,0 +1,145 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>ConstSpeedMobility</i></h2>
+<b>Package:</b> org.mf2.contrib.mobility<br/><b>File: <a href="contrib-mobility-ConstSpeedMobility.ned.html">contrib/mobility/ConstSpeedMobility.ned</a></b><br/>
+<p>Controls all movement related things of a host</p>
+<p><a href="org.mf2.contrib.mobility.ConstSpeedMobility.html">ConstSpeedMobility</a> does not use one of the standard mobility approaches.
+The user can define a velocity for each Host and an update interval. If
+the velocity is greater than zero (i.e. the Host is not stationary) the
+<a href="org.mf2.contrib.mobility.ConstSpeedMobility.html">ConstSpeedMobility</a> module calculates a random target position for the Host.
+Depending to the update interval and the velocity it calculates the number of
+steps to reach the destination and the step-size. Every update interval
+<a href="org.mf2.contrib.mobility.ConstSpeedMobility.html">ConstSpeedMobility</a> calculates the new position on its way to the target
+position and updates the display. Once the target position is reached
+<a href="org.mf2.contrib.mobility.ConstSpeedMobility.html">ConstSpeedMobility</a> calculates a new target position.</p>
+<p><b>See also:</b> <a href="org.mf2.core.channelControl.ChannelControl.html">ChannelControl</a></p>
+<p><b>Author:</b> Steffen Sroka, Marc Loebbers, Daniel Willkomm</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>The <a href="org.mf2.networks.baseStationNet.ClientHost.html">ClientHost</a> is a compound module that implements a very simple mobile
+client. It only consists of basic modules and the ClientApplLayer.</p>
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.ieee802_11.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+   </td>
+</tr>
+<tr>
+   <td>
+      <a href="org.mf2.networks.tcpTest.Host.html">Host</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+<i>(no description)</i>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>core debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">speed</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>spped of the host (in m/s)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">updateInterval</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>time interval to update the hosts position</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">x</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>x starting point of the node (-1 = random)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">y</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>y starting point of the node (-1 = random)</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Controls all movement related things of a host
+//
+// ConstSpeedMobility does not use one of the standard mobility approaches.
+// The user can define a velocity for each Host and an update interval. If
+// the velocity is greater than zero (i.e. the Host is not stationary) the
+// ConstSpeedMobility module calculates a random target position for the Host.
+// Depending to the update interval and the velocity it calculates the number of
+// steps to reach the destination and the step-size. Every update interval
+// ConstSpeedMobility calculates the new position on its way to the target
+// position and updates the display. Once the target position is reached
+// ConstSpeedMobility calculates a new target position.
+//
+// </span><span style="color: #000080; ">@see</span><span style="color: #808080; font-style: italic; "> ChannelControl
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Steffen Sroka, Marc Loebbers, Daniel Willkomm
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">ConstSpeedMobility</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// core debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">speed</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// spped of the host (in m/s)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">updateInterval</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// time interval to update the hosts position
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">x</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// x starting point of the node (-1 = random)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">y</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// y starting point of the node (-1 = random)
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

@@ -1,0 +1,217 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>Mac80211</i></h2>
+<b>Package:</b> org.mf2.contrib.nic.macLayer<br/><b>File: <a href="contrib-nic-macLayer-Mac80211.ned.html">contrib/nic/macLayer/Mac80211.ned</a></b><br/>
+<p>Implementation of the 802.11b MAC protocol. This module is intended
+to be used in combination with the <a href="org.mf2.contrib.nic.phyLayer.SnrEval80211.html">SnrEval80211</a> and <a href="org.mf2.contrib.nic.phyLayer.Decider80211.html">Decider80211</a>
+modules as physical layer.</p>
+<p>This module supports ad-hoc mode only (does not generate or handle
+management frames), and does not support fragmentation, RTS threshold,
+duplication detection and recovery.</p>
+<h3 class="subtitle">Used in compound modules:</h3>
+<p>If a module type shows up more than once, that means it has been defined in more than one NED file.</p>
+<table>
+<tr>
+   <td>
+      <a href="org.mf2.contrib.nic.Nic80211.html">Nic80211</a>
+      <i> (compound&nbsp;module)</i>
+   </td>
+   <td>
+
+<p>This NIC implements an 802.11 network interface card.</p>
+   </td>
+</tr>
+</table>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">queueLength</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">rtsCtsThreshold</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">bitrate</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">defaultChannel</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>minimum channel support</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">autoBitrate</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>auto bit rate selection support: specify borders at which
+to change modulation.</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">snr2Mbit</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>threshold to use 2Mbit (in dB)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">snr5Mbit</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>threshold to use 5.5Mbit (in dB)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">snr11Mbit</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>threshold to use 11Mbit (in dB)</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">neighborhoodCacheSize</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>keep information on neighborhood</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">neighborhoodCacheMaxAge</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>consider information in cache outdate if older than</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Gates:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Direction</th>
+      <th>Size</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">uppergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">uppergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">lowergateOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td></td>
+</tr>
+<tr class="local">
+   <td width="150">upperControlOut</xsl:if></td>
+   <td width="100"><i>output</i></td>
+   <td width="50"></td>   <td>
+<p>for control messages to upper layer</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">lowerControlIn</xsl:if></td>
+   <td width="100"><i>input</i></td>
+   <td width="50"></td>   <td>
+<p>for control messages from phy layer</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Implementation of the 802.11b MAC protocol. This module is intended
+// to be used in combination with the SnrEval80211 and Decider80211
+// modules as physical layer.
+//
+// This module supports ad-hoc mode only (does not generate or handle
+// management frames), and does not support fragmentation, RTS threshold,
+// duplication detection and recovery.
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">Mac80211</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">queueLength</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">rtsCtsThreshold</span><span style="color: #000000; ">;
+
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">bitrate</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">defaultChannel</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// minimum channel support
+</span><span style="color: #000000; ">
+        </span><span style="color: #808080; font-style: italic; ">// auto bit rate selection support: specify borders at which
+</span><span style="color: #000000; ">        </span><span style="color: #808080; font-style: italic; ">// to change modulation.	
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">autoBitrate</span><span style="color: #000000; ">;         </span><span style="color: #808080; font-style: italic; ">// use auto bit rate adaptation
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">snr2Mbit</span><span style="color: #000000; ">;  </span><span style="color: #808080; font-style: italic; ">// threshold to use 2Mbit (in dB)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">snr5Mbit</span><span style="color: #000000; ">;  </span><span style="color: #808080; font-style: italic; ">// threshold to use 5.5Mbit (in dB)
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">snr11Mbit</span><span style="color: #000000; ">;  </span><span style="color: #808080; font-style: italic; ">// threshold to use 11Mbit (in dB)
+</span><span style="color: #000000; ">
+        </span><span style="color: #808080; font-style: italic; ">// keep information on neighborhood
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">neighborhoodCacheSize</span><span style="color: #000000; ">;
+        </span><span style="color: #808080; font-style: italic; ">// consider information in cache outdate if older than 
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">neighborhoodCacheMaxAge</span><span style="color: #000000; ">;
+
+    </span><span style="color: #800000; font-weight: bold; ">gates</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">uppergateOut</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateIn</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowergateOut</span><span style="color: #000000; ">;
+        </span><span style="color: #000080; font-weight: bold; ">output</span><span style="color: #000000; "> </span><span style="color: #000000; ">upperControlOut</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// for control messages to upper layer
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">input</span><span style="color: #000000; "> </span><span style="color: #000000; ">lowerControlIn</span><span style="color: #000000; ">;   </span><span style="color: #808080; font-style: italic; ">// for control messages from phy layer
+</span><span style="color: #000000; ">}
+</span></pre>
+   </body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+   <body>
+<h2 class="comptitle">Simple Module <i>BonnMotionMobility</i></h2>
+<b>Package:</b> org.mf2.contrib.mobility<br/><b>File: <a href="contrib-mobility-BonnMotionMobility.ned.html">contrib/mobility/BonnMotionMobility.ned</a></b><br/>
+<p>Uses the native file format of BonnMotion (http://www.cs.uni-bonn.de/IV/BonnMotion/).</p>
+<p>The file is a plain text file, where every line describes the motion
+of one host. A line consists of one or more (t, x, y) triplets of real
+numbers, like:</p>
+<p>t1 x1 y1 t2 x2 y2 t3 x3 y3 t4 x4 y4 ...</p>
+<p>The meaning is that the given node gets to (xk,yk) at tk. There's no
+separate notation for wait, so x and y coordinates will be repeated there.</p>
+<p><b>Author:</b> Andras Varga</p>
+<h3 class="subtitle">Parameters:</h3>
+<table class="paramtable">
+   <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>Description</th>
+   </tr>
+<tr class="local">
+   <td width="150">coreDebug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">debug</td>
+   <td width="100">
+      <i>bool</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>debug switch</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">traceFile</td>
+   <td width="100">
+      <i>string</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>the BonnMotion trace file</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">nodeId</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>selects line in trace file; -1 gets substituted to parent module's index</p>
+</td>
+</tr>
+<tr class="local">
+   <td width="150">updateInterval</td>
+   <td width="100">
+      <i>double</i>
+   </td>
+   <td width="120"></td>   <td>
+<p>time interval to update the hosts position</p>
+</td>
+</tr>
+</table>
+<h3 class="subtitle">Source code:</h3>
+<pre class="src"><span style="color: #808080; font-style: italic; ">//
+// Uses the native file format of BonnMotion (http://www.cs.uni-bonn.de/IV/BonnMotion/).
+//
+// The file is a plain text file, where every line describes the motion
+// of one host. A line consists of one or more (t, x, y) triplets of real
+// numbers, like:
+//
+// t1 x1 y1 t2 x2 y2 t3 x3 y3 t4 x4 y4 ...
+//
+// The meaning is that the given node gets to (xk,yk) at tk. There's no
+// separate notation for wait, so x and y coordinates will be repeated there.
+//
+// </span><span style="color: #000080; ">@author</span><span style="color: #808080; font-style: italic; "> Andras Varga
+//
+</span><span style="color: #800000; font-weight: bold; ">simple</span><span style="color: #000000; "> </span><span style="color: #000000; ">BonnMotionMobility</span><span style="color: #000000; ">
+{
+    </span><span style="color: #800000; font-weight: bold; ">parameters</span><span style="color: #000000; ">:
+        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">coreDebug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">bool</span><span style="color: #000000; "> </span><span style="color: #000000; ">debug</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// debug switch
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">string</span><span style="color: #000000; "> </span><span style="color: #000000; ">traceFile</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// the BonnMotion trace file
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">nodeId</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// selects line in trace file; -1 gets substituted to parent module's index
+</span><span style="color: #000000; ">        </span><span style="color: #000080; font-weight: bold; ">double</span><span style="color: #000000; "> </span><span style="color: #000000; ">updateInterval</span><span style="color: #000000; ">; </span><span style="color: #808080; font-style: italic; ">// time interval to update the hosts position
+</span><span style="color: #000000; ">}
+
+
+
+</span></pre>
+   </body>
+</html>

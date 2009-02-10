@@ -1,0 +1,6 @@
+#!/bin/bash
+# 
+# script to recreate all makefiles. If you change the project configuartion in the IDE
+# export it as a new makemakefile and overwrite the current one.
+
+make -f makemakefiles

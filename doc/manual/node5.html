@@ -1,0 +1,631 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4 Building Own Simulations</TITLE>
+<META NAME="description" CONTENT="4 Building Own Simulations">
+<META NAME="keywords" CONTENT="mf-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="mf-manual.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="mf-manual.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html148"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html142"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html136"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html144"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html146"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html149"
+  HREF="node6.html">5 Physical Layer Modules</A>
+<B> Up:</B> <A NAME="tex2html143"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html137"
+  HREF="node4.html">3 Getting the Mobility</A>
+ &nbsp; <B>  <A NAME="tex2html145"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html147"
+  HREF="index.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html150"
+  HREF="node5.html#SECTION00051000000000000000">4.1 The Basic Module concept</A>
+<LI><A NAME="tex2html151"
+  HREF="node5.html#SECTION00052000000000000000">4.2 The Message Concept</A>
+<LI><A NAME="tex2html152"
+  HREF="node5.html#SECTION00053000000000000000">4.3 The Nic Concept</A>
+<UL>
+<LI><A NAME="tex2html153"
+  HREF="node5.html#SECTION00053100000000000000">4.3.1 snrEval</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00050000000000000000"></A>
+<A NAME="sec:own-simus"></A>
+<BR>
+4 Building Own Simulations
+</H1>
+
+<P>
+This section explains the basic concepts behind the Mobility
+Framework. The class hierarchy is explained and all relevant functions
+of the <I>Basic*</I> modules are introduced. For the detailed
+description of the functionality of the individual modules read
+Sections&nbsp;<A HREF="node6.html#sec:phy-modules">5</A>&nbsp;-&nbsp;<A HREF="node8.html#sec:mobility-modules">7</A>
+and also refer to the Neddoc and API reference.
+
+<P>
+
+<H2><A NAME="SECTION00051000000000000000"></A>
+<A NAME="sec:basic-module"></A>
+<BR>
+4.1 The Basic Module concept
+</H2>
+All our <I>Host</I> submodule classes have a common base class
+<I>BasicModule</I>. The <I>BasicModule</I> itself is derived from
+<I>cSimpleModule</I> (OMNeT++) and <I>BlackboardAccess</I> which
+provides the functionality to subscribe for and publish information on
+the <I>Blackboard</I> module. The usage of the <I>Blackboard</I> is
+explained in Section&nbsp;<A HREF="node7.html#sec:usingblackboard">6</A>.
+
+<P>
+
+<H4><A NAME="SECTION00051010000000000000">
+4.1.0.1 <I>BasicModule</I></A>
+</H4>
+
+<P>
+The <I>BasicModule</I> uses the multi-stage initialization of OMNeT++
+so all modules in the MF have to be implemented with two-stage
+initialization.  In case you use the <I>Blackboard</I> you have to do
+all your <I>publish</I> calls in stage 0 and the <I>subscribe</I>
+calls have to be done in stage 1! This is to explicitly avoid that a
+subscription to a parameter can happen before that parameter is
+published.
+
+<P>
+In the template files the <I>initialize(int)</I> functions already
+contain the call of the <I>initialize(int)</I> function of the
+<I>Basic Module</I> this module is derived from. Do not delete this
+line as the obligatory parameters of the <I>Basic Modules</I> have to
+be initialized, too!
+
+<P>
+Additionally the <I>BasicModule</I> provides the <I>logName()</I>
+function, which returns the ned module name and the OMNeT++ module
+<I>index()</I> of the <I>Host</I> module this module belongs to.
+<I>logName()</I> is used in the debug macro for identification of the
+host the debug output comes from. You can use the <I>EV &#171;``your
+  debug output''</I> macro to print debug messages.
+
+<P>
+
+<H4><A NAME="SECTION00051020000000000000">
+4.1.0.2 Address Concept</A>
+</H4>
+
+<P>
+We use the OMNeT++ module <I>id()</I>s for addressing in the MF. The
+<I>nic</I> module <I>id()</I> is used as <I>mac</I> address and the
+<I>netwLayer</I> module <I>id()</I> as network layer address. The
+<I>netwLayer</I> <I>id()</I> is also used as application layer
+address. In order to obtain the address of the module we provide a
+<I>myApplAddr()</I>, <I>myNetwAddr()</I> and <I>myMacAddr()</I>
+function in the <I>BasicApplLayer</I>, <I>BasicNetwLayer</I> and
+<I>BasicMacLayer</I> modules respectively.
+
+<P>
+The <I>netw2mac()</I> function of the <I>ChannelControl</I> module
+provides a simple ARP like translation of network addresses to MAC
+addresses. However by redefining the <I>getMacAddr()</I> function of
+the <I>BasicNetwLayer</I> you can implement your own ARP
+functionality.
+
+<P>
+
+<H4><A NAME="SECTION00051030000000000000">
+4.1.0.3 Naming Conventions</A>
+</H4>
+
+<P>
+There are some naming conventions for the modules in the ned files,
+you have to follow. Not following these naming conventions will result
+in segmentation faults upon execution of your code!!!
+
+<P>
+All <I>host</I> modules <B>have to</B> include the characters
+<I>host</I> or <I>Host</I> somewhere in its name. Whereas most of
+the example networks just use <I>host</I> as a ned module name, you
+could also come up with names like <I>baseStationHost</I> and
+<I>mobileHost</I> in order to create a centralized base station
+network.
+
+<P>
+For more or less all the other ned modules the names <B>cannot</B>
+be changed. Those are: <I>channelcontrol</I>, <I>blackboard</I>,
+<I>net</I>, <I>phy</I>, <I>snrEval</I>. However, it is a good practice
+to also keep the default names for the other modules (namely,
+<I>appl</I>, <I>nic</I>, <I>mobility</I>).
+
+<P>
+
+<H4><A NAME="SECTION00051040000000000000">
+4.1.0.4 <I>Basic*</I> Modules</A>
+</H4>
+
+<P>
+In order to have clearly defined interfaces that are easy to
+understand - and extend if necessary - we provide a <I>Basic*</I>
+module for each layer which in turn is derived from the global
+<I>BasicModule</I> explained above. The concept of a <I>Basic*</I>
+module is to have a base class which takes care of the necessary work
+that has to be done but is not of specific importance for the real
+functionality. The general derivation structure of a Mobility
+Framework module is shown in Figure&nbsp;<A HREF="#fig:derivation">3</A>. The
+<I>Basic*</I> modules also provide a very basic functionality in terms
+of ``the <I>BasicNetwLayer</I> is capable of forwarding messages to
+and from upper and lower layers but has no routing functionality at
+all yet''.  The idea is to have the possibility to easily extend or
+adapt modules of different layers to the specific requirements of the
+simulation. To serve this purpose we defined two kinds of functions:
+<I>handle*Msg()</I> functions and <I>convenience</I> functions.
+
+<DIV ALIGN="CENTER"><A NAME="fig:derivation"></A><A NAME="473"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 3:</STRONG>
+The general derivation structure</CAPTION>
+<TR><TD><IMG
+ WIDTH="311" HEIGHT="332" ALIGN="BOTTOM" BORDER="0"
+ SRC="img4.png"
+ ALT="\includegraphics[width=7cm]{derivation}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H4><A NAME="SECTION00051050000000000000">
+4.1.0.5 <I>handle*Msg()</I> Functions</A>
+</H4>
+
+<P>
+The <I>handle*Msg()</I> functions contain the actual protocol
+functionality. They are called each time a corresponding message
+arrives and contain all necessary processing and forwarding
+information for messages where required. We provide three different
+functions to handle the three different kinds of message events
+possible:
+<DL>
+<DT><STRONG>handleSelfMsg</STRONG></DT>
+<DD>The easiest way to implement timers in OMNeT++
+  are self messages. <I>handleSelfMsg()</I> thus is the place to
+  handle all timer related things and to initiate actions upon
+  timeouts.
+</DD>
+<DT><STRONG>handleUpperMsg</STRONG></DT>
+<DD>This function is called every time a message has
+  arrived from an upper layer. The message already has the
+  corresponding layer n format (i.e. it is already encapsulated).
+  After processing the message can be forwarded to the lower layers
+  with the <I>sendDown()</I> function, if necessary.
+</DD>
+<DT><STRONG>handleLowerMsg</STRONG></DT>
+<DD>For messages from lower layers it is the other
+  way around. After being processed they have to be forwarded to upper
+  layers if necessary. This is done by using the <I>sendUp()</I> function
+  which also takes care of decapsulation.
+</DD>
+</DL>
+
+<P>
+
+<H4><A NAME="SECTION00051060000000000000">
+4.1.0.6 <I>convenience</I> Functions</A>
+</H4>
+
+<P>
+The <I>convenience</I> functions are defined to facilitate common
+interfaces and to hide inevitable interface management from the user.
+Here we provide three different functions:
+<DL>
+<DT><STRONG>encapsMsg</STRONG></DT>
+<DD>This function is called right after a message has
+  arrived from the upper layers. It is responsible for encapsulation
+  of the layer n+1 message into a layer n message. This implies to
+  provide all necessary header information and if applicable also the
+  conversion of layer n+1 header information into layer n information
+  (in case of the network layer to convert the application or
+  transport layer address into a network address).  After this the
+  message is passed to the <I>handleUpperMsg()</I> function.
+</DD>
+<DT><STRONG>sendUp</STRONG></DT>
+<DD><I>sendUp()</I> is the function to be called if a message
+  should be forwarded to upper layers and is usually called within
+  <I>handleLowerMsg()</I>. It decapsulates the message before sending it
+  to the layer n+1 module.
+</DD>
+<DT><STRONG>sendDown</STRONG></DT>
+<DD>Sending messages to layer n-1 is done with the
+  <I>sendDown()</I> function. Sometimes it may be necessary to also
+  provide or process additional meta information here. In the case of
+  the network layer for example it may be necessary to provide a next
+  hop. The network layer destination address usually contains no
+  information about the next-hop MAC address a message has to be
+  forwarded to on its way to the destination so it has to be
+  translated (ARP does this for IP).
+</DD>
+<DT><STRONG>sendDelayedUp</STRONG></DT>
+<DD>In case you want to delay the point of time the
+  message is sent to the upper layer, you can use this function. The
+  time the message should be delayed can be given as a parameter.
+</DD>
+<DT><STRONG>sendDelayedDown</STRONG></DT>
+<DD>The same as <I>sendDelayedUp</I>, but for
+  sending delayed messages to the lower layer.
+</DD>
+</DL>
+
+<P>
+These six functions are provided (with slide differences) in the
+<I>Basic*</I> module for each layer of the MF. Usually the three
+<I>handle*Msg()</I> and the <I>initialize(int)</I> and <I>finish()</I>
+functions are the only functions a programmer has to re-implement to
+create his/her own module and the functionality of it. The
+<I>convenience</I> functions should be used to serve the above
+described tasks so that newly implemented modules remain compatible
+with (almost) any other module implemented for the MF. The
+<I>convenience</I> functions <B>cannot</B> be changed in derived
+modules.
+
+<P>
+The tasks of the different modules and a more detailed description of
+the <I>Basic*</I> modules can be found in the following sections.
+
+<P>
+
+<H2><A NAME="SECTION00052000000000000000"></A>
+<A NAME="sec:messages"></A>
+<BR>
+4.2 The Message Concept
+</H2>
+
+<P>
+In order to provide basic functionality like encapsulating and
+decapsulating messages in the <I>Basic*</I> modules we need to have
+fixed message formats for every layer. The provided message types have
+the most important fields needed for the corresponding layer. These
+message types with these fields are obligatory and can only be
+extended but <B>not</B> exchanged.  Here is a list of all base
+message classes and their parameters:
+
+<P>
+
+<UL>
+<LI><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47><I>AirFrame</I></TD>
+<TD ALIGN="LEFT" COLSPAN=2>Physical Layer Message</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=68><I>pSend</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=207>sending power</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=68><I>channelId</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=207>channel the message is sent on</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=68><I>id</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=207>id of the originator to get the position</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=68><I>duration</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=207>time needed to send the message on the channel</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=68><I>SnrControlInfo</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=207>Control Information class; used to pass
+    Sn(i)r information to the decider</TD>
+</TR>
+</TABLE>
+</LI>
+<LI><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>MacPkt</TD>
+<TD ALIGN="LEFT" COLSPAN=2>Medium Access Control Message</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=44>destAddr</TD>
+<TD ALIGN="LEFT">destination MAC address</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=44>srcAddr</TD>
+<TD ALIGN="LEFT">source MAC address</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=44>channelId</TD>
+<TD ALIGN="LEFT">channel the message is sent on</TD>
+</TR>
+</TABLE>
+</LI>
+<LI><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47><I>NetwPkt</I></TD>
+<TD ALIGN="LEFT" COLSPAN=2>Network Layer Message</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=72><I>destAddr</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=203>destination network address</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=72><I>srcAddr</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=203>source network address</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=72><I>seqNum</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=203>sequence number</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=72><I>ttl</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=203>time to life</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=72><I>MacControlInfo</I></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=203>Control Information class; used to tell
+    the MAC protocol the address of the next hop</TD>
+</TR>
+</TABLE>
+</LI>
+<LI><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47><I>ApplPkt</I></TD>
+<TD ALIGN="LEFT" COLSPAN=2>Application Layer Message</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=44><I>destAddr</I></TD>
+<TD ALIGN="LEFT">destination application address</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=47>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=44><I>srcAddr</I></TD>
+<TD ALIGN="LEFT">source application address</TD>
+</TR>
+</TABLE>
+</LI>
+</UL>
+
+<P>
+
+<H4><A NAME="SECTION00052010000000000000">
+4.2.0.1 Creating your own message</A>
+</H4>
+
+<P>
+If you need additional parameters you can derive your own message
+class from one of the basic message classes in the OMNeT++ style, in
+case of the network layer message: 
+<PRE>
+cplusplus {{
+#include "NetwPkt_m.h"
+}};
+
+class NetwPkt;
+
+message YourPkt extends NetwPkt
+{
+   fields:
+        int     extraField1;
+        double  extraField2;
+};
+</PRE>
+Please note that the name of the included <I>.h</I> file has to be extended with
+<I>_m</I> as this is the file OMNeT++ creates out of a <I>.msg</I> file.
+
+<P>
+
+<H4><A NAME="SECTION00052020000000000000">
+4.2.0.2 Using an own message</A>
+</H4>
+
+<P>
+Now you have defined your own message, the next step is to teach the
+framework how to create it. To do so, you have to overwrite the
+<I>createCapsulePkt</I> function in <I>YourNetwModule.h</I>:
+<PRE>
+virtual NetwPkt* createCapsulePkt() {
+   return new YourPkt;
+};
+</PRE>
+When creating a new <I>YourPkt</I> message within your simulation it
+has to be done like this:
+<PRE>
+YourPkt* pkt = static_cast&lt;YourPkt *&gt;(createCapsulePkt());
+</PRE>
+The framework does the same and is hence able to create <I>YourPkt</I>
+without even knowing that such a thing would spring into existence.
+
+<P>
+These steps are necessary to be able to do the following unavoidable
+cast operation.  A message is usually given to you as a parameter in
+the <I>handleUpperMsg()</I> and <I>handleLowerMsg()</I> function in
+the basic message format. So, if you want to have access to the extra
+fields you have to cast the message into your format. For
+<I>YourNetwModule</I> you could use the following code: 
+<PRE>
+void YourNetwModule::handleUpperMsg(NetwPkt *packet)
+{
+  YourPkt *pkt = check_and_cast&lt;YourPkt *&gt;(packet);
+  
+  // do something with the message...
+}
+</PRE>
+
+<P>
+
+<H4><A NAME="SECTION00052030000000000000">
+4.2.0.3 Control Information Classes</A>
+</H4>
+
+<P>
+OMNeT++ (version 3.0a4 or higher) allows you to define <I>Control
+  Information classes</I>. They can be used to add meta information to a
+message that is only relevant for the next processing layer. When that
+layer receives this message it then can remove and process this
+information. As you can see in the tables, <I>AirFrame</I> and the
+<I>NetwPkt</I> have such a control information class.
+
+<P>
+The <I>SnrControlInfo</I> is used to pass s(i)nr information to the
+<I>decider</I> so that it can calculate bit errors based on the s(i)nr
+information of that message. The <I>MacControlInfo</I> contains the
+next hop MAC address the message should be forwarded to. Currently the
+MF provides no means to extend the control information attached to a
+message. If you need to exchange additional meta information you would
+have to add it as a ``normal'' parameter to your derived message as
+only one control information is allowed per message. However please
+tell us in case you need additional control information as we might
+extend the <I>SnrControlInfo</I> or <I>MacControlInfo</I> respectively
+if appropriate. Currently we only provide the absolutely necessary
+information. But especially the <I>MacControlInfo</I> serves as
+interface between MAC and network layer that we want to provide as
+powerful as possible.
+
+<P>
+
+<H2><A NAME="SECTION00053000000000000000"></A>
+<A NAME="sec:nic"></A>
+<BR>
+4.3 The Nic Concept
+</H2>
+
+<P>
+A nic is a network interface card that includes physical layer
+functions like transmitting, receiving, modulation as well as medium
+access mechanisms. The <I>nic</I> module in the MF therefore is
+divided into a physical layer like part (<I>snrEval</I> and
+<I>decider</I>) and a MAC layer (<I>macLayer</I>). The <I>snrEval</I>
+module can be used to compute some sn(i)r information for a received
+message whereas the <I>decider</I> module can process this information
+to decide whether a message got lost, has bit errors or is correctly
+received. Therefore the decider only handles received messages and not
+messages that should be sent. The corresponding compound module with
+its simple modules is shown in Figure <A HREF="#fig:nic">4</A>.
+
+<DIV ALIGN="CENTER"><A NAME="fig:nic"></A><A NAME="600"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 4:</STRONG>
+The structure of a nic module</CAPTION>
+<TR><TD><IMG
+ WIDTH="156" HEIGHT="275" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="\includegraphics[width=3.5cm]{nic}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+The reason for putting the physical and the MAC components into one
+compound module is easily explained. For most lower layer protocols
+the MAC <I>and</I> the physical layer have to be coordinated, so for
+one protocol (e.g. IEEE 802.11) there will be a corresponding
+<I>snrEval</I> module as well as a corresponding <I>decider</I> module
+as well as a corresponding <I>mac</I> module. So, if you decide to run
+a certain routing protocol over a certain PHY/MAC protocol you simply
+need to choose the corresponding <I>nic</I> module when building the
+host (see Section&nbsp;<A HREF="node4.html#sec:network">3.2</A>).<A NAME="tex2html5"
+  HREF="footnode.html#foot625"><SUP>1</SUP></A>
+<P>
+In the following the physical layer modules are explained in more
+detail.
+
+<P>
+
+<H3><A NAME="SECTION00053100000000000000">
+4.3.1 snrEval</A>
+</H3>
+The structure of the <I>snrEval</I> modules is a little different from
+those of the other modules. The <I>handleLowerMsg()</I> function is
+split into two functions in order to simulate the transmission delay. 
+Detailed examples for using these functions are given in the
+<I>YourSnrEval</I> template files.
+
+<P>
+<DL>
+<DT><STRONG>handleLowerMsgStart</STRONG></DT>
+<DD>This function is called in the moment the
+  reception begins, i.e. in the moment the first bit
+  arrives. Everything that is necessary to be done at the start of a
+  reception can be done here, e.g. create and initialize an SNR-list
+  to store SNR values, put the frame into a receive-buffer etc. 
+
+<P>
+</DD>
+<DT><STRONG>handleLowerMsgEnd</STRONG></DT>
+<DD>This function is called when the transmission
+  of a message is over. Here you can do whatever is necessary before
+  to message is handed on to the decider, e.g. take the message out of
+  the receive-buffer, call the <I>sendUp</I> funtion...
+</DD>
+</DL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html148"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html142"
+  HREF="mf-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html136"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html144"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html146"
+  HREF="index.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html149"
+  HREF="node6.html">5 Physical Layer Modules</A>
+<B> Up:</B> <A NAME="tex2html143"
+  HREF="mf-manual.html">A Mobility Framework for</A>
+<B> Previous:</B> <A NAME="tex2html137"
+  HREF="node4.html">3 Getting the Mobility</A>
+ &nbsp; <B>  <A NAME="tex2html145"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html147"
+  HREF="index.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Daniel Willkomm
+2007-01-12
+</ADDRESS>
+</BODY>
+</HTML>
