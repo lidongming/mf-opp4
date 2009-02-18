@@ -1,0 +1,10 @@
+LMAC module for the Mobility Framework 2.02p omnetpp 4
+by Anna Foerster, Universita della Svizzera Italiana, 2008-2009.
+under the GNU license.
+
+--- Parameters ---
+You can find descriptions of all used parameters in the omnetpp.ini file under smapleLMAC. 
+Note that there are two Nic modules under LMAC: one with the normal SnrEval from the MF2.02p and one 
+with the radio propagation models from SNE4OMF. Can be find here:
+http://www.tm.uka.de/itm/WebMan/view.php?view=projekte_detail&id=23
+
