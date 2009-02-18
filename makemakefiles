@@ -5,7 +5,7 @@
 #    nmake -f makemakefiles MMOPT=-n
 #
 
-CONFIGNAME=hello
+CONFIGNAME=gcc-debug
 MAKEMAKE=opp_makemake $(MMOPT)
 
 all:
