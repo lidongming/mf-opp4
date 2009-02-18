@@ -33,5 +33,6 @@ simple CircleMobility
         double speed; // speed of the host (in m/s)
         double startAngle; // starting angle (degreees)
         double updateInterval; // time interval to update the hosts position
+        @display("i=block/circle");
 }
 

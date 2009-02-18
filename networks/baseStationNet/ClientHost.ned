@@ -45,7 +45,7 @@ module ClientHost
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=130,70;b=25,25,,black,,");
+                @display("p=130,70");
         }
         mobility: ConstSpeedMobility {
             parameters:

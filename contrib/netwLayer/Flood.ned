@@ -52,6 +52,7 @@ simple Flood
         // Time after which an entry for an already broadcasted msg can be deleted
         double bcDelTime;
         double defaultTtl; // Default time-to-live (ttl) used for this module
+        @display("i=block/fork");
     gates:
         input uppergateIn; // from application layer
         output uppergateOut; // to application layer

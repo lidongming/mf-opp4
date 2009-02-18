@@ -44,4 +44,5 @@ simple ConstSpeedMobility
         double updateInterval; // time interval to update the hosts position
         double x; // x starting point of the node (-1 = random)
         double y; // y starting point of the node (-1 = random)
+        @display("i=block/rightarrow");
 }

@@ -40,6 +40,7 @@ import org.mf2.contrib.nic.phyLayer.SnrEval;
 
 module NicCsma
 {
+    @display("i=block/ifcard");
     gates:
         input uppergateIn; // from upper layers
         output uppergateOut; // to upper layers
@@ -64,7 +65,7 @@ module NicCsma
         }
         radio: SingleChannelRadio {
             parameters:
-                @display("p=200,30;b=30,25");
+                @display("p=200,30");
 
         }
     connections:

@@ -32,6 +32,7 @@ simple SnrEval80211
         bool publishRSSIAlways;
         double sensitivity;
 
+        @display("i=block/mac");
     gates:
         input uppergateIn;
         input radioIn;

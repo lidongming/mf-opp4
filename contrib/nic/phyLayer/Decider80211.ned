@@ -28,6 +28,7 @@ simple Decider80211
     parameters:
         bool debug; // debug switch
         double snirThreshold;
+        @display("i=block/classifier");
     gates:
         output uppergateOut;
         output upperControlOut;

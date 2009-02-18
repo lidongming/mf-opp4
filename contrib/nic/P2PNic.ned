@@ -43,7 +43,7 @@ import org.mf2.contrib.nic.radios.SingleChannelRadio;
 module P2PNic
 {
     parameters:
-        @display("bgb=100,125,white,,;bgp=10,10");
+        @display("bgb=190,174,white;bgp=10,10;i=block/ifcard");
     gates:
         input uppergateIn; // to upper layers
         output upperControlOut; // control to upper layers
@@ -57,11 +57,11 @@ module P2PNic
         }
         phy: P2PPhyLayer {
             parameters:
-                @display("b=32,30;p=60,100;i=prot3");
+                @display("b=32,30;p=60,115;i=prot3");
         }
         radio: SingleChannelRadio {
             parameters:
-                @display("p=90,50;b=32,30,,red,,");
+                @display("p=130,50");
 
         }
     connections:

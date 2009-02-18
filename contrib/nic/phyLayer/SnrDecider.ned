@@ -27,6 +27,7 @@ simple SnrDecider
     parameters:
         bool debug; // debug switch
         volatile double snrThresholdLevel;
+        @display("i=block/classifier");
     gates:
         output uppergateOut;
         input lowergateIn;

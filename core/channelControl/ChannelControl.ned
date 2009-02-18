@@ -54,5 +54,6 @@ simple ChannelControl
         double alpha; // minimum path loss coefficient
         // minimum carrier frequency of the channel (in Hz)
         double carrierFrequency; // minimum carrier frequency of the channel (in Hz)
+        @display("i=misc/sun");
 }
 

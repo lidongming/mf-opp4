@@ -38,6 +38,7 @@ simple SnrEval
         volatile double thermalNoise;
         volatile double pathLossAlpha;
         volatile double sensitivity;
+        @display("i=block/mac");
     gates:
         input uppergateIn;
         input radioIn;

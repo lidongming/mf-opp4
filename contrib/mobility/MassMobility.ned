@@ -60,5 +60,6 @@ simple MassMobility
         volatile double changeAngleBy; // change angle by this much (can be random) [deg]
         volatile double speed; // speed (can be random, updated every changeInterval) [m/s]
         double updateInterval; // time interval to update the hosts position
+        @display("i=block/broadcast");
 }
 

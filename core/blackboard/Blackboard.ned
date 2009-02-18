@@ -40,4 +40,5 @@ simple Blackboard
 {
     parameters:
         bool coreDebug; // debug switch for core framework
+        @display("i=block/blackboard");
 }
