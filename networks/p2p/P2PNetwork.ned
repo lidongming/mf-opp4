@@ -59,11 +59,11 @@ module P2PNetwork
             parameters:
                 playgroundSizeX = playgroundSizeX;
                 playgroundSizeY = playgroundSizeY;
-                @display("p=60,30;i=eye14");
+                @display("p=60,30");
         }
         host[numHosts]: P2PHost {
             parameters:
-                @display("p=50,50;i=laptop");
+                @display("p=134,91;i=laptop");
 
         }
     connections allowunconnected:

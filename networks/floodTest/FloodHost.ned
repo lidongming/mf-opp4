@@ -44,7 +44,7 @@ module FloodHost
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=130,50;b=25,25,,black,,");
+                @display("p=130,50");
         }
         mobility: BasicMobility {
             parameters:
@@ -52,7 +52,7 @@ module FloodHost
         }
         arp: SimpleArp {
             parameters:
-                @display("p=130,100;b=25,25");
+                @display("p=130,100");
         }
         appl: <applLayer> like BasicApplLayer {
             parameters:

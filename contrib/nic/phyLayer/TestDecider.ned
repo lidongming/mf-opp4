@@ -26,6 +26,7 @@ simple TestDecider
 {
     parameters:
         bool coreDebug; // debug switch
+        @display("i=block/classifier");
     gates:
         output uppergateOut;
         input lowergateIn;

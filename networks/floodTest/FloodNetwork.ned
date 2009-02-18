@@ -43,11 +43,11 @@ module FloodNetwork
             parameters:
                 playgroundSizeX = playgroundSizeX;
                 playgroundSizeY = playgroundSizeY;
-                @display("p=50,25;i=eye14");
+                @display("p=50,25");
         }
         host[numHosts]: FloodHost {
             parameters:
-                @display("p=50,50;i=node");
+                @display("p=119,94");
 
         }
     connections allowunconnected:

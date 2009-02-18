@@ -43,11 +43,11 @@ module Sim
             parameters:
                 playgroundSizeX = playgroundSizeX;
                 playgroundSizeY = playgroundSizeY;
-                @display("p=50,25;i=eye14");
+                @display("p=50,25");
         }
         host[numHosts]: Host {
             parameters:
-                @display("p=50,50;i=node");
+                @display("p=112,92");
 
         }
     connections allowunconnected:

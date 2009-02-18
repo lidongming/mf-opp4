@@ -35,39 +35,39 @@ module Host
     parameters:
         string applType; //type of the application layer
 
-        @display("bgb=250,250,white,,;bgp=10,10");
+        @display("bgb=250,250;bgp=10,10;i=device/pocketpc");
     gates:
         input radioIn; // gate for sendDirect
 
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=200,75;b=30,25");
+                @display("p=200,36");
 
         }
         mobility: BasicMobility {
             parameters:
-                @display("p=200,150;b=30,25");
+                @display("p=200,114");
 
         }
         arp: SimpleArp {
             parameters:
-                @display("p=200,225;b=30,25");
+                @display("p=200,189");
 
         }
         appl: <applType> like BasicApplLayer {
             parameters:
-                @display("p=90,50;b=100,20,rect");
+                @display("p=90,36");
 
         }
         net: SimpleNetwLayer {
             parameters:
-                @display("p=90,100;b=100,20,rect");
+                @display("p=90,114");
 
         }
         nic: AlohaSnrNic {
             parameters:
-                @display("p=90,150;b=100,20,rect");
+                @display("p=90,189");
 
         }
     connections:

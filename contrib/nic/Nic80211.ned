@@ -32,6 +32,7 @@ import org.mf2.contrib.nic.radios.SingleChannelRadio;
 //
 module Nic80211
 {
+    @display("i=block/ifcard");
     gates:
         input uppergateIn; // to upper layers
         output uppergateOut; // from upper layers
@@ -41,17 +42,19 @@ module Nic80211
     submodules:
         mac: Mac80211 {
             parameters:
-                @display("p=96,87;i=block/layer");
+                @display("p=96,48;i=block/layer");
         }
         decider: Decider80211 {
             parameters:
-                @display("p=106,157;i=block/process_s");
+                @display("p=137,126;is=s");
         }
         snrEval: SnrEval80211 {
             parameters:
-                @display("p=96,236;i=block/wrxtx");
+                @display("p=96,192;i=block/wrxtx");
         }
-        radio: SingleChannelRadio;
+        radio: SingleChannelRadio {
+            @display("p=32,48");
+        }
     connections:
         radioIn --> snrEval.radioIn;
         snrEval.uppergateIn <-- { @display("m=m,25,0,25,0"); } <-- mac.lowergateOut;

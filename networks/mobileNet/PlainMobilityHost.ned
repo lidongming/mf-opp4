@@ -34,11 +34,11 @@ module PlainMobilityHost
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=70,67;i=block/control");
+                @display("p=70,67");
         }
         mobility: <mobilityType> like IBasicMobility {
             parameters:
-                @display("p=132,141;i=block/cogwheel");
+                @display("p=132,141");
         }
     connections allowunconnected:
 }

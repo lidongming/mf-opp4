@@ -2,7 +2,7 @@ package org.mf2.contrib.nic.macLayer;
 //***************************************************************************
 //* file:        CSMAMacLayer.ned
 //*
-//* author:      Marc Löbbers
+//* author:      Marc Lï¿½bbers
 //*
 //* copyright:   (C) 2004 Telecommunication Networks Group (TKN) at
 //*              Technische Universitaet Berlin, Germany.
@@ -46,6 +46,7 @@ simple CSMAMacLayer
         // contention window
         double contentionWindow;
 
+        @display("i=block/ifcard");
     gates:
         input uppergateIn;
         output uppergateOut;

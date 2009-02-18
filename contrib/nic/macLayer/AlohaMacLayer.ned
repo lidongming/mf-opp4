@@ -2,7 +2,7 @@ package org.mf2.contrib.nic.macLayer;
 //***************************************************************************
 //* file:        AlohaMacLayer.ned
 //*
-//* author:      Marc Löbbers
+//* author:      Marc Lï¿½bbers
 //*
 //* copyright:   (C) 2004 Telecommunication Networks Group (TKN) at
 //*              Technische Universitaet Berlin, Germany.
@@ -36,6 +36,7 @@ simple AlohaMacLayer
         // default channel 
         double defaultChannel;
 
+        @display("i=block/ifcard");
     gates:
         input uppergateIn;
         output uppergateOut;

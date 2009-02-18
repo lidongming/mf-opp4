@@ -45,32 +45,32 @@ module Host
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=200,75;b=30,25");
+                @display("p=200,75");
 
         }
         mobility: BasicMobility {
             parameters:
-                @display("p=200,150;b=30,25");
+                @display("p=200,139");
 
         }
         arp: SimpleArp {
             parameters:
-                @display("p=200,225;b=30,25");
+                @display("p=200,205");
 
         }
         appl: BurstApplLayer {
             parameters:
-                @display("p=90,50;b=100,20,rect");
+                @display("p=90,50");
 
         }
         net: SimpleNetwLayer {
             parameters:
-                @display("p=90,100;b=100,20,rect");
+                @display("p=90,114");
 
         }
         nic: NicCsma {
             parameters:
-                @display("p=90,150;b=100,20,rect");
+                @display("p=90,176");
 
         }
     connections:

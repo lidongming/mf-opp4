@@ -42,12 +42,13 @@ package org.mf2.core.basicModules;
 // All decider modules should assume bits as a unit for the length
 // fields.
 //
-// @author Marc Löbbers, Daniel Willkomm
+// @author Marc Lï¿½bbers, Daniel Willkomm
 //
 simple BasicDecider
 {
     parameters:
         bool coreDebug; // debug switch for the core framework
+        @display("i=block/classifier");
     gates:
         output uppergateOut; // to MAC layer
         input lowergateIn; // from snrEval sub-module

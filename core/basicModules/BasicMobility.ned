@@ -51,4 +51,5 @@ simple BasicMobility like IBasicMobility
         bool coreDebug; // debug switch for the core framework
         double x; // x coordinate of the nodes' position (-1 = random)
         double y; // y coordinate of the nodes' position (-1 = random)
+        @display("i=block/broadcast");
 }

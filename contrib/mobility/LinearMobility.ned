@@ -37,5 +37,6 @@ simple LinearMobility
         double angle; // angle of linear motion (degreees)
         double acceleration; // acceleration of linear motion (m/s2)
         double updateInterval; // time interval to update the hosts position
+        @display("i=block/broadcast");
 }
 

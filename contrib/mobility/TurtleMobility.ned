@@ -116,6 +116,7 @@ simple TurtleMobility
         bool debug; // debug switch
         xml turtleScript; // describes the movement
         double updateInterval; // time interval to update the hosts position
+        @display("i=block/broadcast");
 }
 
 

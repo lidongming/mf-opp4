@@ -22,4 +22,5 @@ simple SimpleArp
 {
     parameters:
         bool debug;
+        @display("i=block/app");
 }

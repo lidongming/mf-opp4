@@ -28,14 +28,13 @@ package org.mf2.networks.aloha;
 import org.mf2.core.channelControl.ChannelControl;
 
 
-module Sim
+network Sim
 {
     parameters:
         // parametes for the framework
-        double playgroundSizeX;
-        double playgroundSizeY;
-        double numHosts;
-
+        double playgroundSizeX = default(40);
+        double playgroundSizeY = default(40);
+        double numHosts = default(2);
 
         @display("bgb=$playgroundSizeX,$playgroundSizeY,white,,;bgp=0,0");
     submodules:
@@ -43,26 +42,14 @@ module Sim
             parameters:
                 playgroundSizeX = playgroundSizeX;
                 playgroundSizeY = playgroundSizeY;
-                @display("p=50,25;i=eye14");
+                @display("p=48,38");
         }
         host[numHosts]: Host {
             parameters:
-                @display("p=50,50;i=node");
+                @display("p=102,130;");
 
         }
     connections allowunconnected:
     // all connections and gates are to be generated dynamically
-
-}
-
-
-
-
-network sim extends Sim
-{
-    parameters:
-        playgroundSizeX @prompt("playgroundSizeX") = default(40);
-        playgroundSizeY @prompt("playgroundSizeY") = default(40);
-        numHosts @prompt("Number of hosts:") = default(2);
 
 }

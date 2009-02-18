@@ -44,7 +44,7 @@ module Host
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=200,75;b=30,25,,black,,");
+                @display("p=200,75");
 
         }
         mobility: BasicMobility {
@@ -54,7 +54,7 @@ module Host
         }
         arp: SimpleArp {
             parameters:
-                @display("p=200,225;b=30,25");
+                @display("p=200,225");
 
         }
         appl: BurstApplLayer {

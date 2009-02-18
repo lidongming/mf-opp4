@@ -40,6 +40,7 @@ simple BonnMotionMobility
         string traceFile; // the BonnMotion trace file
         double nodeId; // selects line in trace file; -1 gets substituted to parent module's index
         double updateInterval; // time interval to update the hosts position
+        @display("i=block/broadcast");
 }
 
 

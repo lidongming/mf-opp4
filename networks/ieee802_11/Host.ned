@@ -38,39 +38,39 @@ module Host
 
 {
     parameters:
-        @display("bgb=250,250,white,,;bgp=10,10");
+        @display("bgb=250,250,white;bgp=10,10;i=device/wifilaptop");
     gates:
         input radioIn; // gate for sendDirect
 
     submodules:
         blackboard: Blackboard {
             parameters:
-                @display("p=200,75;b=30,25");
+                @display("p=200,75");
 
         }
         mobility: ConstSpeedMobility {
             parameters:
-                @display("p=200,150;b=30,25");
+                @display("p=200,150");
 
         }
         appl: BurstApplLayer {
             parameters:
-                @display("p=90,50;b=100,20,rect");
+                @display("p=90,50");
 
         }
         arp: SimpleArp {
             parameters:
-                @display("p=200,225;b=30,25");
+                @display("p=200,225");
 
         }
         net: SimpleNetwLayer {
             parameters:
-                @display("p=90,100;b=100,20,rect");
+                @display("p=90,120");
 
         }
         nic: Nic80211 {
             parameters:
-                @display("p=90,150;b=100,20,rect");
+                @display("p=90,189");
 
         }
     connections:

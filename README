@@ -1,11 +1,23 @@
+A port of mobility-fw2.0p3 for OMNeT++ 4.0 simulator
+====================================================
+by Jerome Rousselot <jerome.rousselot@csem.ch> and Rudolf Hornig <rudi@omnetpp.org>
+
+All of "core" was ported, as well as "contrib". All was not tested though, 
+and the "networks" and "testSuite" directories have not been ported.
+
+Changes
+-------
+In contrib, the P2PLayer does not use the sendDirect method anymore.
+The core/include and contrib/include directories have been removed, as well as
+the core/lib and contrib/lib directories, to simplify the build process.
+The libraries are now in core/libmfcore.so and in contrib/libmfcontrib.so.
+
 Contents
 ========
  - Purpose
  - Requirements
  - Copyright
- - Installation under Linux
- - Installation under Windows
- - Installation under MAC OS
+ - Installation
  - Getting started
  - Release notes
  - Legal stuff
@@ -19,11 +31,8 @@ protocols for non-stationary wireless nodes.
 
 Requirements
 ============
-The current version of the Mobillity Framework requires OMNeT++ v3.2
-or higher.
-The only platform it has been tested on is Linux (2.4.xx kernel, 
-g++ 3.3.x & 2.6.xx kernel, g++ 4.0.x). Compilation has also been tested
-on windows XP, VC++ 8.0.
+This version of the Mobillity Framework requires OMNeT++ 4.0 or higher.
+The only platform it has been tested on is Linux (2.6.xx kernel, g++ 4.0.x). 
 
 
 COPYRIGHT
@@ -46,59 +55,23 @@ Universitaet Berlin, Germany
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
-Installation under Linux
-========================
+Installation 
+============
 1. Unpack the archive (you have probably already done so)
    tar xzf mobility-fw<VERSION>.tgz
 
-2. Update your LD_LIBRARY_PATH variable to include the 
-   "mobility-fw<VERSION>/core/lib" and 
-   "mobility-fw<VERSION>/contrib/lib" directories
-
-3. run the mkmk shell script
+2. run the mkmk shell script
    ./mkmk
 
-4. make the core and contrib library and all test networks 
-   make core && make contrib && make networks
+3. make all 
 
 
-Installation under Windows
-==========================
-1. Unpack the archive
-
-2. modify the variable OMNETPP_ROOT in mkmk.cmd to point to your 
-   OMNeT++ installation directory.
-
-3. run the mkmk.cmd script
-   mkmk.cmd
-
-4. make the core and contrib library and all test networks
-   nmake /f Makefile.vc core_dir && nmake /f Makefile.vc contrib_dir && 
-   nmake /f Makefile.vc networks_dir
-
-
-Installation under MAC OS
-=========================
-There are two possibilities to install the MF under MAC OS, 
-one is with shared libraries, one without. We did not test
-compiling under MAC OS - any feedback welcome!
-
-1. Unpack the archive (you have probably already done so)
-   tar xzf mobility-fw<VERSION>.tgz
-
-2. Modify the mkmk.mac script and choose shared libraries or not
-   (just comment out the corresponding lines in the script)
-
-3. If you go for shared libraries you need to update your 
-   DYLD_LIBRARY_PATH (NOT LD_LIBRARY!) variable to include the
-   "mobility-fw<VERSION>/core/lib" and
-   "mobility-fw<VERSION>/contrib/lib" directories
-
-4. run the mkmk.mac shell script
-   ./mkmk.mac
-
-4. make the core and contrib library and all test networks
-   make core && make contrib && make networks
+Importing the project into the OMNeT++ 4 IDE
+============================================
+After starting the OMNeT++ IDE, you can import the project by right-clicking
+in the project list and choosing the "Import..." wizard, and 
+"General->Existing project into Workspace".  Select the directory containing 
+the branch as root directory. You should be able to build it by pressing CTRL-B. 
 
 
 Getting started
@@ -120,9 +93,18 @@ will work!
 
 Release notes
 =============
+* 2.0p3 for OMNeT++ 4
+The same version for OMNeT++ 4 converted by Jerome Rousselot 
+<jerome.rousselot@csem.ch> and Rudolf Hornig <rudi@omnetpp.org>
+Changes: In contrib, the P2PLayer does not use the sendDirect method anymore.
+The core/include and contrib/include directories have been removed, as well as
+the core/lib and contrib/lib directories, to simplify the build process.
+The libraries are now in core/libmfcore.so and in contrib/libmfcontrib.so.
+
 * 2.0p3
 just another preview. Basically just contains several 802.11 bug fixes.
 Re-added old manual of MF v1
+
 * 2.0p2:
 Preview no.2. Main enhancements (apart from some minor bug fixes) are:
 - windows make system should work know. See the install directions for 
@@ -132,6 +114,7 @@ Preview no.2. Main enhancements (apart from some minor bug fixes) are:
 - 802.11 should work again - at least with the basic bitrate. However,
   the automatic bitrate adaption still crashes.
 - We started to adapt the template folder to MF 2.0 - not finished yet!
+
 * 2.0p1:
 Preview of a MF with major restructuring and redesign. As with previews there
 may still be bugs and not everything has been thorouly tested yet. Especially 

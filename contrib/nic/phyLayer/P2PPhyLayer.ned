@@ -41,6 +41,7 @@ simple P2PPhyLayer
         double transmitterPower; // power used to transmit messages (in mW)
         double headerLength; // length  (in bits) of the AirFrame header
 
+        @display("i=block/classifier");
     gates:
         input uppergateIn; // from MAC layer
         output upperControlOut; // output control information
