@@ -29,6 +29,7 @@ simple TestSnrEval
     parameters:
         bool coreDebug; // debug switch
         double headerLength;
+        @display("i=block/mac");
     gates:
         input uppergateIn;
         input radioIn;

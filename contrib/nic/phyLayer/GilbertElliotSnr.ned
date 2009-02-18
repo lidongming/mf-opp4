@@ -34,6 +34,7 @@ simple GilbertElliotSnr
         volatile double sensitivity;
         volatile double meanGood;
         volatile double meanBad;
+        @display("i=block/mac");
     gates:
         input uppergateIn;
         input radioIn;

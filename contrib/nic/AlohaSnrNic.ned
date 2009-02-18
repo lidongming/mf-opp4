@@ -47,6 +47,7 @@ import org.mf2.contrib.nic.phyLayer.SnrEval;
 // @author Daniel Willkomm
 module AlohaSnrNic
 {
+    @display("i=block/ifcard");
     gates:
         input uppergateIn; // from upper layers
         output uppergateOut; // to upper layers
@@ -60,7 +61,7 @@ module AlohaSnrNic
         }
         decider: SnrDecider {
             parameters:
-                @display("p=68,100;b=16,16,,white,,;i=box2_s");
+                @display("p=83,99;b=16,16,,white;i=box2_s");
         }
         snrEval: SnrEval {
             parameters:
@@ -68,7 +69,7 @@ module AlohaSnrNic
         }
         radio: SingleChannelRadio {
             parameters:
-                @display("p=90,50;b=32,30,,red,,");
+                @display("p=121,45");
 
         }
     connections:

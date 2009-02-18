@@ -41,6 +41,7 @@ simple BurstApplLayer
         bool debug; // debug switch
         double headerLength; // length of the application message header (in bits)
         double burstSize; // size of the burst
+        @display("i=block/app");
     gates:
         input lowergateIn; // from network layer
         input lowerControlIn;

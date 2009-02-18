@@ -39,7 +39,7 @@ module MobileNet
         host[numHosts]: PlainMobilityHost {
             parameters:
                 //display: "i=device/pocketpc_s;r=,,#707070";
-                @display("i=device/pocketpc_s");
+                @display("i=device/pocketpc_s;p=138,104");
 
         }
 }

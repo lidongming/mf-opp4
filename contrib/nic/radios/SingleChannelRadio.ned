@@ -29,4 +29,5 @@ simple SingleChannelRadio
         double swSend;
         // switch to recv mode
         double swRecv;
+        @display("i=device/antennatower");
 }

@@ -34,5 +34,6 @@ simple RectangleMobility
         double startPos; // in range [0.0,4.0): topleft=0, topright=1, bottomright=2, bottomleft=3
         double speed; // speed of the host (in m/s)
         double updateInterval; // time interval to update the hosts position
+        @display("i=block/square");
 }
 

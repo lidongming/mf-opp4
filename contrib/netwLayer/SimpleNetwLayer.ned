@@ -37,6 +37,7 @@ simple SimpleNetwLayer
     parameters:
         double debug; // debug switch for the core framework
         double headerLength; // length of the network packet header (in bits)
+        @display("i=block/layer");
     gates:
         input uppergateIn; // from application layer
         output uppergateOut; // to application layer

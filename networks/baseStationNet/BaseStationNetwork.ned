@@ -48,7 +48,7 @@ module BaseStationNetwork
             parameters:
                 playgroundSizeX = playgroundSizeX;
                 playgroundSizeY = playgroundSizeY;
-                @display("p=60,30;i=eye14");
+                @display("p=60,30");
         }
         baseStationHost: BaseStationHost {
             parameters:
@@ -57,7 +57,7 @@ module BaseStationNetwork
         }
         clientHost[numClients]: ClientHost {
             parameters:
-                @display("p=50,50;i=laptop");
+                @display("p=138,54;i=laptop");
         }
     connections allowunconnected:
                          // all connections and gates are to be generated dynamically
