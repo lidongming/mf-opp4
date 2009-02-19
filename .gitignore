@@ -13,3 +13,6 @@
 # ignore project specific files
 testSuite
 Makefile
+
+# ignore machine specific configuration file
+en.sh
