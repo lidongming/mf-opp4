@@ -2,8 +2,18 @@ A port of mobility-fw2.0p3 for OMNeT++ 4.0 simulator
 ====================================================
 by Jerome Rousselot <jerome.rousselot@csem.ch> and Rudolf Hornig <rudi@omnetpp.org>
 
-All of "core" was ported, as well as "contrib". All was not tested though, 
-and the "networks" and "testSuite" directories have not been ported.
+All of "core" was ported, as well as "contrib" and "testSuite".
+In "networks", everything compiles but some little bugs remain (patches are welcome).
+The networks/csma scenario has been ported, compiles and runs correctly. It can
+be used as a template to fix the other directories.
+
+Note that to compile the directories in "networks", after "./mkmk" you should do
+make core
+make contrib
+cd networks
+make
+
+(make networks does not work -- again, fixes are welcome).
 
 Changes
 -------
@@ -31,8 +41,8 @@ protocols for non-stationary wireless nodes.
 
 Requirements
 ============
-This version of the Mobillity Framework requires OMNeT++ 4.0 or higher.
-The only platform it has been tested on is Linux (2.6.xx kernel, g++ 4.0.x). 
+This version of the Mobility Framework requires OMNeT++ 4.0 or higher.
+The only platform it has been tested on is Linux (2.6.xx kernel, g++ 4.3.x). 
 
 
 COPYRIGHT
