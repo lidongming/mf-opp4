@@ -9,6 +9,7 @@
 *.exe
 *.o
 *.obj
+.tkenvrc
 
 # ignore project specific files
 testSuite
