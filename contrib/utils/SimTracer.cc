@@ -32,7 +32,8 @@ void SimTracer::initialize(int stage)
 
 	char treeName[250];
 	int n;
-	n = sprintf(treeName, "results/tree-%d.txt", ev.getConfig()->getActiveRunNumber());
+	n = sprintf(treeName, "results/tree-%d.txt", 
+	cSimulation::getActiveSimulation()->getEnvir()->getConfigEx()->getActiveRunNumber());
     treeFile.open(treeName);
     if (!treeFile) {
       EV << "Error opening output stream for routing tree statistics."
