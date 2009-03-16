@@ -1,0 +1,3 @@
+#! /bin/sh 
+DIR=`dirname $0`
+opp_run -l$DIR/../core/mfcore -l$DIR/../contrib/mfcontrib -n $DIR/../networks:$DIR/../core:$DIR/../contrib $*

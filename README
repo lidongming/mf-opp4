@@ -3,17 +3,13 @@ A port of mobility-fw2.0p3 for OMNeT++ 4.0 simulator
 by Jerome Rousselot <jerome.rousselot@csem.ch> and Rudolf Hornig <rudi@omnetpp.org>
 
 All of "core" was ported, as well as "contrib" and "testSuite".
-In "networks", everything compiles but some little bugs remain (patches are welcome).
-The networks/csma scenario has been ported, compiles and runs correctly. It can
+In "networks", everything has been ported but some little bugs remain (patches are welcome).
+The networks/csma scenario has been ported and runs correctly. It can
 be used as a template to fix the other directories.
 
-Note that to compile the directories in "networks", after "./mkmk" you should do
-make core
-make contrib
-cd networks
-make
+To run examples in the "networks" folder. Use the "run" script in the example dirs
 
-(make networks does not work -- again, fixes are welcome).
+Note that the "networks", folder does not contain any .cc files so it is not added to the makefiles.
 
 Changes
 -------
@@ -90,9 +86,8 @@ Getting started
 This will "install" the library in the lib directories and the
 include files in the include directories of the MF.
 
-It will also build all networks in the networks directory.
-
 To see if it runs, try the networks in the networks directory.
+Select or open an inifile and press the Run button in the IDE.
 
 Copy the template from the template directory to a directory of
 your choice -- it has its own INSTALL instructions to get you

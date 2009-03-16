@@ -1,6 +1,6 @@
 <buildspec version="4.0">
-<dir makemake-options="--deep -o testSuite -O out -lmfcontrib --meta:recurse --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="testSuite" type="makemake"/>
-<dir makemake-options="--deep --make-so -o mfcore -O out --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="core" type="makemake"/>
-<dir makemake-options="--nolink -O out --meta:recurse --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="." type="makemake"/>
 <dir makemake-options="--deep --make-so -o mfcontrib -O out -lmfcore --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="contrib" type="makemake"/>
+<dir makemake-options="--deep --make-so -o mfcore -O out --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="core" type="makemake"/>
+<dir makemake-options="--deep -o testSuite -O out -lmfcontrib --meta:recurse --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="testSuite" type="makemake"/>
+<dir makemake-options="--nolink -O out --meta:recurse --meta:auto-include-path --meta:export-library --meta:use-exported-libs" path="." type="makemake"/>
 </buildspec>

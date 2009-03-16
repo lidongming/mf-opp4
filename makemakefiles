@@ -5,31 +5,10 @@
 #    nmake -f makemakefiles MMOPT=-n
 #
 
-CONFIGNAME=gcc-debug
 MAKEMAKE=opp_makemake $(MMOPT)
 
 all:
-	$(MAKEMAKE) -f --nolink -O out -d testSuite -d core -d contrib -X. -L./out/'$$(CONFIGNAME)'/core -L./out/'$$(CONFIGNAME)'/contrib
+	cd contrib && $(MAKEMAKE) -f --deep --make-so -o mfcontrib -O out -I../core/basicMessages -I../core/blackboard -I../core/basicModules -I../core/channelControl -I../core/utils -L../out/'$$(CONFIGNAME)'/core -lmfcore
 	cd core && $(MAKEMAKE) -f --deep --make-so -o mfcore -O out -L../out/'$$(CONFIGNAME)'/contrib
-	cd contrib && $(MAKEMAKE) -f --deep --make-so -o mfcontrib -O out -I../core/basicModules -I../core/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -L../out/'$$(CONFIGNAME)'/core -lmfcore
-	cd testSuite && $(MAKEMAKE) -f --deep -o testSuite -O out -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../out/'$$(CONFIGNAME)'/core -L../out/'$$(CONFIGNAME)'/contrib -lmfcontrib
-	cd networks && $(MAKEMAKE) -r -n -f  -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../out/'$$(CONFIGNAME)'/core -L../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore
-	cd networks/aloha && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o aloha
-	cd networks/baseStationNet && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o baseStationNet
-	cd networks/bmac && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o bmac
-	cd networks/csma && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o csma
-	cd networks/floodTest && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o floodTest
-	cd networks/gilbert_elliot && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o gilbert_elliot
-	cd networks/ieee802_11 && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o ieee802_11
-	cd networks/lmac && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o lmac
-	cd networks/mobileNet && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o mobileNet
-	cd networks/p2p && $(MAKEMAKE) -f -I../core/utils -I../core/basicModules -I../contrib/utils -I../core/channelControl -I../core/basicMessages -I../core/blackboard -I../contrib/nic/radios -I../contrib/messages -I../contrib/applLayer -L../../out/'$$(CONFIGNAME)'/core -L../../out/'$$(CONFIGNAME)'/contrib -lmfcontrib -lmfcore -o p2p
-	
-	
-	
-
-
-
-
-	
-
+	cd testSuite && $(MAKEMAKE) -f --deep -o testSuite -O out -I../core/basicMessages -I../core/blackboard -I../core/basicModules -I../core/channelControl -I../core/utils -I../contrib/applLayer -I../contrib/messages -I../contrib/utils -I../contrib/nic/macLayer -I../contrib/nic/radios -I../contrib/netwLayer -L../out/'$$(CONFIGNAME)'/contrib -L../out/'$$(CONFIGNAME)'/core -lmfcontrib
+	$(MAKEMAKE) -f --nolink -O out -d contrib -d core -d testSuite -X. -L./out/'$$(CONFIGNAME)'/contrib -L./out/'$$(CONFIGNAME)'/core
