@@ -17,16 +17,20 @@ package org.mf2.contrib.mobility;
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // Moves the node around a rectangle.
 //
 // @see ChannelControl
 // @author Andras Varga
 //
-simple RectangleMobility
+simple RectangleMobility like IBasicMobility
 {
     parameters:
-        bool debug; // debug switch
+        bool coreDebug = default(false); // debug switch
+        bool debug = default(false); // debug switch
         double x1; // rectangle is denoted by the (x1,y1) and (x2,y2) coords
         double y1;
         double x2;

@@ -22,7 +22,7 @@ module BMACHost
     parameters:
         @display("bgb=250,250,white,,;bgp=10,10");
     gates:
-        input radioIn; // gate for sendDirect
+        input radioIn @directIn; // gate for sendDirect
 
     submodules:
         blackboard: Blackboard {

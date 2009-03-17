@@ -35,7 +35,7 @@ package org.mf2.contrib.netwLayer;
 simple SimpleNetwLayer
 {
     parameters:
-        double debug; // debug switch for the core framework
+        bool debug = default(false); // debug switch for the core framework
         double headerLength; // length of the network packet header (in bits)
         @display("i=block/layer");
     gates:

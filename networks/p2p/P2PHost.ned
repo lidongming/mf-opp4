@@ -40,7 +40,7 @@ module P2PHost
 
         @display("bgb=180,200,white,,;bgp=10,10");
     gates:
-        input radioIn; // gate for sendDirect
+        input radioIn @directIn; // gate for sendDirect
 
     submodules:
         blackboard: Blackboard {

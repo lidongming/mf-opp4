@@ -26,7 +26,7 @@
 simple YourNetwLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double headerLength; // length of the network packet header (in bits)
 	// ENTER YOUR CODE HERE
     gates:

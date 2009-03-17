@@ -25,7 +25,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple ErrAndCollDecider
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         volatile double snrThresholdLevel;
         @display("i=block/classifier");
     gates:

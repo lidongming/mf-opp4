@@ -35,7 +35,7 @@ simple P2PPhyLayer
 
 {
     parameters:
-        double coreDebug; // debug switch for the core framework
+        bool coreDebug = default(false); // debug switch for the core framework
         double pBit; // bit error rate
         double bitrate; // bitrate (in bits/sec)
         double transmitterPower; // power used to transmit messages (in mW)
@@ -46,6 +46,6 @@ simple P2PPhyLayer
         input uppergateIn; // from MAC layer
         output upperControlOut; // output control information
         output uppergateOut; // to MAC layer
-        input radioIn; // gate for sendDirect
+        input radioIn @directIn; // gate for sendDirect
 
 }

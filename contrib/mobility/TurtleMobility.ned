@@ -18,6 +18,9 @@ package org.mf2.contrib.mobility;
 //
 
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // A LOGO-style movement model, with the script coming from XML. It can be
 // useful for describing random as well as deterministic scenarios.
@@ -109,11 +112,11 @@ package org.mf2.contrib.mobility;
 // @see ChannelControl
 // @author Andras Varga
 //
-simple TurtleMobility
+simple TurtleMobility like IBasicMobility
 {
     parameters:
-        bool coreDebug; // debug switch
-        bool debug; // debug switch
+        bool coreDebug = default(false); // debug switch
+        bool debug = default(false); // debug switch
         xml turtleScript; // describes the movement
         double updateInterval; // time interval to update the hosts position
         @display("i=block/broadcast");

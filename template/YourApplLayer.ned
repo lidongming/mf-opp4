@@ -22,7 +22,7 @@
 simple YourApplLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double headerLength; // length of the application message header (in bits)
 	// ENTER YOUR CODE HERE
     gates:

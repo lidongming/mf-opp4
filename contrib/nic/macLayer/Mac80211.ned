@@ -32,7 +32,7 @@ package org.mf2.contrib.nic.macLayer;
 simple Mac80211
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double queueLength;
         double rtsCtsThreshold;
 

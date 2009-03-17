@@ -20,6 +20,9 @@ package org.mf2.contrib.mobility;
 //
 
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // This is a random mobility model for a mobile host with a mass. It is the
 // one used in "Optimized Smooth Handoffs in Mobile IP" by Perkins & Wang.
@@ -49,11 +52,11 @@ package org.mf2.contrib.mobility;
 // @see ChannelControl
 // @author Emin Ilker Cetinbas, Andras Varga
 //
-simple MassMobility
+simple MassMobility like IBasicMobility
 {
     parameters:
-        bool coreDebug; // core MF debug switch
-        bool debug; // debug switch
+        bool coreDebug = default(false); // core MF debug switch
+        bool debug = default(false); // debug switch
         double x; // x starting point of the node (-1 = random)
         double y; // y starting point of the node (-1 = random)
         volatile double changeInterval; // frequency of changing speed and angle (can be random) [s]

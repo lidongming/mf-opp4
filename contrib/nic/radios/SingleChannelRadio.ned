@@ -21,7 +21,7 @@ package org.mf2.contrib.nic.radios;
 simple SingleChannelRadio
 {
     parameters:
-        bool debug;
+        bool debug = default(false);
         // time parameters, how long does it take to 
         // switch to sleep mode
         double swSleep;

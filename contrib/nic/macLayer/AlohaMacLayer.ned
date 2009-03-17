@@ -26,7 +26,7 @@ package org.mf2.contrib.nic.macLayer;
 simple AlohaMacLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         // level at which we consider medium busy
         double headerLength;
         // length of the MAC queue

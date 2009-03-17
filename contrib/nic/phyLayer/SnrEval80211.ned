@@ -23,7 +23,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple SnrEval80211
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double headerLength; // ignored
         double transmitterPower;
         double carrierFrequency;

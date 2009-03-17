@@ -19,6 +19,9 @@ package org.mf2.contrib.mobility;
 // **************************************************************************/
 
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // Controls all movement related things of a host
 //
@@ -35,11 +38,11 @@ package org.mf2.contrib.mobility;
 // @see ChannelControl
 // @author Steffen Sroka, Marc Loebbers, Daniel Willkomm
 //
-simple ConstSpeedMobility
+simple ConstSpeedMobility like IBasicMobility
 {
     parameters:
-        bool coreDebug; // core debug switch
-        bool debug; // debug switch
+        bool coreDebug = default(false); // core debug switch
+        bool debug = default(false); // debug switch
         double speed; // spped of the host (in m/s)
         double updateInterval; // time interval to update the hosts position
         double x; // x starting point of the node (-1 = random)

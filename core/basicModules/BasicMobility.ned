@@ -41,14 +41,14 @@ moduleinterface IBasicMobility
 {
     parameters:
         bool coreDebug; // debug switch for the core framework
-        double x; // x coordinate of the nodes' position (-1 = random)
-        double y; // y coordinate of the nodes' position (-1 = random)
+//        double x; // x coordinate of the nodes' position (-1 = random)
+//        double y; // y coordinate of the nodes' position (-1 = random)
 }
 
 simple BasicMobility like IBasicMobility
 {
     parameters:
-        bool coreDebug; // debug switch for the core framework
+        bool coreDebug = default(false); // debug switch for the core framework
         double x; // x coordinate of the nodes' position (-1 = random)
         double y; // y coordinate of the nodes' position (-1 = random)
         @display("i=block/broadcast");

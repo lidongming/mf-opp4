@@ -26,7 +26,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple Decider80211
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double snirThreshold;
         @display("i=block/classifier");
     gates:

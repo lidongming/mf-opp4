@@ -26,7 +26,7 @@
 simple YourDecider
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         // extend this by the variables that you need.
         volatile double snrThresholdLevel;
     gates:

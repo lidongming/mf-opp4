@@ -39,6 +39,6 @@ package org.mf2.core.blackboard;
 simple Blackboard
 {
     parameters:
-        bool coreDebug; // debug switch for core framework
+        bool coreDebug = default(false); // debug switch for core framework
         @display("i=block/blackboard");
 }
