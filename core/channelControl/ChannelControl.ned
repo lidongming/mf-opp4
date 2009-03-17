@@ -41,9 +41,9 @@ simple ChannelControl
 {
     parameters:
         // debug switch for core framework
-        bool coreDebug; // debug switch for core framework
-        bool sendDirect;          // define which ChannelControl module to use
-        bool useTorus;          // wrap connections
+        bool coreDebug = default(false);  // debug switch for core framework
+        bool sendDirect = default(false); // define which ChannelControl module to use
+        bool useTorus = default(false);   // wrap connections
         double playgroundSizeX; // x size of the playground (in meters)
         double playgroundSizeY; // y size of the playground (in meters)
         // maximum sending power used for this network (in mW)

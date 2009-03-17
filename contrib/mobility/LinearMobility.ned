@@ -18,6 +18,9 @@ package org.mf2.contrib.mobility;
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // This is a linear mobility model with speed, angle and acceleration parameters.
 // Angle only changes when the mobile node hits a wall: then it reflects
@@ -26,11 +29,11 @@ package org.mf2.contrib.mobility;
 // @see ChannelControl
 // @author Emin Ilker Cetinbas
 //
-simple LinearMobility
+simple LinearMobility like IBasicMobility
 {
     parameters:
-        bool coreDebug; // core MF debug switch
-        bool debug; // debug switch
+        bool coreDebug = default(false); // core MF debug switch
+        bool debug = default(false); // debug switch
         double x; // x starting point of the node (-1 = random)
         double y; // y starting point of the node (-1 = random)
         double speed; // speed of the host (in m/s)

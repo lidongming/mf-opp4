@@ -23,7 +23,7 @@ module LMACHost
     parameters:
         @display("bgb=250,250,white,,");
     gates:
-        input radioIn; // gate for sendDirect
+        input radioIn @directIn; // gate for sendDirect
 
     submodules:
         blackboard: Blackboard {

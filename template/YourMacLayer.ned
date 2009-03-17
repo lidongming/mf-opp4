@@ -26,7 +26,7 @@
 simple YourMacLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         // level at which we consider medium busy
         double busyRSSI;
         // length of MAC header

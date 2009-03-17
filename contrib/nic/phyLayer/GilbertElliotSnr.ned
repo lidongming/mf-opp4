@@ -25,7 +25,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple GilbertElliotSnr
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         volatile double transmitterPower;
         double headerLength;
         volatile double carrierFrequency;

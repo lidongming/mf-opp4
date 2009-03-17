@@ -26,7 +26,7 @@ package org.mf2.contrib.nic.macLayer;
 simple CSMAMacLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         // level at which we consider medium busy
         double busyRSSI;
         // how long is a slot?

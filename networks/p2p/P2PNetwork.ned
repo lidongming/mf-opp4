@@ -46,7 +46,7 @@ import org.mf2.core.channelControl.ChannelControl;
 // of hosts present in the network)
 //
 // @author Daniel Willkomm
-module P2PNetwork
+network p2pSim
 {
     parameters:
         double playgroundSizeX; // x size of the area the nodes are in (in meters)
@@ -71,9 +71,3 @@ module P2PNetwork
 
 }
 
-
-// example simulation using the P2PHost
-network p2pSim extends P2PNetwork
-{
-    parameters:
-}

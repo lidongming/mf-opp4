@@ -47,7 +47,7 @@ package org.mf2.core.basicModules;
 simple BasicDecider
 {
     parameters:
-        bool coreDebug; // debug switch for the core framework
+        bool coreDebug = default(false); // debug switch for the core framework
         @display("i=block/classifier");
     gates:
         output uppergateOut; // to MAC layer

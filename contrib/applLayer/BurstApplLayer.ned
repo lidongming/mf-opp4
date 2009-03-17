@@ -38,7 +38,7 @@ package org.mf2.contrib.applLayer;
 simple BurstApplLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double headerLength; // length of the application message header (in bits)
         double burstSize; // size of the burst
         @display("i=block/app");

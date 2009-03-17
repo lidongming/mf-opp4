@@ -17,16 +17,20 @@ package org.mf2.contrib.mobility;
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // Moves the node around a circle.
 //
 // @see ChannelControl
 // @author Andras Varga
 //
-simple CircleMobility
+simple CircleMobility like IBasicMobility
 {
     parameters:
-        bool debug; // debug switch
+        bool coreDebug = default(false); // debug switch
+        bool debug = default(false); // debug switch
         double cx; // x coord of the center of the circle
         double cy; // y coord of the center of the circle
         double r; // radius of the circle

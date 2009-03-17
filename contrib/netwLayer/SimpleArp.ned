@@ -21,6 +21,6 @@ package org.mf2.contrib.netwLayer;
 simple SimpleArp
 {
     parameters:
-        bool debug;
+        bool debug = default(false);
         @display("i=block/app");
 }

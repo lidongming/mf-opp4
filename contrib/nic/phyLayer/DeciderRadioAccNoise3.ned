@@ -26,7 +26,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple DeciderRadioAccNoise3
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double berLowerBound; // minimum possible bit error rate (BER floor).
     gates:
         output uppergateOut;

@@ -26,7 +26,7 @@
 simple YourMobilityModel
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double x; // x coordinate of the nodes' position (-1 = random)
         double y; // y coordinate of the nodes' position (-1 = random)
 	// ENTER YOUR CODE HERE

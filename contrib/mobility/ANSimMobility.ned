@@ -18,16 +18,20 @@ package org.mf2.contrib.mobility;
 //
 
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // Uses the <position_change> elements of the ANSim tool's
 // trace file.
 //
 // @author Andras Varga
 //
-simple ANSimMobility
+simple ANSimMobility like IBasicMobility
 {
     parameters:
-        bool debug; // debug switch
+        bool coreDebug = default(false); // debug switch
+        bool debug = default(false); // debug switch
         xml ansimTrace; // the ANSim trace file in XML
         double nodeId; // <position_change> elements to match; 
                                // -1 gets substituted to parent module's index

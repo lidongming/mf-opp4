@@ -29,7 +29,7 @@ simple csma
     parameters:
 
         // debug switch
-        bool debug;
+        bool debug = default(false);
         bool stats;
         bool trace;
         // level at which we consider medium busy (in dBm)

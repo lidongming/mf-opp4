@@ -28,7 +28,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple SnrEval
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         // if false, the RSSI will not be published 
         // during the reception of a frame
         bool publishRSSIAlways;

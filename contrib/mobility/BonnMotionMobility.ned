@@ -18,6 +18,9 @@ package org.mf2.contrib.mobility;
 //
 
 
+import org.mf2.core.basicModules.IBasicMobility;
+
+
 //
 // Uses the native file format of BonnMotion (http://www.cs.uni-bonn.de/IV/BonnMotion/).
 //
@@ -32,11 +35,11 @@ package org.mf2.contrib.mobility;
 //
 // @author Andras Varga
 //
-simple BonnMotionMobility
+simple BonnMotionMobility like IBasicMobility
 {
     parameters:
-        bool coreDebug; // debug switch
-        bool debug; // debug switch
+        bool coreDebug = default(false); // debug switch
+        bool debug = default(false); // debug switch
         string traceFile; // the BonnMotion trace file
         double nodeId; // selects line in trace file; -1 gets substituted to parent module's index
         double updateInterval; // time interval to update the hosts position

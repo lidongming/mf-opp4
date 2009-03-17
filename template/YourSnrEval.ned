@@ -26,7 +26,7 @@
 simple YourSnrEval
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double headerLength;
     gates:
         input uppergateIn;

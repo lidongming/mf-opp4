@@ -23,7 +23,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple SnrEvalRadioAccNoise3
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         bool trace; // vector log switch
         bool stats; // scalar statistics switch
         double headerLength @unit(bit); // Total length of PHY header (usually sync+sfd) 

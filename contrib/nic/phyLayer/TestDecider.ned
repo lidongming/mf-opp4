@@ -25,7 +25,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple TestDecider
 {
     parameters:
-        bool coreDebug; // debug switch
+        bool coreDebug = default(false); // debug switch
         @display("i=block/classifier");
     gates:
         output uppergateOut;

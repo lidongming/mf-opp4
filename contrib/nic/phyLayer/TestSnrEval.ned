@@ -27,7 +27,7 @@ package org.mf2.contrib.nic.phyLayer;
 simple TestSnrEval
 {
     parameters:
-        bool coreDebug; // debug switch
+        bool coreDebug = default(false); // debug switch
         double headerLength;
         @display("i=block/mac");
     gates:

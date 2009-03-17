@@ -44,7 +44,7 @@ package org.mf2.contrib.netwLayer;
 simple Flood
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double headerLength; // length of the network header
         bool plainFlooding; // flag whether to use plain flooding
         // Max number of entries in the list of already broadcasted messages

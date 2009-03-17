@@ -37,7 +37,7 @@ package org.mf2.contrib.applLayer;
 simple PollApplLayer
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
         double numClients; // number of clients in the network
         double headerLength; // length of the application message header (in bits)
         double pollTimeout; //timeout for poll messages

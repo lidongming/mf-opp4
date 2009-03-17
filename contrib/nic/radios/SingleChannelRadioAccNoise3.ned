@@ -23,7 +23,7 @@ package org.mf2.contrib.nic.radios;
 simple SingleChannelRadioAccNoise3
 {
     parameters:
-        bool debug; // debug switch
+        bool debug = default(false); // debug switch
 
         double bitrate @unit(bps); // radio bit rate (in bits per second)
 
